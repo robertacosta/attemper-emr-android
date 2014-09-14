@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="PhoneNumberTypes">
+        <item>Home</item>
+        <item>Work</item>
+        <item>Mobile</item>
+    </string-array>
+    <string-array name="LivesAtTypes">
+        <item >Home (alone)</item>
+        <item >Home (with Family)</item>
+        <item >Nuring Home</item>
+        <item >Assisted Living</item>
+    </string-array>
+    <string-array name="CodeStatusTypes">
+        <item >Full Code</item>
+        <item >Modified Code</item>
+        <item >DNR</item>
+    </string-array>
+
+</resources>
