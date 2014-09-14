@@ -58,7 +58,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/patient_birthdate"
-        android:inputType="date" />
+        android:inputType="date"
+         />
 
     <EditText
         android:id="@+id/txtSocialSecurity"
@@ -105,7 +106,7 @@
         android:layout_height="wrap_content" >
 
         <CheckBox
-            android:id="@+id/chkWIll"
+            android:id="@+id/chkWill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/patient_will" />
