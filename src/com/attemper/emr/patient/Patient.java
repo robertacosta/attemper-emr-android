@@ -1,6 +1,5 @@
 package com.attemper.emr.patient;
 
-import org.joda.time.LocalDate;
 
 public class Patient {
 
@@ -12,7 +11,7 @@ public class Patient {
 	private String middleName;
 	private int height;
 	private int weight;
-	private LocalDate birthdate;
+	private String birthdate;
 	private String socialSecurityNumber;
 	private String primaryLanguage;
 	private String statusCode;
@@ -24,9 +23,9 @@ public class Patient {
 	private boolean hasWill;
 	private boolean hasAdvancedDirective;
 	private boolean hasFluShot;
-	private LocalDate fluShotDate;
+	private String fluShotDate;
 	private boolean hasPneumoniaShot;
-	private LocalDate pneumoniaShotDate;
+	private String pneumoniaShotDate;
 	
 	// Birthday
 	// Social Security Number
@@ -109,11 +108,11 @@ public class Patient {
 		this.weight = weight;
 	}
 
-	public LocalDate getBirthdate() {
+	public String getBirthdate() {
 		return birthdate;
 	}
 
-	public void setBirthdate(LocalDate birthdate) {
+	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
 	}
 
@@ -189,11 +188,11 @@ public class Patient {
 		this.hasFluShot = hasFluShot;
 	}
 
-	public LocalDate getFluShotDate() {
+	public String getFluShotDate() {
 		return fluShotDate;
 	}
 
-	public void setFluShotDate(LocalDate fluShotDate) {
+	public void setFluShotDate(String fluShotDate) {
 		this.fluShotDate = fluShotDate;
 	}
 
@@ -205,11 +204,11 @@ public class Patient {
 		this.hasPneumoniaShot = hasPneumoniaShot;
 	}
 
-	public LocalDate getPneumoniaShotDate() {
+	public String getPneumoniaShotDate() {
 		return pneumoniaShotDate;
 	}
 
-	public void setPneumoniaShotDate(LocalDate pneumoniaShotDate) {
+	public void setPneumoniaShotDate(String pneumoniaShotDate) {
 		this.pneumoniaShotDate = pneumoniaShotDate;
 	}
 

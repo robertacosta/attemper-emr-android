@@ -50,31 +50,40 @@ public class AddPatientActivity extends Activity
 		
 		final Button btnSubmit = (Button) findViewById(R.id.btnAddPatient);
 		btnSubmit.setOnClickListener(new View.OnClickListener() {
+			public int tryParse(String number) {
+				try {
+					return Integer.parseInt(number);
+				} catch (NumberFormatException e) {
+					return 0;
+				}
+			}
+			
             public void onClick(View v) {
             	Patient patient = new Patient();
             	patient.setFirstName(((EditText)findViewById(R.id.txtFirstName)).getText().toString());
             	patient.setLastName(((EditText)findViewById(R.id.txtLastName)).getText().toString());
             	patient.setMiddleName(((EditText)findViewById(R.id.txtMiddleName)).getText().toString());
-            	patient.setBirthdate(LocalDate.parse(((EditText)findViewById(R.id.txtBirthdate)).getText().toString(), formatter));
+            	patient.setBirthdate(((EditText)findViewById(R.id.txtBirthdate)).getText().toString());
             	patient.setSocialSecurityNumber(((EditText)findViewById(R.id.txtSocialSecurity)).getText().toString());
-            	patient.setHeight(Integer.parseInt(((EditText)findViewById(R.id.txtHeight)).getText().toString()));
-            	patient.setWeight(Integer.parseInt(((EditText)findViewById(R.id.txtWeight)).getText().toString()));
+  
+            	patient.setHeight(tryParse(((EditText)findViewById(R.id.txtHeight)).getText().toString()));
+            	patient.setWeight(tryParse(((EditText)findViewById(R.id.txtWeight)).getText().toString()));
             	patient.setPrimaryLanguage(((EditText)findViewById(R.id.txtPrimaryLanguage)).getText().toString());
             	patient.setHasWill(((CheckBox)findViewById(R.id.chkWill)).isChecked());
             	patient.setHasAdvancedDirective(((CheckBox)findViewById(R.id.chkAdvancedDirective)).isChecked());
             	patient.setLivesAt(((Spinner)findViewById(R.id.spnLivesAt)).getSelectedItem().toString());
             	patient.setStatusCode(((Spinner)findViewById(R.id.spnStatusCode)).getSelectedItem().toString());
             	patient.setHasFluShot(((CheckBox)findViewById(R.id.chkFlu)).isChecked());
-            	patient.setFluShotDate(LocalDate.parse(((EditText)findViewById(R.id.txtFluDate)).getText().toString(), formatter));
+            	patient.setFluShotDate(((EditText)findViewById(R.id.txtFluDate)).getText().toString());
             	patient.setHasPneumoniaShot(((CheckBox)findViewById(R.id.chkPneumonia)).isChecked());
-            	patient.setPneumoniaShotDate(LocalDate.parse(((EditText)findViewById(R.id.txtPneumoniaDate)).getText().toString(), formatter));
+            	patient.setPneumoniaShotDate(((EditText)findViewById(R.id.txtPneumoniaDate)).getText().toString());
             	
             	Address patientAddress = new Address();
             	patientAddress.setStreetAddress(((EditText)findViewById(R.id.txtAddressStreet)).getText().toString());
             	patientAddress.setStreetAddress2(((EditText)findViewById(R.id.txtAddressStreet2)).getText().toString());
             	patientAddress.setCity(((EditText)findViewById(R.id.txtAddressCity)).getText().toString());
             	patientAddress.setState(((EditText)findViewById(R.id.txtAddressState)).getText().toString());
-            	patientAddress.setZipCode(Integer.parseInt(((EditText)findViewById(R.id.txtAddressZipCode)).getText().toString()));
+            	patientAddress.setZipCode(tryParse(((EditText)findViewById(R.id.txtAddressZipCode)).getText().toString()));
             	patient.setAddress(patientAddress);
             	
             	PhoneNumber patientPhone = new PhoneNumber();
@@ -91,7 +100,7 @@ public class AddPatientActivity extends Activity
             	Insurance insurance = new Insurance();
             	insurance.setName(((EditText)findViewById(R.id.txtInsCompanyName)).getText().toString());
             	insurance.setPolicyNumber(((EditText)findViewById(R.id.txtInsPolicyNumber)).getText().toString());
-            	insurance.setPolicyNumber(((EditText)findViewById(R.id.txtInsPhoneNumber)).getText().toString());
+            	insurance.setPhoneNumber(((EditText)findViewById(R.id.txtInsPhoneNumber)).getText().toString());
             	patient.setInsurance(insurance);
             	
             	new HttpRequestTask().execute(patient);
