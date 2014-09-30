@@ -30,7 +30,6 @@ public class HateosRestClient {
 		ObjectMapper halObjectMapper = new ObjectMapper();
 		halObjectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		halObjectMapper.registerModule(new Jackson2HalModule());
-		//halObjectMapper.setHandlerInstantiator(new HalHandlerInstantiator(new AnnotationRelProvider(), null));
  
 		MappingJackson2HttpMessageConverter halConverter = new MappingJackson2HttpMessageConverter();
 		halConverter.setSupportedMediaTypes(Arrays.asList(MediaTypes.HAL_JSON));
