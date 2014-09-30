@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.attemper.emr.MainActivity" >
-    <item android:id="@+id/seach_icon" android:showAsAction="ifRoom" android:title="@string/search_title" android:icon="@drawable/ic_action_search"></item>
+    <item android:id="@+id/search_icon" android:showAsAction="ifRoom" android:title="@string/search_title" android:icon="@drawable/ic_action_search"></item>
     
     <item android:id="@+id/add_icon" android:showAsAction="always" android:title="@string/add_title" android:icon="@drawable/ic_fa_plus_circle">
         <menu>

@@ -97,6 +97,10 @@ public class MainActivity extends Activity implements
 			Intent addPatientIntent = new Intent(getApplicationContext(), AddPatientActivity.class);
 			startActivity(addPatientIntent);
 			return true;
+		} else if (id == R.id.search_icon) {
+			Intent searchPatientIntent = new Intent(getApplicationContext(), SearchActivity.class);
+			startActivity(searchPatientIntent);
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}

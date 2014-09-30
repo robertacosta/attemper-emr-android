@@ -31,6 +31,10 @@
             android:name=".AddPatientActivity"
             android:label="@string/title_activity_add_patient" >
         </activity>
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/title_activity_search" >
+        </activity>
     </application>
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->

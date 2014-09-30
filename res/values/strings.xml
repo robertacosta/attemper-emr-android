@@ -44,5 +44,8 @@
     <string name="patient_insurance_company_name">Company Name</string>
     <string name="patient_insurance_policy_number">Policy Number</string>
     <string name="button_add_patient">Add Patient</string>
+    <string name="prompt_username">Username</string>
+    <string name="title_activity_search">Search for Patients</string>
+    <string name="search">Search</string>
 
 </resources>
