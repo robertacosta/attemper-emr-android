@@ -11,11 +11,11 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,8 +25,23 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.http.HttpAuthentication;
+import org.springframework.http.HttpBasicAuthentication;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
+
+import com.attemper.emr.patient.Patient;
 
 /**
  * A login screen that offers login via email/password.
@@ -45,7 +60,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 	private UserLoginTask mAuthTask = null;
 
 	// UI references.
-	private AutoCompleteTextView mEmailView;
+	private AutoCompleteTextView mUsernameView;
 	private EditText mPasswordView;
 	private View mProgressView;
 	private View mLoginFormView;
@@ -56,10 +71,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 		setContentView(R.layout.activity_login);
 
 		// Set up the login form.
-		mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+		mUsernameView = (AutoCompleteTextView) findViewById(R.id.txtUsername);
 		populateAutoComplete();
 
-		mPasswordView = (EditText) findViewById(R.id.password);
+		mPasswordView = (EditText) findViewById(R.id.txtPassword);
 		mPasswordView
 				.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 					@Override
@@ -73,7 +88,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 					}
 				});
 
-		Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+		Button mEmailSignInButton = (Button) findViewById(R.id.btnSignIn);
 		mEmailSignInButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -100,11 +115,11 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 		}
 
 		// Reset errors.
-		mEmailView.setError(null);
+		mUsernameView.setError(null);
 		mPasswordView.setError(null);
 
 		// Store values at the time of the login attempt.
-		String email = mEmailView.getText().toString();
+		String username = mUsernameView.getText().toString();
 		String password = mPasswordView.getText().toString();
 
 		boolean cancel = false;
@@ -117,14 +132,10 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 			cancel = true;
 		}
 
-		// Check for a valid email address.
-		if (TextUtils.isEmpty(email)) {
-			mEmailView.setError(getString(R.string.error_field_required));
-			focusView = mEmailView;
-			cancel = true;
-		} else if (!isEmailValid(email)) {
-			mEmailView.setError(getString(R.string.error_invalid_email));
-			focusView = mEmailView;
+		// Check for a valid user name.
+		if (TextUtils.isEmpty(username)) {
+			mUsernameView.setError(getString(R.string.error_field_required));
+			focusView = mUsernameView;
 			cancel = true;
 		}
 
@@ -136,14 +147,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 			// Show a progress spinner, and kick off a background task to
 			// perform the user login attempt.
 			showProgress(true);
-			mAuthTask = new UserLoginTask(email, password);
+			mAuthTask = new UserLoginTask(username, password);
 			mAuthTask.execute((Void) null);
 		}
-	}
-
-	private boolean isEmailValid(String email) {
-		// TODO: Replace this with your own logic
-		return email.contains("@");
 	}
 
 	private boolean isPasswordValid(String password) {
@@ -218,7 +224,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 			cursor.moveToNext();
 		}
 
-		addEmailsToAutoComplete(emails);
+		addUsernamesToAutoComplete(emails);
 	}
 
 	@Override
@@ -234,15 +240,15 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 		int IS_PRIMARY = 1;
 	}
 
-	private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
+	private void addUsernamesToAutoComplete(List<String> usernameCollection) {
 		// Create adapter to tell the AutoCompleteTextView what to show in its
 		// dropdown list.
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
 				LoginActivity.this,
 				android.R.layout.simple_dropdown_item_1line,
-				emailAddressCollection);
+				usernameCollection);
 
-		mEmailView.setAdapter(adapter);
+		mUsernameView.setAdapter(adapter);
 	}
 
 	/**
@@ -251,17 +257,45 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 	 */
 	public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
-		private final String mEmail;
+		private final String mUsername;
 		private final String mPassword;
 
-		UserLoginTask(String email, String password) {
-			mEmail = email;
+		UserLoginTask(String username, String password) {
+			mUsername = username;
 			mPassword = password;
 		}
 
 		@Override
 		protected Boolean doInBackground(Void... params) {
 			// TODO: attempt authentication against a network service.
+			
+//			final String url = "https://jbossews-projectemr.rhcloud.com/emr/patient";
+//        	
+//			HttpHeaders requestHeaders = new HttpHeaders();
+//        	requestHeaders.setContentType(new MediaType("application","json"));
+//        	HttpEntity<Patient> requestEntity = new HttpEntity<Patient>(patient[0], requestHeaders);
+//
+//        	// Create a new RestTemplate instance
+//        	RestTemplate restTemplate = new RestTemplate();
+//
+//        	// Add the String message converter
+//        	restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
+//
+//        	try {
+//
+//        		
+//        	    // Make the HTTP GET request to the Basic Auth protected URL
+//        	    ResponseEntity<Patient> response = restTemplate.exchange(url, HttpMethod.POST, requestEntity, Patient.class);
+//        	    if(response.getStatusCode() == HttpStatus.CREATED) {
+//        	    	return true;
+//        	    }
+//        	} catch (HttpClientErrorException e) {
+//        	    Log.e("MainActivity", e.getLocalizedMessage(), e);
+//        	    // Handle 401 Unauthorized response
+//        	} catch (SecurityException e) {
+//        		Log.e("MainActivity", e.getLocalizedMessage(), e);
+//        	}
+			
 
 			try {
 				// Simulate network access.
@@ -272,7 +306,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
 			for (String credential : DUMMY_CREDENTIALS) {
 				String[] pieces = credential.split(":");
-				if (pieces[0].equals(mEmail)) {
+				if (pieces[0].equals(mUsername)) {
 					// Account exists, return true if the password matches.
 					return pieces[1].equals(mPassword);
 				}

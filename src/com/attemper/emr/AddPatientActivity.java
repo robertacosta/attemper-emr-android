@@ -1,6 +1,5 @@
 package com.attemper.emr;
 
-import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.springframework.http.HttpAuthentication;
@@ -179,7 +178,7 @@ public class AddPatientActivity extends Activity
         	final String url = "https://jbossews-projectemr.rhcloud.com/emr/patient";
         	
         	// Set the username and password for creating a Basic Auth request
-        	HttpAuthentication authHeader = new HttpBasicAuthentication("robert", "acosta");
+        	HttpAuthentication authHeader = new HttpBasicAuthentication("racosta", "something");
         	HttpHeaders requestHeaders = new HttpHeaders();
         	
         	requestHeaders.setContentType(new MediaType("application","json"));
@@ -199,10 +198,10 @@ public class AddPatientActivity extends Activity
         	    	return true;
         	    }
         	} catch (HttpClientErrorException e) {
-        	    Log.e("MainActivity", e.getLocalizedMessage(), e);
+        	    Log.e("AddPatientActivity", e.getLocalizedMessage(), e);
         	    // Handle 401 Unauthorized response
         	} catch (SecurityException e) {
-        		Log.e("MainActivity", e.getLocalizedMessage(), e);
+        		Log.e("AddPatientActivity", e.getLocalizedMessage(), e);
         	}
 
             return false;
