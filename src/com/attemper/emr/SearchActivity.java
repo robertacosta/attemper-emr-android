@@ -12,18 +12,22 @@ import org.springframework.web.client.HttpClientErrorException;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
 import com.attemper.emr.adapters.PatientListArrayAdapter;
 import com.attemper.emr.config.HateosRestClient;
+import com.attemper.emr.patient.android.ParcelablePatient;
 import com.attemper.emr.patient.hateoas.PatientResource;
 import com.attemper.emr.patient.hateoas.PatientResources;
 
@@ -34,6 +38,8 @@ public class SearchActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
 		
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		
 		final Context context = this;
 		final Button btnSearch = (Button) findViewById(R.id.btnSearch);
 		btnSearch.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +48,18 @@ public class SearchActivity extends Activity {
             	String firstName = ((EditText)findViewById(R.id.txtFirstNameSearch)).getText().toString();
             	new SearchHttpRequestTask(context).execute(lastName, firstName);
             }
+		});
+		
+		final ListView listview = (ListView) findViewById(R.id.lstSearchResults);
+		listview.setOnItemClickListener(new OnItemClickListener(){
+			@Override
+			public void onItemClick(AdapterView<?>adapter,View view, int position, long id){
+				PatientResource patientResource = (PatientResource)adapter.getItemAtPosition(position);
+				
+				Intent intent = new Intent(view.getContext(), SearchDetails.class);
+				intent.putExtra("patientResource", new ParcelablePatient(patientResource));
+				startActivity(intent);
+			}
 		});
 	}
 
@@ -89,21 +107,7 @@ public class SearchActivity extends Activity {
         	requestHeaders.setAuthorization(authHeader);
         	HttpEntity<String> request = new HttpEntity<String>(requestHeaders);
         	
-//        	ObjectMapper mapper = new ObjectMapper();
-//        	mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-//        	mapper.registerModule(new Jackson2HalModule());
-//        	mapper.setHandlerInstantiator(new HalHandlerInstantiator(new AnnotationRelProvider(), null));
-//
-//        	MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-//        	converter.setSupportedMediaTypes(MediaType.parseMediaTypes("application/hal+json"));
-//        	converter.setObjectMapper(mapper);
-//        	
-//        	// Create a new RestTemplate instance
-//        	RestTemplate restTemplate = new RestTemplate(Collections.<HttpMessageConverter<?>> singletonList(converter));
-        	
-        	try {        		
-        		// TRY : Resources<Resource<Patient>>
-        		
+        	try {
         	    // Make the HTTP GET request to the Basic Auth protected URL
             	ResponseEntity<PatientResources> response = restClient.restTemplate().exchange(url, HttpMethod.GET, request, PatientResources.class, params[0], params[1]);
         	    if(response.getStatusCode() == HttpStatus.OK) {
@@ -125,9 +129,11 @@ public class SearchActivity extends Activity {
 	        	ListView lv = (ListView) findViewById(R.id.lstSearchResults);
 	        	PatientResource[] array = results.getContent().toArray(new PatientResource[results.getContent().size()]);
 	        	PatientListArrayAdapter adapter = new PatientListArrayAdapter(context, array);
-	        	View header = (View)getLayoutInflater().inflate(R.layout.list_item_search_result, null);
-	            lv.addHeaderView(header);
-	            lv.setAdapter(adapter); 
+	        	if(lv.getHeaderViewsCount() < 1) {
+		        	View header = (View)getLayoutInflater().inflate(R.layout.list_item_search_result, null);
+		            lv.addHeaderView(header);
+	        	}
+	            lv.setAdapter(adapter);
         	}
         }
 

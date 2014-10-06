@@ -1,17 +1,44 @@
 package com.attemper.emr;
 
+import java.util.List;
+
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.hateoas.Link;
+import org.springframework.http.HttpAuthentication;
+import org.springframework.http.HttpBasicAuthentication;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+
+import com.attemper.emr.adapters.NursePatientListArrayAdapter;
+import com.attemper.emr.patient.Patient;
+import com.attemper.emr.patient.android.ParcelablePatient;
+import com.attemper.emr.patient.hateoas.PatientResource;
 
 public class MainActivity extends Activity implements
 		NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -134,6 +161,21 @@ public class MainActivity extends Activity implements
 				Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_main, container,
 					false);
+			
+			final ListView listview = (ListView) rootView.findViewById(R.id.lstPatients);
+			listview.setOnItemClickListener(new OnItemClickListener(){
+				@Override
+				public void onItemClick(AdapterView<?>adapter,View view, int position, long id){
+					Patient patient = (Patient)adapter.getItemAtPosition(position);
+					PatientResource patientResource = new PatientResource(patient, 
+							new Link("https://jbossews-projectemr.rhcloud.com/emr/patient/" + patient.getId()));
+					
+					Intent intent = new Intent(view.getContext(), PatientDetailsActivity.class);
+					intent.putExtra("patientResource", new ParcelablePatient(patientResource));
+					startActivity(intent);
+				}
+			});
+			
 			return rootView;
 		}
 
@@ -143,6 +185,65 @@ public class MainActivity extends Activity implements
 			((MainActivity) activity).onSectionAttached(getArguments().getInt(
 					ARG_SECTION_NUMBER));
 		}
+		
+		@Override
+		public void onResume() {
+			super.onResume();
+			new PatientHttpRequestTask(this.getActivity()).execute(3l); // TODO: Replace with actual ID
+		}
+		
+		private class PatientHttpRequestTask extends AsyncTask<Long, Void, List<Patient>> {
+			
+			private Context context;
+
+			public PatientHttpRequestTask(Context context) {
+				this.context = context;
+			}
+			
+	        @Override
+	        protected List<Patient> doInBackground(Long... params) {
+	        	String url = "https://jbossews-projectemr.rhcloud.com/emr/authorized/patients?userid={userId}";
+	        	
+	        	// Set the username and password for creating a Basic Auth request
+	        	HttpAuthentication authHeader = new HttpBasicAuthentication("racosta", "something");
+	        	HttpHeaders requestHeaders = new HttpHeaders();
+	        	
+	        	requestHeaders.setContentType(new MediaType("application","hal+json"));
+	        	requestHeaders.setAuthorization(authHeader);
+	        	HttpEntity<String> request = new HttpEntity<String>(requestHeaders);
+	        	
+	        	try {
+	        	    // Make the HTTP GET request to the Basic Auth protected URL
+	        		RestTemplate restTemplate = new RestTemplate();
+	        		ParameterizedTypeReference<List<Patient>> typeRef = new ParameterizedTypeReference<List<Patient>>() {};
+	            	ResponseEntity<List<Patient>> response = restTemplate.exchange(url, HttpMethod.GET, request, typeRef, params[0]);
+	        	    if(response.getStatusCode() == HttpStatus.OK) {
+	        	    	return response.getBody();
+	        	    }
+	        	} catch (HttpClientErrorException e) {
+	        	    Log.e("MainActivity", e.getLocalizedMessage(), e);
+	        	    // Handle 401 Unauthorized response
+	        	} catch (SecurityException e) {
+	        		Log.e("MainActivity", e.getLocalizedMessage(), e);
+	        	}
+
+	            return null;
+	        }
+
+	        @Override
+	        protected void onPostExecute(List<Patient> results) {
+	        	if(results != null && getView() != null) {
+		        	ListView lv = (ListView) getView().findViewById(R.id.lstPatients);
+		        	Patient[] array = results.toArray(new Patient[results.size()]);
+		        	NursePatientListArrayAdapter adapter = new NursePatientListArrayAdapter(context, array);
+		        	if(lv.getHeaderViewsCount() < 1) {
+			        	View header = (View) LayoutInflater.from(context).inflate(R.layout.list_item_patient, null);
+			            lv.addHeaderView(header);
+		        	}
+		            lv.setAdapter(adapter);
+	        	}
+	        }
+	    }
 	}
 
 }

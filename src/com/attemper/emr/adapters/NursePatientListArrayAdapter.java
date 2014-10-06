@@ -10,13 +10,12 @@ import android.widget.TextView;
 
 import com.attemper.emr.R;
 import com.attemper.emr.patient.Patient;
-import com.attemper.emr.patient.hateoas.PatientResource;
 
-public class PatientListArrayAdapter extends ArrayAdapter<PatientResource> {
+public class NursePatientListArrayAdapter extends ArrayAdapter<Patient> {
 	private final Context context;
-	private final PatientResource[] values;
+	private final Patient[] values;
 
-	public PatientListArrayAdapter(Context context, PatientResource[] values) {
+	public NursePatientListArrayAdapter(Context context, Patient[] values) {
 	    super(context, R.layout.list_item_search_result, values);
 	    this.context = context;
 	    this.values = values;
@@ -29,7 +28,7 @@ public class PatientListArrayAdapter extends ArrayAdapter<PatientResource> {
         
         if(row == null) {
             LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-            row = inflater.inflate(R.layout.list_item_search_result, parent, false);
+            row = inflater.inflate(R.layout.list_item_patient, parent, false);
             
             holder = new PatientHolder();
             holder.txtLastName = (TextView)row.findViewById(R.id.txtListItemLastName);
@@ -41,12 +40,11 @@ public class PatientListArrayAdapter extends ArrayAdapter<PatientResource> {
             holder = (PatientHolder)row.getTag();
         }
         
-        PatientResource patientResource = values[position];
-        Patient patient = patientResource.getContent();
+        Patient patient = values[position];
         holder.txtLastName.setText(patient.getLastName());
         holder.txtFirstName.setText(patient.getFirstName());
         holder.txtBirthdate.setText(patient.getBirthdate());
-        holder.txtId.setText(patientResource.getId().getHref());
+        holder.txtId.setText(patient.getId());
         return row;
     }
     

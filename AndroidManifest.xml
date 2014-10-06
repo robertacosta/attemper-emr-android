@@ -29,11 +29,23 @@
         </activity>
         <activity
             android:name=".AddPatientActivity"
+            android:parentActivityName=".MainActivity" 
             android:label="@string/title_activity_add_patient" >
         </activity>
         <activity
             android:name=".SearchActivity"
+            android:parentActivityName=".MainActivity" 
             android:label="@string/title_activity_search" >
+        </activity>
+        <activity
+            android:name=".SearchDetails"
+            android:parentActivityName=".SearchActivity" 
+            android:label="@string/title_activity_search_details" >
+        </activity>
+        <activity
+            android:name=".PatientDetailsActivity"
+            android:parentActivityName=".MainActivity"
+            android:label="@string/title_activity_patient_details" >
         </activity>
     </application>
 

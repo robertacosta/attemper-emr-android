@@ -47,5 +47,11 @@
     <string name="prompt_username">Username</string>
     <string name="title_activity_search">Search for Patients</string>
     <string name="search">Search</string>
+    <string name="title_activity_search_details">Patient Details</string>
+    <string name="add_patient_to_roster">Add Patient to Roster</string>
+    <string name="welcome">Welcome!</string>
+    <string name="patient_list">Patient List</string>
+    <string name="title_activity_patient_details">Patient Details</string>
+    <string name="button_update_patient">Update Patient</string>
 
 </resources>

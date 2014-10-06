@@ -1,10 +1,12 @@
 package com.attemper.emr.patient;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Patient {
-
+	
+	@JsonProperty("id")
 	private String id;
-
+	
 	// Basics:
 	private String firstName;
 	private String lastName;
@@ -84,13 +86,7 @@ public class Patient {
 		this.lastName = lastName;
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
+	
 
 	public int getHeight() {
 		return height;
@@ -234,5 +230,15 @@ public class Patient {
 
 	public void setStatusCode(String statusCode) {
 		this.statusCode = statusCode;
+	}
+
+	@JsonProperty("id")
+	public String getId() {
+		return id;
+	}
+
+	@JsonProperty("id")
+	public void setId(String id) {
+		this.id = id;
 	}
 }

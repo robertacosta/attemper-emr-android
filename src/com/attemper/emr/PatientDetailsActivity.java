@@ -29,15 +29,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.attemper.emr.DatePickerFragment.OnDateSelectedListener;
 import com.attemper.emr.patient.Address;
 import com.attemper.emr.patient.EmergencyContact;
 import com.attemper.emr.patient.Insurance;
 import com.attemper.emr.patient.Patient;
 import com.attemper.emr.patient.PhoneNumber;
+import com.attemper.emr.patient.android.ParcelablePatient;
+import com.attemper.emr.patient.hateoas.PatientResource;
 
-public class AddPatientActivity extends Activity 
-	implements OnDateSelectedListener {
+public class PatientDetailsActivity extends Activity {
 
 	DateTimeFormatter formatter = DateTimeFormat.forPattern("MM/dd/yyyy");
 	PhoneNumberFormattingTextWatcher mPhoneWatcher = new PhoneNumberFormattingTextWatcher();
@@ -45,11 +45,70 @@ public class AddPatientActivity extends Activity
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_add_patient);
+		setContentView(R.layout.activity_patient_details);
 		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
-		final Button btnSubmit = (Button) findViewById(R.id.btnAddPatient);
+		final ParcelablePatient parcelablePatient = (ParcelablePatient) getIntent().getParcelableExtra("patientResource");
+		final PatientResource patientResource = parcelablePatient.getPatientResource();
+		final Patient patient = patientResource.getContent();
+		
+		((EditText)findViewById(R.id.txtFirstName)).setText(patient.getFirstName());
+		((EditText)findViewById(R.id.txtMiddleName)).setText(patient.getMiddleName());
+		((EditText)findViewById(R.id.txtLastName)).setText(patient.getLastName());
+		((EditText)findViewById(R.id.txtBirthdate)).setText(patient.getBirthdate());
+		((EditText)findViewById(R.id.txtSocialSecurity)).setText(patient.getSocialSecurityNumber());
+		((EditText)findViewById(R.id.txtHeight)).setText(String.valueOf(patient.getHeight()));
+		((EditText)findViewById(R.id.txtWeight)).setText(String.valueOf(patient.getWeight()));
+		((EditText)findViewById(R.id.txtPrimaryLanguage)).setText(patient.getPrimaryLanguage());
+		((CheckBox)findViewById(R.id.chkWill)).setChecked(patient.isHasWill());
+		((CheckBox)findViewById(R.id.chkAdvancedDirective)).setChecked(patient.isHasAdvancedDirective());
+		for(int i = 0; i < getResources().getStringArray(R.array.LivesAtTypes).length; i++) {
+			String s = getResources().getStringArray(R.array.LivesAtTypes)[i];
+			if(s.compareTo(patient.getLivesAt()) == 0) {
+				((Spinner)findViewById(R.id.spnLivesAt)).setSelection(i);
+			}
+			
+		}
+		
+		for(int i = 0; i < getResources().getStringArray(R.array.CodeStatusTypes).length; i++) {
+			String s = getResources().getStringArray(R.array.CodeStatusTypes)[i];
+			if(s.compareTo(patient.getStatusCode()) == 0) {
+				((Spinner)findViewById(R.id.spnStatusCode)).setSelection(i);
+			}
+			
+		}
+
+		((CheckBox)findViewById(R.id.chkFlu)).setChecked(patient.isHasFluShot());
+		((EditText)findViewById(R.id.txtFluDate)).setText(patient.getFluShotDate());
+		((CheckBox)findViewById(R.id.chkPneumonia)).setChecked(patient.isHasPneumoniaShot());
+		((EditText)findViewById(R.id.txtPneumoniaDate)).setText(patient.getPneumoniaShotDate());
+		
+		((EditText)findViewById(R.id.txtAddressStreet)).setText(patient.getAddress().getStreetAddress());
+		((EditText)findViewById(R.id.txtAddressStreet2)).setText(patient.getAddress().getStreetAddress2());
+		((EditText)findViewById(R.id.txtAddressCity)).setText(patient.getAddress().getCity());
+		((EditText)findViewById(R.id.txtAddressState)).setText(patient.getAddress().getState());
+		((EditText)findViewById(R.id.txtAddressZipCode)).setText(String.valueOf(patient.getAddress().getZipCode()));
+		
+		((EditText)findViewById(R.id.txtPhoneNumber)).setText(patient.getPhoneNumber().getNumber());
+		
+		for(int i = 0; i < getResources().getStringArray(R.array.PhoneNumberTypes).length; i++) {
+			String s = getResources().getStringArray(R.array.PhoneNumberTypes)[i];
+			if(s.compareTo(patient.getPhoneNumber().getType()) == 0) {
+				((Spinner)findViewById(R.id.spnPhoneType)).setSelection(i);
+			}
+			
+		}
+		
+		((EditText)findViewById(R.id.txtEmgName)).setText(patient.getEmergencyContact().getName());
+		((EditText)findViewById(R.id.txtEmgPhoneNumber)).setText(patient.getEmergencyContact().getPhoneNumber());
+		((EditText)findViewById(R.id.txtEmgRelationship)).setText(patient.getEmergencyContact().getRelationship());
+		
+		((EditText)findViewById(R.id.txtInsCompanyName)).setText(patient.getInsurance().getName());
+		((EditText)findViewById(R.id.txtInsPolicyNumber)).setText(patient.getInsurance().getPolicyNumber());
+		((EditText)findViewById(R.id.txtInsPhoneNumber)).setText(patient.getInsurance().getPhoneNumber());
+		
+		final Button btnSubmit = (Button) findViewById(R.id.btnUpdatePatient);
 		btnSubmit.setOnClickListener(new View.OnClickListener() {
 			public int tryParse(String number) {
 				try {
@@ -104,7 +163,7 @@ public class AddPatientActivity extends Activity
             	insurance.setPhoneNumber(((EditText)findViewById(R.id.txtInsPhoneNumber)).getText().toString());
             	patient.setInsurance(insurance);
             	
-            	new HttpRequestTask().execute(patient);
+            	new HttpRequestTask(patientResource.getId().getHref()).execute(patient);
             }
         });
 		
@@ -157,7 +216,7 @@ public class AddPatientActivity extends Activity
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.add_patient, menu);
+		getMenuInflater().inflate(R.menu.patient_details, menu);
 		return true;
 	}
 
@@ -167,17 +226,23 @@ public class AddPatientActivity extends Activity
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_cancel) {
-			finish();
+		if (id == R.id.action_settings) {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
 	
 	private class HttpRequestTask extends AsyncTask<Patient, Void, Boolean> {
+		
+		private String patientHref;
+		
+		public HttpRequestTask(String patientHref) {
+			this.patientHref = patientHref;
+		}
+		
         @Override
         protected Boolean doInBackground(Patient... patient) {
-        	final String url = "https://jbossews-projectemr.rhcloud.com/emr/patient";
+        	final String url = patientHref;
         	
         	// Set the username and password for creating a Basic Auth request
         	HttpAuthentication authHeader = new HttpBasicAuthentication("racosta", "something");
@@ -195,8 +260,8 @@ public class AddPatientActivity extends Activity
 
         	try {
         	    // Make the HTTP GET request to the Basic Auth protected URL
-        	    ResponseEntity<Patient> response = restTemplate.exchange(url, HttpMethod.POST, requestEntity, Patient.class);
-        	    if(response.getStatusCode() == HttpStatus.CREATED) {
+        	    ResponseEntity<Patient> response = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Patient.class);
+        	    if(response.getStatusCode() == HttpStatus.NO_CONTENT) {
         	    	return true;
         	    }
         	} catch (HttpClientErrorException e) {
@@ -212,7 +277,7 @@ public class AddPatientActivity extends Activity
         @Override
         protected void onPostExecute(Boolean success) {
         	if(success) {
-	        	Toast toast = Toast.makeText(getApplicationContext(), "Patient Added", Toast.LENGTH_LONG);
+	        	Toast toast = Toast.makeText(getApplicationContext(), "Patient Updated", Toast.LENGTH_LONG);
 	        	toast.show();
 	        	finish();
         	} else {
@@ -222,9 +287,4 @@ public class AddPatientActivity extends Activity
         }
 
     }
-
-	@Override
-	public void onDateSelected(int viewId, String date) {
-		((EditText)findViewById(viewId)).setText(date);
-	}
 }
