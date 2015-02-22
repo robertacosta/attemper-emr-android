@@ -53,5 +53,10 @@
     <string name="patient_list">Patient List</string>
     <string name="title_activity_patient_details">Patient Details</string>
     <string name="button_update_patient">Update Patient</string>
+    <string name="title_activity_assessment_management">AssessmentManagement</string>
+    <string name="assessments">Assessments</string>
+    <string name="add_assessment_button">Add Assessment</string>
+    <string name="assessment_date">Assessment Date</string>
+    <string name="assessment_time">Assessment Time</string>
 
 </resources>

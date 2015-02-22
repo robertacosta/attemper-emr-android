@@ -1,5 +1,7 @@
 package com.attemper.emr.patient;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Patient {
@@ -28,6 +30,8 @@ public class Patient {
 	private String fluShotDate;
 	private boolean hasPneumoniaShot;
 	private String pneumoniaShotDate;
+	
+	private List<String> assessments;
 	
 	// Birthday
 	// Social Security Number
@@ -230,6 +234,14 @@ public class Patient {
 
 	public void setStatusCode(String statusCode) {
 		this.statusCode = statusCode;
+	}
+	
+	public List<String> getAssessments() {
+		return assessments;
+	}
+
+	public void setAssessments(List<String> assessments) {
+		this.assessments = assessments;
 	}
 
 	@JsonProperty("id")
