@@ -1,10 +1,33 @@
 package com.attemper.emr;
 
+import org.springframework.hateoas.Link;
+import org.springframework.http.HttpAuthentication;
+import org.springframework.http.HttpBasicAuthentication;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpClientErrorException;
+
 import android.app.Activity;
+import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
 
+import com.attemper.emr.adapters.AssessmentListArrayAdapter;
+import com.attemper.emr.assessment.Assessment;
+import com.attemper.emr.assessment.hateoas.AssessmentResource;
+import com.attemper.emr.assessment.hateoas.AssessmentResources;
+import com.attemper.emr.config.HateosRestClient;
 import com.attemper.emr.patient.Patient;
 import com.attemper.emr.patient.android.ParcelablePatient;
 import com.attemper.emr.patient.hateoas.PatientResource;
@@ -20,6 +43,24 @@ public class AssessmentManagement extends Activity {
 		final PatientResource patientResource = parcelablePatient.getPatientResource();
 		final Patient patient = patientResource.getContent();
 		
+		setTitle(String.format("%s %s Assessments", patient.getFirstName(), patient.getLastName()));
+		
+		final ListView listview = (ListView) findViewById(R.id.lstAssesssments);
+		listview.setOnItemClickListener(new OnItemClickListener(){
+			@Override
+			public void onItemClick(AdapterView<?>adapter,View view, int position, long id){
+				Assessment assessment = (Assessment)adapter.getItemAtPosition(position);
+				AssessmentResource assessmentResource = new AssessmentResource(assessment, 
+						new Link("https://jbossews-projectemr.rhcloud.com/emr/assessment/" + assessment.getId()));
+				
+				// TODO: Go to the Assessment Details Activity
+//				Intent intent = new Intent(view.getContext(), AssessmentDetailsActivity.class);
+//				intent.putExtra("assessmentResource", new ParcelableAssessment(assessmentResource));
+//				startActivity(intent);
+			}
+		});
+		
+		new AssessmentsHttpRequestTask(this).execute(patient.getId());
 	}
 
 	@Override
@@ -35,9 +76,63 @@ public class AssessmentManagement extends Activity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_return_home) {
+			finish();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	private class AssessmentsHttpRequestTask extends AsyncTask<String, Void, AssessmentResources> {
+		
+		private Context context;
+		private HateosRestClient restClient = new HateosRestClient();
+		
+		public AssessmentsHttpRequestTask(Context context) {
+			this.context = context;
+		}
+		
+        @Override
+        protected AssessmentResources doInBackground(String... params) {
+        	String url = "https://jbossews-projectemr.rhcloud.com/emr/authorized/assessments?patientid={patientid}";
+        	
+        	// Set the username and password for creating a Basic Auth request
+        	HttpAuthentication authHeader = new HttpBasicAuthentication("racosta", "something");
+        	HttpHeaders requestHeaders = new HttpHeaders();
+        	
+        	requestHeaders.setContentType(new MediaType("application","hal+json"));
+        	requestHeaders.setAuthorization(authHeader);
+        	HttpEntity<String> request = new HttpEntity<String>(requestHeaders);
+        	
+        	try {
+        	    // Make the HTTP GET request to the Basic Auth protected URL
+            	ResponseEntity<AssessmentResources> response = restClient.restTemplate().exchange(url, HttpMethod.GET, request, AssessmentResources.class, params[0]);
+        	    if(response.getStatusCode() == HttpStatus.OK) {
+        	    	return response.getBody();
+        	    }
+        	} catch (HttpClientErrorException e) {
+        	    Log.e("AssessmentManagementActivity", e.getLocalizedMessage(), e);
+        	    // Handle 401 Unauthorized response
+        	} catch (SecurityException e) {
+        		Log.e("AssessmentManagementActivity", e.getLocalizedMessage(), e);
+        	}
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(AssessmentResources results) {
+        	if(results != null) {
+	        	ListView lv = (ListView) findViewById(R.id.lstAssesssments);
+	        	AssessmentResource[] array = results.getContent().toArray(new AssessmentResource[results.getContent().size()]);
+	        	AssessmentListArrayAdapter adapter = new AssessmentListArrayAdapter(context, array);
+	        	if(lv.getHeaderViewsCount() < 1) {
+		        	View header = (View)getLayoutInflater().inflate(R.layout.list_item_assessment, null);
+		            lv.addHeaderView(header);
+	        	}
+	            lv.setAdapter(adapter);
+        	}
+        }
+
+    }
 }

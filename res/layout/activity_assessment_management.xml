@@ -10,13 +10,14 @@
     tools:context="com.attemper.emr.AssessmentManagement" >
 
     <TextView
+        android:id="@+id/lblAssessmentManagerTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/assessments"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ListView
-        android:id="@+id/assesssmentListView"
+        android:id="@+id/lstAssesssments"
         android:layout_width="match_parent"
         android:layout_height="703dp" >
     </ListView>
