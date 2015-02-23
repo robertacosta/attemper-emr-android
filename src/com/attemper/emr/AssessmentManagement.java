@@ -5,12 +5,21 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.attemper.emr.patient.Patient;
+import com.attemper.emr.patient.android.ParcelablePatient;
+import com.attemper.emr.patient.hateoas.PatientResource;
+
 public class AssessmentManagement extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_assessment_management);
+		
+		final ParcelablePatient parcelablePatient = (ParcelablePatient) getIntent().getParcelableExtra("patientResource");
+		final PatientResource patientResource = parcelablePatient.getPatientResource();
+		final Patient patient = patientResource.getContent();
+		
 	}
 
 	@Override

@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 
 import android.app.Activity;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.telephony.PhoneNumberFormattingTextWatcher;
@@ -222,11 +223,16 @@ public class PatientDetailsActivity extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_cancel) {
+			finish();
+			return true;
+		}
+		if (id == R.id.action_assessment) {
+			final ParcelablePatient parcelablePatient = (ParcelablePatient) getIntent().getParcelableExtra("patientResource");
+			Intent intent = new Intent(getApplicationContext(), AssessmentManagement.class);
+			intent.putExtra("patientResource", parcelablePatient);
+			startActivity(intent);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

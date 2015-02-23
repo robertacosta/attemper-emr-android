@@ -58,5 +58,6 @@
     <string name="add_assessment_button">Add Assessment</string>
     <string name="assessment_date">Assessment Date</string>
     <string name="assessment_time">Assessment Time</string>
+    <string name="action_assessments">Assessments</string>
 
 </resources>
