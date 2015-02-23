@@ -10,13 +10,12 @@ import android.widget.TextView;
 
 import com.attemper.emr.R;
 import com.attemper.emr.assessment.Assessment;
-import com.attemper.emr.assessment.hateoas.AssessmentResource;
 
-public class AssessmentListArrayAdapter extends ArrayAdapter<AssessmentResource> {
+public class AssessmentListArrayAdapter extends ArrayAdapter<Assessment> {
 	private final Context context;
-	private final AssessmentResource[] values;
+	private final Assessment[] values;
 
-	public AssessmentListArrayAdapter(Context context, AssessmentResource[] values) {
+	public AssessmentListArrayAdapter(Context context, Assessment[] values) {
 	    super(context, R.layout.list_item_assessment, values);
 	    this.context = context;
 	    this.values = values;
@@ -40,11 +39,10 @@ public class AssessmentListArrayAdapter extends ArrayAdapter<AssessmentResource>
             holder = (AssessmentHolder)row.getTag();
         }
         
-        AssessmentResource assessmentResource = values[position];
-        Assessment assessment = assessmentResource.getContent();
+        Assessment assessment = values[position];
         holder.txtDate.setText(assessment.getDate());
         holder.txtTime.setText(assessment.getTime());
-        holder.txtId.setText(assessmentResource.getId().getHref());
+        holder.txtId.setText(assessment.getId());
         return row;
     }
     

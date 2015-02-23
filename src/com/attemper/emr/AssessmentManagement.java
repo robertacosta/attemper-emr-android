@@ -1,5 +1,8 @@
 package com.attemper.emr;
 
+import java.util.List;
+
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpAuthentication;
 import org.springframework.http.HttpBasicAuthentication;
@@ -10,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
 
 import android.app.Activity;
 import android.content.Context;
@@ -83,17 +87,16 @@ public class AssessmentManagement extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	private class AssessmentsHttpRequestTask extends AsyncTask<String, Void, AssessmentResources> {
+	private class AssessmentsHttpRequestTask extends AsyncTask<String, Void, List<Assessment>> {
 		
 		private Context context;
-		private HateosRestClient restClient = new HateosRestClient();
 		
 		public AssessmentsHttpRequestTask(Context context) {
 			this.context = context;
 		}
 		
         @Override
-        protected AssessmentResources doInBackground(String... params) {
+        protected List<Assessment> doInBackground(String... params) {
         	String url = "https://jbossews-projectemr.rhcloud.com/emr/authorized/assessments?patientid={patientid}";
         	
         	// Set the username and password for creating a Basic Auth request
@@ -106,7 +109,9 @@ public class AssessmentManagement extends Activity {
         	
         	try {
         	    // Make the HTTP GET request to the Basic Auth protected URL
-            	ResponseEntity<AssessmentResources> response = restClient.restTemplate().exchange(url, HttpMethod.GET, request, AssessmentResources.class, params[0]);
+        		RestTemplate restTemplate = new RestTemplate();
+        		ParameterizedTypeReference<List<Assessment>> typeRef = new ParameterizedTypeReference<List<Assessment>>() {};
+            	ResponseEntity<List<Assessment>> response = restTemplate.exchange(url, HttpMethod.GET, request, typeRef, params[0]);
         	    if(response.getStatusCode() == HttpStatus.OK) {
         	    	return response.getBody();
         	    }
@@ -121,10 +126,10 @@ public class AssessmentManagement extends Activity {
         }
 
         @Override
-        protected void onPostExecute(AssessmentResources results) {
+        protected void onPostExecute(List<Assessment> results) {
         	if(results != null) {
 	        	ListView lv = (ListView) findViewById(R.id.lstAssesssments);
-	        	AssessmentResource[] array = results.getContent().toArray(new AssessmentResource[results.getContent().size()]);
+	        	Assessment[] array = results.toArray(new Assessment[results.size()]);
 	        	AssessmentListArrayAdapter adapter = new AssessmentListArrayAdapter(context, array);
 	        	if(lv.getHeaderViewsCount() < 1) {
 		        	View header = (View)getLayoutInflater().inflate(R.layout.list_item_assessment, null);
@@ -133,6 +138,5 @@ public class AssessmentManagement extends Activity {
 	            lv.setAdapter(adapter);
         	}
         }
-
     }
 }
