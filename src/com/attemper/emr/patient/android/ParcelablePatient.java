@@ -35,6 +35,7 @@ public class ParcelablePatient implements Parcelable {
 		
 		// Patient basic info
 		Patient patient = patientResource.getContent();
+		dest.writeString(patient.getId());
 		dest.writeString(patient.getFirstName());
 		dest.writeString(patient.getLastName());
 		dest.writeString(patient.getMiddleName());
@@ -100,6 +101,7 @@ public class ParcelablePatient implements Parcelable {
     	Link resourceLink = new Link(resourceHref);
     	
     	Patient patient = new Patient();
+    	patient.setId(in.readString());
     	patient.setFirstName(in.readString());
     	patient.setLastName(in.readString());
     	patient.setMiddleName(in.readString());
