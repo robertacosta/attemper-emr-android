@@ -9,7 +9,7 @@ public class Assessment {
 	private String date;
 	private String time;
 	
-	private Neurological nuerological;
+	private Neurological neurological;
 	private Respiratory respiratory;
 	private Cardio cardio;
 	private Gastrointestinal gastrointestinal;
@@ -33,11 +33,11 @@ public class Assessment {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	public Neurological getNuerological() {
-		return nuerological;
+	public Neurological getNeurological() {
+		return neurological;
 	}
-	public void setNuerological(Neurological nuerological) {
-		this.nuerological = nuerological;
+	public void setNeurological(Neurological neurological) {
+		this.neurological = neurological;
 	}
 	public Respiratory getRespiratory() {
 		return respiratory;

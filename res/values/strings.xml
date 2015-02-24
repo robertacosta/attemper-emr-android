@@ -59,5 +59,7 @@
     <string name="assessment_date">Assessment Date</string>
     <string name="assessment_time">Assessment Time</string>
     <string name="action_assessments">Assessments</string>
+    <string name="title_activity_add_assessment">AddAssessmentActivity</string>
+    <string name="title_activity_assessment_details">AssessmentDetailsActivity</string>
 
 </resources>

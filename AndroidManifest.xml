@@ -51,6 +51,14 @@
             android:name=".AssessmentManagement"
             android:label="@string/title_activity_assessment_management" >
         </activity>
+        <activity
+            android:name=".AddAssessmentActivity"
+            android:label="@string/title_activity_add_assessment" >
+        </activity>
+        <activity
+            android:name=".AssessmentDetailsActivity"
+            android:label="@string/title_activity_assessment_details" >
+        </activity>
     </application>
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->

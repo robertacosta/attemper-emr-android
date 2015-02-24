@@ -1,6 +1,9 @@
 package com.attemper.emr.assessment;
 
-public class Incision {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Incision implements Parcelable {
 	private String site;
 	private boolean wellApproximated;
 	private boolean woundOpen;
@@ -64,5 +67,47 @@ public class Incision {
 	}
 	public void setStaplesSutures(boolean staplesSutures) {
 		this.staplesSutures = staplesSutures;
+	}
+	
+	// this is used to regenerate your object. All Parcelables must have a CREATOR that implements these two methods
+    public static final Parcelable.Creator<Incision> CREATOR = new Parcelable.Creator<Incision>() {
+        public Incision createFromParcel(Parcel in) {
+            return new Incision(in);
+        }
+
+        public Incision[] newArray(int size) {
+            return new Incision[size];
+        }
+    };
+    
+    // example constructor that takes a Parcel and gives you an object populated with it's values
+    private Incision(Parcel in) {
+    	setSite(in.readString());
+    	setWellApproximated(in.readInt() == 1);
+    	setWoundOpen(in.readInt() == 1);
+    	setRedness(in.readInt() == 1);
+    	setDrainage(in.readInt() == 1);
+    	setSwelling(in.readInt() == 1);
+    	setDressingIntact(in.readInt() == 1);
+    	setSteriStripped(in.readInt() == 1);
+    	setStaplesSutures(in.readInt() == 1);
+    }
+    
+    @Override
+	public void writeToParcel(Parcel dest, int flags) {
+    	dest.writeString(site);
+    	dest.writeInt(wellApproximated ? 1 : 0);
+    	dest.writeInt(woundOpen ? 1 : 0);
+    	dest.writeInt(redness ? 1 : 0);
+    	dest.writeInt(drainage ? 1 : 0);
+    	dest.writeInt(swelling ? 1 : 0);
+    	dest.writeInt(dressingIntact ? 1 : 0);
+    	dest.writeInt(steriStripped ? 1 : 0);
+    	dest.writeInt(staplesSutures ? 1 : 0);
+    }
+
+	@Override
+	public int describeContents() {
+		return 0;
 	}
 }

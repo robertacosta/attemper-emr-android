@@ -17,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,9 +30,8 @@ import android.widget.ListView;
 
 import com.attemper.emr.adapters.AssessmentListArrayAdapter;
 import com.attemper.emr.assessment.Assessment;
+import com.attemper.emr.assessment.android.ParcelableAssessment;
 import com.attemper.emr.assessment.hateoas.AssessmentResource;
-import com.attemper.emr.assessment.hateoas.AssessmentResources;
-import com.attemper.emr.config.HateosRestClient;
 import com.attemper.emr.patient.Patient;
 import com.attemper.emr.patient.android.ParcelablePatient;
 import com.attemper.emr.patient.hateoas.PatientResource;
@@ -57,10 +57,9 @@ public class AssessmentManagement extends Activity {
 				AssessmentResource assessmentResource = new AssessmentResource(assessment, 
 						new Link("https://jbossews-projectemr.rhcloud.com/emr/assessment/" + assessment.getId()));
 				
-				// TODO: Go to the Assessment Details Activity
-//				Intent intent = new Intent(view.getContext(), AssessmentDetailsActivity.class);
-//				intent.putExtra("assessmentResource", new ParcelableAssessment(assessmentResource));
-//				startActivity(intent);
+				Intent intent = new Intent(view.getContext(), AssessmentDetailsActivity.class);
+				intent.putExtra("assessmentResource", new ParcelableAssessment(assessmentResource));
+				startActivity(intent);
 			}
 		});
 		
@@ -81,8 +80,9 @@ public class AssessmentManagement extends Activity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_return_home) {
-			finish();
-			return true;
+			Intent intent = new Intent(this, MainActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	        startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);
 	}
