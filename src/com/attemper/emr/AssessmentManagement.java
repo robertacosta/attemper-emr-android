@@ -25,6 +25,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
@@ -60,6 +61,14 @@ public class AssessmentManagement extends Activity {
 				Intent intent = new Intent(view.getContext(), AssessmentDetailsActivity.class);
 				intent.putExtra("assessmentResource", new ParcelableAssessment(assessmentResource));
 				startActivity(intent);
+			}
+		});
+		
+		final Button btnAddAssessment = (Button) findViewById(R.id.btnAddAssessment);
+		btnAddAssessment.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Intent addAssessmentIntent = new Intent(v.getContext(), AddAssessmentActivity.class);
+				startActivity(addAssessmentIntent);
 			}
 		});
 		

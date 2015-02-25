@@ -61,5 +61,20 @@
     <string name="action_assessments">Assessments</string>
     <string name="title_activity_add_assessment">AddAssessmentActivity</string>
     <string name="title_activity_assessment_details">AssessmentDetailsActivity</string>
+    <string name="neurological">Neurological</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="levelOfConsciousness">LOC</string>
+    <string name="orientation">Orientation</string>
+    <string name="pupils">Pupils</string>
+    <string name="rightEye">Right Eye</string>
+    <string name="leftEye">Left Eye</string>
+    <string name="upperExtremity">Upper Extremity</string>
+    <string name="lowerExtremity">Lower Extremity</string>
+    <string name="size">Size</string>
+    <string name="reaction">Reaction</string>
+    <string name="left">Left</string>
+    <string name="right">Right</string>
+    <string name="muscleStrength">Muscle Strength</string>
 
 </resources>
