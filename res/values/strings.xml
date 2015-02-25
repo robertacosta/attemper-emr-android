@@ -76,5 +76,21 @@
     <string name="left">Left</string>
     <string name="right">Right</string>
     <string name="muscleStrength">Muscle Strength</string>
+    <string name="respiratory">Respiratory</string>
+    <string name="breathSounds">Breath Sounds</string>
+    <string name="anterior">Anterior</string>
+    <string name="posterior">Posterior</string>
+    <string name="noDistress">No Distress</string>
+    <string name="labored">Labored</string>
+    <string name="shortnessOfBreath">Shortness Of Breath</string>
+    <string name="respirations">Respirations</string>
+    <string name="chestExcursion">Chest Excursion</string>
+    <string name="symmetrical">Symmertrical</string>
+    <string name="asymmetrical">Asymmetrical</string>
+    <string name="cough">Cough</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="productive">Productive</string>
+    <string name="nonProductive">Non-Productive</string>
 
 </resources>
