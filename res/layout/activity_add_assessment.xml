@@ -97,57 +97,8 @@
                     android:orientation="vertical" >
 
                     <TextView
-                        android:id="@+id/lblLeftEye"
-                        android:layout_width="244dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="0.32"
-                        android:text="@string/leftEye" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" >
-
-                        <TextView
-                            android:id="@+id/lblLeftEyeSize"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/size"
-                            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-                        <Spinner
-                            android:id="@+id/spnLeftEyeSize"
-                            android:layout_width="161dp"
-                            android:layout_height="wrap_content"
-                            android:entries="@array/PupilSize" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" >
-
-                        <TextView
-                            android:id="@+id/lblLeftEyeReaction"
-                            android:layout_width="70dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/reaction"
-                            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-                        <Spinner
-                            android:id="@+id/spnLeftEyeReaction"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:entries="@array/PupilReaction" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
-
-                    <TextView
                         android:id="@+id/lblRightEye"
-                        android:layout_width="323dp"
+                        android:layout_width="244dp"
                         android:layout_height="0dp"
                         android:layout_weight="0.32"
                         android:text="@string/rightEye" />
@@ -165,7 +116,7 @@
 
                         <Spinner
                             android:id="@+id/spnRightEyeSize"
-                            android:layout_width="300dp"
+                            android:layout_width="161dp"
                             android:layout_height="wrap_content"
                             android:entries="@array/PupilSize" />
                     </LinearLayout>
@@ -176,6 +127,55 @@
 
                         <TextView
                             android:id="@+id/lblRightEyeReaction"
+                            android:layout_width="70dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/reaction"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnRightEyeReaction"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/PupilReaction" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblLeftEye"
+                        android:layout_width="323dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.32"
+                        android:text="@string/leftEye" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblLeftEyeSize"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/size"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnLeftEyeSize"
+                            android:layout_width="300dp"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/PupilSize" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblLeftEyeReaction"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2.29"
@@ -183,7 +183,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnRightEyeReaction"
+                            android:id="@+id/spnLeftEyeReaction"
                             android:layout_width="232dp"
                             android:layout_height="wrap_content"
                             android:entries="@array/PupilReaction" />
@@ -219,25 +219,6 @@
                         android:layout_height="wrap_content" >
 
                         <TextView
-                            android:id="@+id/lblUELeftMuscleStrength"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2.29"
-                            android:text="@string/left"
-                            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-                        <Spinner
-                            android:id="@+id/spnUELeftMuscleStrength"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:entries="@array/MonitorStrength" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" >
-
-                        <TextView
                             android:id="@+id/lblUERightMuscleStrength"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -247,7 +228,28 @@
 
                         <Spinner
                             android:id="@+id/spnUERightMuscleStrength"
-                            android:layout_width="match_parent"
+                            android:layout_width="170dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.24"
+                            android:entries="@array/MonitorStrength" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblUELeftMuscleStrength"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.29"
+                            android:text="@string/left"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnUELeftMuscleStrength"
+                            android:layout_width="184dp"
                             android:layout_height="wrap_content"
                             android:entries="@array/MonitorStrength" />
                     </LinearLayout>
@@ -270,15 +272,15 @@
                         android:layout_height="wrap_content" >
 
                         <TextView
-                            android:id="@+id/lblLELeftMuscleStrength"
+                            android:id="@+id/lblLERightMuscleStrength"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.23"
-                            android:text="@string/left"
+                            android:text="@string/right"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnLELeftMuscleStrength"
+                            android:id="@+id/spnLERightMuscleStrength"
                             android:layout_width="133dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.48"
@@ -290,15 +292,15 @@
                         android:layout_height="wrap_content" >
 
                         <TextView
-                            android:id="@+id/lblLERightMuscleStrength"
+                            android:id="@+id/lblLELeftMuscleStrength"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.15"
-                            android:text="@string/right"
+                            android:text="@string/left"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnLERightMuscleStrength"
+                            android:id="@+id/spnLELeftMuscleStrength"
                             android:layout_width="96dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.48"
@@ -331,60 +333,8 @@
                     android:orientation="vertical" >
 
                     <TextView
-                        android:id="@+id/lblLeftBreathSounds"
-                        android:layout_width="241dp"
-                        android:layout_height="0dp"
-                        android:layout_weight="0.32"
-                        android:text="@string/left" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" >
-
-                        <TextView
-                            android:id="@+id/lblLeftAnterior"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2.29"
-                            android:text="@string/anterior"
-                            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-                        <Spinner
-                            android:id="@+id/spnLeftAnterior"
-                            android:layout_width="165dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.16"
-                            android:entries="@array/BreathSounds" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" >
-
-                        <TextView
-                            android:id="@+id/lblLeftPosterior"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="2.29"
-                            android:text="@string/posterior"
-                            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-                        <Spinner
-                            android:id="@+id/spnLeftPosterior"
-                            android:layout_width="173dp"
-                            android:layout_height="wrap_content"
-                            android:entries="@array/BreathSounds" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
-
-                    <TextView
                         android:id="@+id/lblRightBreathSounds"
-                        android:layout_width="326dp"
+                        android:layout_width="241dp"
                         android:layout_height="0dp"
                         android:layout_weight="0.32"
                         android:text="@string/right" />
@@ -397,15 +347,15 @@
                             android:id="@+id/lblRightAnterior"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.23"
+                            android:layout_weight="2.29"
                             android:text="@string/anterior"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
                             android:id="@+id/spnRightAnterior"
-                            android:layout_width="133dp"
+                            android:layout_width="165dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.48"
+                            android:layout_weight="0.16"
                             android:entries="@array/BreathSounds" />
                     </LinearLayout>
 
@@ -417,12 +367,64 @@
                             android:id="@+id/lblRightPosterior"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.18"
+                            android:layout_weight="2.29"
                             android:text="@string/posterior"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
                             android:id="@+id/spnRightPosterior"
+                            android:layout_width="173dp"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/BreathSounds" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblLeftBreathSounds"
+                        android:layout_width="326dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.32"
+                        android:text="@string/left" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblLeftAnterior"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.23"
+                            android:text="@string/anterior"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnLeftAnterior"
+                            android:layout_width="133dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.48"
+                            android:entries="@array/BreathSounds" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblLeftPosterior"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.18"
+                            android:text="@string/posterior"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnLeftPosterior"
                             android:layout_width="96dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.48"
@@ -561,15 +563,15 @@
                         android:layout_height="wrap_content" >
 
                         <TextView
-                            android:id="@+id/lblLeftRadialPulse"
+                            android:id="@+id/lblRightRadialPulse"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.18"
-                            android:text="@string/left"
+                            android:text="@string/right"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnLeftRadialPulse"
+                            android:id="@+id/spnRightRadialPulse"
                             android:layout_width="96dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.48"
@@ -581,15 +583,15 @@
                         android:layout_height="wrap_content" >
 
                         <TextView
-                            android:id="@+id/lblRightRadialPulse"
+                            android:id="@+id/lblLeftRadialPulse"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.23"
-                            android:text="@string/right"
+                            android:text="@string/left"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnRightRadialPulse"
+                            android:id="@+id/spnLeftRadialPulse"
                             android:layout_width="133dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.48"
@@ -613,15 +615,15 @@
                         android:layout_height="wrap_content" >
 
                         <TextView
-                            android:id="@+id/lblLeftPedalPulse"
+                            android:id="@+id/lblRightPedalPulse"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.18"
-                            android:text="@string/left"
+                            android:text="@string/right"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnLeftPedalPulse"
+                            android:id="@+id/spnRightPedalPulse"
                             android:layout_width="96dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.48"
@@ -633,15 +635,15 @@
                         android:layout_height="wrap_content" >
 
                         <TextView
-                            android:id="@+id/lblRightPedalPulse"
+                            android:id="@+id/lblLeftPedalPulse"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.23"
-                            android:text="@string/right"
+                            android:text="@string/left"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnRightPedalPulse"
+                            android:id="@+id/spnLeftPedalPulse"
                             android:layout_width="133dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.48"
