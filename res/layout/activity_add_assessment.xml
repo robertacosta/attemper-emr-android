@@ -469,9 +469,11 @@
                 android:text="@string/chestExcursion"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+            <RadioGroup
+                android:id="@+id/rgpChestExcursion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
 
                 <RadioButton
                     android:id="@+id/rdnSymmetrical"
@@ -486,7 +488,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.88"
                     android:text="@string/asymmetrical" />
-            </LinearLayout>
+            </RadioGroup>
 
             <TextView
                 android:id="@+id/lblCough"
@@ -499,33 +501,47 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
-                <RadioButton
-                    android:id="@+id/rdnCoughYes"
+                <RadioGroup
+                    android:id="@+id/rgpCough"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.21"
-                    android:text="@string/yes" />
+                    android:layout_height="wrap_content" 
+                    android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/rdnCoughNo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.88"
-                    android:text="@string/no" />
+                    <RadioButton
+                        android:id="@+id/rdnCoughYes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.21"
+                        android:text="@string/yes" />
 
-                <RadioButton
-                    android:id="@+id/rdnCoughProductive"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.88"
-                    android:text="@string/productive" />
+                    <RadioButton
+                        android:id="@+id/rdnCoughNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.88"
+                        android:text="@string/no" />
+                </RadioGroup>
 
-                <RadioButton
-                    android:id="@+id/rdnCoughNonProductive"
+                <RadioGroup
+                    android:id="@+id/rgpCoughProductive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.88"
-                    android:text="@string/nonProductive" />
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/rdnCoughProductive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.88"
+                        android:text="@string/productive" />
+
+                    <RadioButton
+                        android:id="@+id/rdnCoughNonProductive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.88"
+                        android:text="@string/nonProductive" />
+                </RadioGroup>
             </LinearLayout>
 
             <TextView
@@ -658,9 +674,11 @@
                 android:text="@string/capillaryRefill"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+            <RadioGroup
+                android:id="@+id/rgpCapRefill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/rdnCapRefillLess"
@@ -675,7 +693,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.88"
                     android:text="@string/greaterThan2Sec" />
-            </LinearLayout>
+            </RadioGroup>
 
             <TextView
                 android:id="@+id/lblTemperature"
@@ -702,19 +720,26 @@
                     android:layout_weight="0.28"
                     android:text="@string/cool" />
 
-                <RadioButton
-                    android:id="@+id/rdnClammy"
+                <RadioGroup
+                    android:id="@+id/rgpSkin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.12"
-                    android:text="@string/clammy" />
+                    android:orientation="horizontal" >
 
-                <RadioButton
-                    android:id="@+id/rdnDiaphoretic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.88"
-                    android:text="@string/diaphoretic" />
+                    <RadioButton
+                        android:id="@+id/rdnClammy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.12"
+                        android:text="@string/clammy" />
+
+                    <RadioButton
+                        android:id="@+id/rdnDiaphoretic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.88"
+                        android:text="@string/diaphoretic" />
+                </RadioGroup>
             </LinearLayout>
 
             <TextView
@@ -743,25 +768,31 @@
                         android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <Spinner
-                        android:id="@+id/spnRightArmEdma"
+                        android:id="@+id/spnRightArmEdema"
                         android:layout_width="133dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.48"
                         android:entries="@array/Edema" />
 
-                    <RadioButton
-                        android:id="@+id/rdnRightArmPitting"
+                    <RadioGroup
+                        android:id="@+id/rgpRightArmEdema"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.12"
-                        android:text="@string/pitting" />
+                        android:layout_height="wrap_content" >
 
-                    <RadioButton
-                        android:id="@+id/rdnRightArmNonPitting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.88"
-                        android:text="@string/nonPitting" />
+                        <RadioButton
+                            android:id="@+id/rdnRightArmPitting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.12"
+                            android:text="@string/pitting" />
+
+                        <RadioButton
+                            android:id="@+id/rdnRightArmNonPitting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.88"
+                            android:text="@string/nonPitting" />
+                    </RadioGroup>
                 </LinearLayout>
 
                 <LinearLayout
@@ -778,22 +809,28 @@
                         android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <Spinner
-                        android:id="@+id/spnLeftArmEdma"
+                        android:id="@+id/spnLeftArmEdema"
                         android:layout_width="133dp"
                         android:layout_height="wrap_content"
                         android:entries="@array/Edema" />
 
-                    <RadioButton
-                        android:id="@+id/rdnLeftArmPitting"
+                    <RadioGroup
+                        android:id="@+id/rgpLeftArmEdema"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/pitting" />
+                        android:layout_height="wrap_content">
 
-                    <RadioButton
-                        android:id="@+id/rdnLeftArmNonPitting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/nonPitting" />
+                        <RadioButton
+                            android:id="@+id/rdnLeftArmPitting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pitting" />
+
+                        <RadioButton
+                            android:id="@+id/rdnLeftArmNonPitting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nonPitting" />
+                    </RadioGroup>
                 </LinearLayout>
 
                 <LinearLayout
@@ -810,22 +847,28 @@
                         android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <Spinner
-                        android:id="@+id/spnRightLegEdma"
+                        android:id="@+id/spnRightLegEdema"
                         android:layout_width="133dp"
                         android:layout_height="wrap_content"
                         android:entries="@array/Edema" />
 
-                    <RadioButton
-                        android:id="@+id/rdnRightLegPitting"
+                    <RadioGroup
+                        android:id="@+id/rgpRightLeftEdema"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/pitting" />
+                        android:layout_height="wrap_content" >
 
-                    <RadioButton
-                        android:id="@+id/rdnRightLegNonPitting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/nonPitting" />
+                        <RadioButton
+                            android:id="@+id/rdnRightLegPitting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pitting" />
+
+                        <RadioButton
+                            android:id="@+id/rdnRightLegNonPitting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nonPitting" />
+                    </RadioGroup>
                 </LinearLayout>
 
                 <LinearLayout
@@ -841,25 +884,31 @@
                         android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <Spinner
-                        android:id="@+id/spnLeftLegEdma"
+                        android:id="@+id/spnLeftLegEdema"
                         android:layout_width="133dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
                         android:layout_weight="0.48"
                         android:entries="@array/Edema" />
 
-                    <RadioButton
-                        android:id="@+id/rdnLeftLegPitting"
+                    <RadioGroup
+                        android:id="@+id/rgpLeftLegEdema"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.12"
-                        android:text="@string/pitting" />
+                        android:layout_height="wrap_content" >
 
-                    <RadioButton
-                        android:id="@+id/rdnLeftLegNonPitting"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.88"
-                        android:text="@string/nonPitting" />
+                        <RadioButton
+                            android:id="@+id/rdnLeftLegPitting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.12"
+                            android:text="@string/pitting" />
+
+                        <RadioButton
+                            android:id="@+id/rdnLeftLegNonPitting"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.88"
+                            android:text="@string/nonPitting" />
+                    </RadioGroup>
                 </LinearLayout>
             </LinearLayout>
 
@@ -870,9 +919,11 @@
                 android:text="@string/jvd"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+            <RadioGroup
+                android:id="@+id/rgpJvd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/rdnJvdYes"
@@ -887,7 +938,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.80"
                     android:text="@string/no" />
-            </LinearLayout>
+            </RadioGroup>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -925,9 +976,11 @@
                 android:text="@string/bowelSounds"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+            <RadioGroup
+                android:id="@+id/rgpBowelSounds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/rdnBowelSoundNormal"
@@ -956,7 +1009,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.80"
                     android:text="@string/absent" />
-            </LinearLayout>
+            </RadioGroup>
 
             <TextView
                 android:id="@+id/lblAbdomen"
@@ -965,9 +1018,11 @@
                 android:text="@string/abdomen"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+            <RadioGroup
+                android:id="@+id/rgpAbdomen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:orientation="horizontal" >
 
                 <RadioButton
                     android:id="@+id/rdnAbdomenSoft"
@@ -996,7 +1051,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.13"
                     android:text="@string/distended" />
-            </LinearLayout>
+            </RadioGroup>
 
             <TextView
                 android:id="@+id/lblTurgor"
@@ -1005,9 +1060,11 @@
                 android:text="@string/turgor"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+            <RadioGroup
+                android:id="@+id/rgpTurgor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:orientation="horizontal" >
 
                 <RadioButton
                     android:id="@+id/rdnTurgorNormal"
@@ -1036,7 +1093,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.16"
                     android:text="@string/shiny" />
-            </LinearLayout>
+            </RadioGroup>
 
             <TextView
                 android:id="@+id/lblSkin"
@@ -1045,9 +1102,11 @@
                 android:text="@string/skin"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+            <RadioGroup
+                android:id="@+id/rgpSkinColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:orientation="horizontal" >
 
                 <RadioButton
                     android:id="@+id/rdnSkinNormal"
@@ -1083,7 +1142,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.16"
                     android:text="@string/jaundiced" />
-            </LinearLayout>
+            </RadioGroup>
 
             <TextView
                 android:id="@+id/lblUrine"
@@ -1112,7 +1171,7 @@
                         android:id="@+id/spnUrineColor"
                         android:layout_width="161dp"
                         android:layout_height="wrap_content"
-                        android:entries="@array/Edema" />
+                        android:entries="@array/UrineColor" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -1131,7 +1190,7 @@
                         android:id="@+id/spnUrineCharacter"
                         android:layout_width="172dp"
                         android:layout_height="wrap_content"
-                        android:entries="@array/Edema" />
+                        android:entries="@array/UrineCharacter" />
                 </LinearLayout>
 
                 <CheckBox

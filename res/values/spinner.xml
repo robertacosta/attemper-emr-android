@@ -1,84 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string-array name="PhoneNumberTypes">
         <item>Home</item>
         <item>Work</item>
         <item>Mobile</item>
     </string-array>
     <string-array name="LivesAtTypes">
-        <item >Home (alone)</item>
-        <item >Home (with Family)</item>
-        <item >Nuring Home</item>
-        <item >Assisted Living</item>
+        <item>Home (alone)</item>
+        <item>Home (with Family)</item>
+        <item>Nuring Home</item>
+        <item>Assisted Living</item>
     </string-array>
     <string-array name="CodeStatusTypes">
-        <item >Full Code</item>
-        <item >Modified Code</item>
-        <item >DNR</item>
+        <item>Full Code</item>
+        <item>Modified Code</item>
+        <item>DNR</item>
     </string-array>
     <string-array name="LevelOfConsciousness">
-        <item >Conscious</item>
+        <item>Conscious</item>
         <item>Lethargy</item>
-        <item >Stupor</item>
-        <item >Light coma</item>
-        <item >Deep coma</item>
+        <item>Stupor</item>
+        <item>Light coma</item>
+        <item>Deep coma</item>
     </string-array>
     <string-array name="Orientation">
-        <item >0 - not oriented</item>
-        <item >x1 - person</item>
-        <item >x2 - person, place</item>
-        <item >x3 - person, place, time</item>
-        <item >x4 - person, place, time, situation</item>
+        <item>x4 - person, place, time, situation</item>
+        <item>x3 - person, place, time</item>
+        <item>x2 - person, place</item>
+        <item>x1 - person</item>
+        <item>0 - not oriented</item>
     </string-array>
     <string-array name="BreathSounds">
-        <item >Clear</item>
-        <item >Rhonchi</item>
-        <item >Diminished</item>
-        <item >Crackles</item>
-        <item >Wheezing</item>
-        <item >Absent</item>
+        <item>Clear</item>
+        <item>Rhonchi</item>
+        <item>Diminished</item>
+        <item>Crackles</item>
+        <item>Wheezing</item>
+        <item>Absent</item>
     </string-array>
     <string-array name="Pulse">
-        <item >Strong</item>
-        <item >Weak</item>
-        <item >Absent</item>
+        <item>Strong</item>
+        <item>Weak</item>
+        <item>Absent</item>
     </string-array>
     <string-array name="Edema">
-        <item >0</item>
-        <item >+1</item>
-        <item >+2</item>
-        <item >+3</item>
+        <item>0</item>
+        <item>+1</item>
+        <item>+2</item>
+        <item>+3</item>
     </string-array>
     <string-array name="PupilSize">
-        <item >9</item>
-        <item >8</item>
-        <item >7</item>
-        <item >6</item>
-        <item >5</item>
-        <item >4</item>
-        <item >3</item>
-        <item >2</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
     </string-array>
     <string-array name="PupilReaction">
-        <item >Normal</item>
-        <item >Sluggish</item>
-        <item >Fixed</item>
+        <item>Normal</item>
+        <item>Sluggish</item>
+        <item>Fixed</item>
     </string-array>
     <string-array name="MonitorStrength">
-        <item >+5 - able to move again full resistence</item>
-        <item >+4 - able to move against gravity and full resistence</item>
-        <item >+3 - able to move against gravity, but no resistance</item>
-        <item >+2 - weak movement, unable to overcome gravity</item>
-        <item >+1 - flicker of muscle movement</item>
-        <item >0 - no movement</item>
+        <item>+5 - able to move against full resistence</item>
+        <item>+4 - able to move against gravity and some resistence</item>
+        <item>+3 - able to move against gravity, but no resistance</item>
+        <item>+2 - weak movement, unable to overcome gravity</item>
+        <item>+1 - flicker of muscle movement</item>
+        <item>0 - no movement</item>
     </string-array>
     <string-array name="UrineColor">
-        <item >Yellow</item>
-        <item >Amber</item>
-        <item >Brown</item>
+        <item>Yellow</item>
+        <item>Amber</item>
+        <item>Brown</item>
     </string-array>
     <string-array name="UrineCharacter">
-        <item >Clear</item>
-        <item >Cloudy</item>
+        <item>Clear</item>
+        <item>Cloudy</item>
     </string-array>
+
 </resources>
