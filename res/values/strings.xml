@@ -111,5 +111,31 @@
     <string name="leftLeg">Left Leg</string>
     <string name="jvd">JVD</string>
     <string name="rhythm">Rhythm</string>
+    <string name="gastrointestinal">Gastrointestinal</string>
+    <string name="bowelSounds">Bowel Sounds</string>
+    <string name="normal">Normal</string>
+    <string name="hyperactive">Hyperactive</string>
+    <string name="hypoactive">Hypoactive</string>
+    <string name="absent">Absent</string>
+    <string name="abdomen">Abdomen</string>
+    <string name="soft">Soft</string>
+    <string name="firm">Firm</string>
+    <string name="hard">Hard</string>
+    <string name="distended">Distended</string>
+    <string name="nausea">Nausea</string>
+    <string name="emesis">Emesis</string>
+    <string name="turgor">Turgor</string>
+    <string name="tenting">Tenting</string>
+    <string name="taut">Taut</string>
+    <string name="shiny">Shiny</string>
+    <string name="skin">Skin</string>
+    <string name="pale">Pale</string>
+    <string name="flushed">Flushed</string>
+    <string name="cyanotic">Cyanotic</string>
+    <string name="jaundiced">Jaundiced</string>
+    <string name="urine">Urine</string>
+    <string name="color">Color</string>
+    <string name="character">Character</string>
+    <string name="foleyCatheter">Foley Catheter</string>
 
 </resources>

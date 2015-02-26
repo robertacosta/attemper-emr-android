@@ -232,7 +232,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="0.24"
                             android:entries="@array/MonitorStrength" />
-
                     </LinearLayout>
 
                     <LinearLayout
@@ -910,6 +909,256 @@
                     android:ems="10"
                     android:hint="@string/rhythm"
                     android:inputType="text|textCapWords" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblGastrointestinal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gastrointestinal"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/lblBowelSounds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bowelSounds"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/rdnBowelSoundNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.10"
+                    android:text="@string/normal" />
+
+                <RadioButton
+                    android:id="@+id/rdnBowelSoundHyperactive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.16"
+                    android:text="@string/hyperactive" />
+
+                <RadioButton
+                    android:id="@+id/rdnBowelSoundHypoactive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.16"
+                    android:text="@string/hypoactive" />
+
+                <RadioButton
+                    android:id="@+id/rdnBowelSoundAbsent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.80"
+                    android:text="@string/absent" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblAbdomen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/abdomen"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/rdnAbdomenSoft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.06"
+                    android:text="@string/soft" />
+
+                <RadioButton
+                    android:id="@+id/rdnAbdomenFirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05"
+                    android:text="@string/firm" />
+
+                <RadioButton
+                    android:id="@+id/rdnAbdomenHard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.16"
+                    android:text="@string/hard" />
+
+                <CheckBox
+                    android:id="@+id/chkDistended"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.13"
+                    android:text="@string/distended" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblTurgor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/turgor"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/rdnTurgorNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.06"
+                    android:text="@string/normal" />
+
+                <RadioButton
+                    android:id="@+id/rdnTurgorTenting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05"
+                    android:text="@string/tenting" />
+
+                <RadioButton
+                    android:id="@+id/rdnTurgorTaut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.16"
+                    android:text="@string/taut" />
+
+                <RadioButton
+                    android:id="@+id/rdnTurgorShiny"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.16"
+                    android:text="@string/shiny" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblSkin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/skin"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/rdnSkinNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.06"
+                    android:text="@string/normal" />
+
+                <RadioButton
+                    android:id="@+id/rdnSkinPale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05"
+                    android:text="@string/pale" />
+
+                <RadioButton
+                    android:id="@+id/rdnSkinFlushed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.16"
+                    android:text="@string/flushed" />
+
+                <RadioButton
+                    android:id="@+id/rdnSkinCyanotic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.16"
+                    android:text="@string/cyanotic" />
+
+                <RadioButton
+                    android:id="@+id/rdnSkinJaundiced"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.16"
+                    android:text="@string/jaundiced" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblUrine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/urine"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblUrineColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/color"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <Spinner
+                        android:id="@+id/spnUrineColor"
+                        android:layout_width="161dp"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/Edema" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblUrineCharacter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/character"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <Spinner
+                        android:id="@+id/spnUrineCharacter"
+                        android:layout_width="172dp"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/Edema" />
+                </LinearLayout>
+
+                <CheckBox
+                    android:id="@+id/chkUrineFoleyCatheter"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="0.13"
+                    android:text="@string/foleyCatheter" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/chkNausea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_weight="0.13"
+                    android:text="@string/nausea" />
+
+                <CheckBox
+                    android:id="@+id/chkEmesis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.13"
+                    android:text="@string/emesis" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
