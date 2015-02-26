@@ -526,6 +526,389 @@
                     android:layout_weight="0.88"
                     android:text="@string/nonProductive" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblCardio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cardio"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/lblPulse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pupils"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblRadialPulse"
+                        android:layout_width="295dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/radialPulse" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblLeftRadialPulse"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.18"
+                            android:text="@string/left"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnLeftRadialPulse"
+                            android:layout_width="96dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.48"
+                            android:entries="@array/Pulse" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblRightRadialPulse"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.23"
+                            android:text="@string/right"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnRightRadialPulse"
+                            android:layout_width="133dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.48"
+                            android:entries="@array/Pulse" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblPedalPulse"
+                        android:layout_width="265dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/radialPulse" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblLeftPedalPulse"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.18"
+                            android:text="@string/left"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnLeftPedalPulse"
+                            android:layout_width="96dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.48"
+                            android:entries="@array/Pulse" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblRightPedalPulse"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.23"
+                            android:text="@string/right"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnRightPedalPulse"
+                            android:layout_width="133dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.48"
+                            android:entries="@array/Pulse" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblCapillaryRefill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/capillaryRefill"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/rdnCapRefillLess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.21"
+                    android:text="@string/lessThan2Sec" />
+
+                <RadioButton
+                    android:id="@+id/rdnCapRefillGreater"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.88"
+                    android:text="@string/greaterThan2Sec" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblTemperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/temperature"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/chkWarm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.13"
+                    android:text="@string/warm" />
+
+                <CheckBox
+                    android:id="@+id/chkCool"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.28"
+                    android:text="@string/cool" />
+
+                <RadioButton
+                    android:id="@+id/rdnClammy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.12"
+                    android:text="@string/clammy" />
+
+                <RadioButton
+                    android:id="@+id/rdnDiaphoretic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.88"
+                    android:text="@string/diaphoretic" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblEdema"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edema"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false" >
+
+                <LinearLayout
+                    android:layout_width="128dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblRightArmEdema"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.23"
+                        android:text="@string/rightArm"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <Spinner
+                        android:id="@+id/spnRightArmEdma"
+                        android:layout_width="133dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.48"
+                        android:entries="@array/Edema" />
+
+                    <RadioButton
+                        android:id="@+id/rdnRightArmPitting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.12"
+                        android:text="@string/pitting" />
+
+                    <RadioButton
+                        android:id="@+id/rdnRightArmNonPitting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.88"
+                        android:text="@string/nonPitting" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.57"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblLeftArmEdema"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/leftArm"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <Spinner
+                        android:id="@+id/spnLeftArmEdma"
+                        android:layout_width="133dp"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/Edema" />
+
+                    <RadioButton
+                        android:id="@+id/rdnLeftArmPitting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pitting" />
+
+                    <RadioButton
+                        android:id="@+id/rdnLeftArmNonPitting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nonPitting" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.30"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblRightLegEdema"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rightLeg"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <Spinner
+                        android:id="@+id/spnRightLegEdma"
+                        android:layout_width="133dp"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/Edema" />
+
+                    <RadioButton
+                        android:id="@+id/rdnRightLegPitting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pitting" />
+
+                    <RadioButton
+                        android:id="@+id/rdnRightLegNonPitting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nonPitting" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblLeftLegEdema"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/leftLeg"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <Spinner
+                        android:id="@+id/spnLeftLegEdma"
+                        android:layout_width="133dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.48"
+                        android:entries="@array/Edema" />
+
+                    <RadioButton
+                        android:id="@+id/rdnLeftLegPitting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.12"
+                        android:text="@string/pitting" />
+
+                    <RadioButton
+                        android:id="@+id/rdnLeftLegNonPitting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.88"
+                        android:text="@string/nonPitting" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblJVD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/jvd"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/rdnJvdYes"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.16"
+                    android:text="@string/yes" />
+
+                <RadioButton
+                    android:id="@+id/rdnJvdNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.80"
+                    android:text="@string/no" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/lblRhythm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.06"
+                    android:text="@string/rhythm"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <EditText
+                    android:id="@+id/txtRhythm"
+                    android:layout_width="183dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.84"
+                    android:ems="10"
+                    android:hint="@string/rhythm"
+                    android:inputType="text|textCapWords" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

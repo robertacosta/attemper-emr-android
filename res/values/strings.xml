@@ -92,5 +92,24 @@
     <string name="no">No</string>
     <string name="productive">Productive</string>
     <string name="nonProductive">Non-Productive</string>
+    <string name="cardio">Cardio</string>
+    <string name="radialPulse">Radial Pulse</string>
+    <string name="capillaryRefill">Capillary Refill</string>
+    <string name="lessThan2Sec">Less than 2 sec</string>
+    <string name="greaterThan2Sec">Greater than 2 sec</string>
+    <string name="warm">Warm</string>
+    <string name="cool">Cool</string>
+    <string name="clammy">Clammy</string>
+    <string name="diaphoretic">Diaphoretic</string>
+    <string name="temperature">Temperature</string>
+    <string name="edema">Edema</string>
+    <string name="rightArm">Right Arm</string>
+    <string name="pitting">Pitting</string>
+    <string name="nonPitting">Non-Pitting</string>
+    <string name="leftArm">Left Arm</string>
+    <string name="rightLeg">Right Leg</string>
+    <string name="leftLeg">Left Leg</string>
+    <string name="jvd">JVD</string>
+    <string name="rhythm">Rhythm</string>
 
 </resources>
