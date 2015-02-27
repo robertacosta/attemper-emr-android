@@ -137,5 +137,7 @@
     <string name="color">Color</string>
     <string name="character">Character</string>
     <string name="foleyCatheter">Foley Catheter</string>
+    <string name="update_assessment">Update Assessment</string>
+    <string name="delete_assessment">Delete Assessment</string>
 
 </resources>

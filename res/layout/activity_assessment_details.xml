@@ -1,16 +1,1167 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.attemper.emr.AssessmentDetailsActivity" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+    <ScrollView
+        android:id="@+id/sclView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
-</RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <EditText
+                    android:id="@+id/txtDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/date"
+                    android:inputType="date" />
+
+                <EditText
+                    android:id="@+id/txtTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/time"
+                    android:inputType="time" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblNeurological"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/neurological"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/txtLOC"
+                    android:layout_width="46dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/levelOfConsciousness" />
+
+                <Spinner
+                    android:id="@+id/spnLOC"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="0.79"
+                    android:entries="@array/LevelOfConsciousness" />
+
+                <TextView
+                    android:id="@+id/lblOrientation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.32"
+                    android:text="@string/orientation" />
+
+                <Spinner
+                    android:id="@+id/spnOrientation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:entries="@array/Orientation" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblPupils"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:text="@string/pupils"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblRightEye"
+                        android:layout_width="244dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.32"
+                        android:paddingTop="10dp"
+                        android:text="@string/rightEye" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblRightEyeSize"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:text="@string/size"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnRightEyeSize"
+                            android:layout_width="161dp"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/PupilSize" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblRightEyeReaction"
+                            android:layout_width="70dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/reaction"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnRightEyeReaction"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/PupilReaction" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblLeftEye"
+                        android:layout_width="323dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.32"
+                        android:paddingTop="10dp"
+                        android:text="@string/leftEye" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblLeftEyeSize"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:text="@string/size"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnLeftEyeSize"
+                            android:layout_width="300dp"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/PupilSize" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblLeftEyeReaction"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.29"
+                            android:text="@string/reaction"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnLeftEyeReaction"
+                            android:layout_width="232dp"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/PupilReaction" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblMuscleStrength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:text="@string/muscleStrength"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblUpperExtremity"
+                        android:layout_width="241dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.32"
+                        android:text="@string/upperExtremity" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblUERightMuscleStrength"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.29"
+                            android:text="@string/right"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnUERightMuscleStrength"
+                            android:layout_width="170dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.24"
+                            android:entries="@array/MonitorStrength" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblUELeftMuscleStrength"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.29"
+                            android:text="@string/left"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnUELeftMuscleStrength"
+                            android:layout_width="184dp"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/MonitorStrength" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblLowerExtremity"
+                        android:layout_width="326dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.32"
+                        android:text="@string/lowerExtremity" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblLERightMuscleStrength"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.23"
+                            android:text="@string/right"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnLERightMuscleStrength"
+                            android:layout_width="133dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.48"
+                            android:entries="@array/MonitorStrength" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblLELeftMuscleStrength"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.15"
+                            android:text="@string/left"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnLELeftMuscleStrength"
+                            android:layout_width="96dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.48"
+                            android:entries="@array/MonitorStrength" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblRespiratory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="30dp"
+                android:text="@string/respiratory"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/lblBreathSounds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/breathSounds"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblRightBreathSounds"
+                        android:layout_width="241dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.32"
+                        android:text="@string/right" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblRightAnterior"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.29"
+                            android:text="@string/anterior"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnRightAnterior"
+                            android:layout_width="165dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.16"
+                            android:entries="@array/BreathSounds" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblRightPosterior"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.29"
+                            android:text="@string/posterior"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnRightPosterior"
+                            android:layout_width="173dp"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/BreathSounds" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblLeftBreathSounds"
+                        android:layout_width="326dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.32"
+                        android:text="@string/left" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblLeftAnterior"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.23"
+                            android:text="@string/anterior"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnLeftAnterior"
+                            android:layout_width="133dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.48"
+                            android:entries="@array/BreathSounds" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblLeftPosterior"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.18"
+                            android:text="@string/posterior"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnLeftPosterior"
+                            android:layout_width="96dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.48"
+                            android:entries="@array/BreathSounds" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblRespirations"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/respirations"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/chkNoDistress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/noDistress" />
+
+                <CheckBox
+                    android:id="@+id/chkLabored"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/labored" />
+
+                <CheckBox
+                    android:id="@+id/chkShortnessOfBreath"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/shortnessOfBreath" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblChestExcursion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/chestExcursion"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioGroup
+                android:id="@+id/rgpChestExcursion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/rdnSymmetrical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.21"
+                    android:checked="true"
+                    android:text="@string/symmetrical" />
+
+                <RadioButton
+                    android:id="@+id/rdnAsymmetrical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.88"
+                    android:text="@string/asymmetrical" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/lblCough"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cough"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/chkCough"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cough" />
+
+                <CheckBox
+                    android:id="@+id/chkCoughProductive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/productive" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblCardio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cardio"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/lblPulse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pupils"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblRadialPulse"
+                        android:layout_width="295dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/radialPulse" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblRightRadialPulse"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.18"
+                            android:text="@string/right"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnRightRadialPulse"
+                            android:layout_width="96dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.48"
+                            android:entries="@array/Pulse" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblLeftRadialPulse"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.23"
+                            android:text="@string/left"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnLeftRadialPulse"
+                            android:layout_width="133dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.48"
+                            android:entries="@array/Pulse" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblPedalPulse"
+                        android:layout_width="265dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/radialPulse" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblRightPedalPulse"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.18"
+                            android:text="@string/right"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnRightPedalPulse"
+                            android:layout_width="96dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.48"
+                            android:entries="@array/Pulse" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/lblLeftPedalPulse"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.23"
+                            android:text="@string/left"
+                            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                        <Spinner
+                            android:id="@+id/spnLeftPedalPulse"
+                            android:layout_width="133dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.48"
+                            android:entries="@array/Pulse" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblCapillaryRefill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/capillaryRefill"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioGroup
+                android:id="@+id/rgpCapRefill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/rdnCapRefillLess"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.21"
+                    android:checked="true"
+                    android:text="@string/lessThan2Sec" />
+
+                <RadioButton
+                    android:id="@+id/rdnCapRefillGreater"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.88"
+                    android:text="@string/greaterThan2Sec" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/lblTemperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/temperature"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <RadioGroup
+                    android:id="@+id/rgpSkin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/rdnWarm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.13"
+                        android:checked="true"
+                        android:text="@string/warm" />
+
+                    <RadioButton
+                        android:id="@+id/rdnCool"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.28"
+                        android:text="@string/cool" />
+                </RadioGroup>
+
+                <CheckBox
+                    android:id="@+id/chkClammy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.12"
+                    android:text="@string/clammy" />
+
+                <CheckBox
+                    android:id="@+id/chkDiaphoretic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.88"
+                    android:text="@string/diaphoretic" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblEdema"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edema"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false" >
+
+                <LinearLayout
+                    android:layout_width="128dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblRightArmEdema"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.23"
+                        android:text="@string/rightArm"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <Spinner
+                        android:id="@+id/spnRightArmEdema"
+                        android:layout_width="133dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.48"
+                        android:entries="@array/Edema" />
+
+                    <CheckBox
+                        android:id="@+id/chkRightArmPitting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.88"
+                        android:text="@string/pitting" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.57"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblLeftArmEdema"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/leftArm"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <Spinner
+                        android:id="@+id/spnLeftArmEdema"
+                        android:layout_width="133dp"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/Edema" />
+
+                    <CheckBox
+                        android:id="@+id/chkLeftArmPitting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pitting" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.30"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblRightLegEdema"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rightLeg"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <Spinner
+                        android:id="@+id/spnRightLegEdema"
+                        android:layout_width="133dp"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/Edema" />
+
+                    <CheckBox
+                        android:id="@+id/chkRightLegPitting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pitting" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblLeftLegEdema"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/leftLeg"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <Spinner
+                        android:id="@+id/spnLeftLegEdema"
+                        android:layout_width="133dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.48"
+                        android:entries="@array/Edema" />
+
+                    <CheckBox
+                        android:id="@+id/chkLeftLegPitting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pitting" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblJVD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/jvd"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <CheckBox
+                android:id="@+id/chkJVD"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.88"
+                android:text="@string/jvd" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/lblRhythm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.06"
+                    android:text="@string/rhythm"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <EditText
+                    android:id="@+id/txtRhythm"
+                    android:layout_width="183dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.84"
+                    android:ems="10"
+                    android:hint="@string/rhythm"
+                    android:inputType="text|textCapWords" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblGastrointestinal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gastrointestinal"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/lblBowelSounds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bowelSounds"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioGroup
+                android:id="@+id/rgpBowelSounds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/rdnBowelSoundNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.10"
+                    android:text="@string/normal"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/rdnBowelSoundHyperactive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.16"
+                    android:text="@string/hyperactive" />
+
+                <RadioButton
+                    android:id="@+id/rdnBowelSoundHypoactive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.16"
+                    android:text="@string/hypoactive" />
+
+                <RadioButton
+                    android:id="@+id/rdnBowelSoundAbsent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.80"
+                    android:text="@string/absent" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/lblAbdomen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/abdomen"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <RadioGroup
+                    android:id="@+id/rgpAbdomen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/rdnAbdomenSoft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.06"
+                        android:text="@string/soft"
+                        android:checked="true" />
+
+                    <RadioButton
+                        android:id="@+id/rdnAbdomenFirm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.05"
+                        android:text="@string/firm" />
+
+                    <RadioButton
+                        android:id="@+id/rdnAbdomenHard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.16"
+                        android:text="@string/hard" />
+                </RadioGroup>
+
+                <CheckBox
+                    android:id="@+id/chkDistended"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.13"
+                    android:text="@string/distended" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblTurgor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/turgor"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioGroup
+                android:id="@+id/rgpTurgor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/rdnTurgorNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.06"
+                    android:text="@string/normal"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/rdnTurgorTenting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05"
+                    android:text="@string/tenting" />
+
+                <RadioButton
+                    android:id="@+id/rdnTurgorTaut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.16"
+                    android:text="@string/taut" />
+
+                <RadioButton
+                    android:id="@+id/rdnTurgorShiny"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.16"
+                    android:text="@string/shiny" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/lblSkin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/skin"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <RadioGroup
+                android:id="@+id/rgpSkinColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/rdnSkinNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.06"
+                    android:text="@string/normal"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/rdnSkinPale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.05"
+                    android:text="@string/pale" />
+
+                <RadioButton
+                    android:id="@+id/rdnSkinFlushed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.16"
+                    android:text="@string/flushed" />
+
+                <RadioButton
+                    android:id="@+id/rdnSkinCyanotic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.16"
+                    android:text="@string/cyanotic" />
+
+                <RadioButton
+                    android:id="@+id/rdnSkinJaundiced"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.16"
+                    android:text="@string/jaundiced" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/lblUrine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/urine"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblUrineColor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/color"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <Spinner
+                        android:id="@+id/spnUrineColor"
+                        android:layout_width="161dp"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/UrineColor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/lblUrineCharacter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/character"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <Spinner
+                        android:id="@+id/spnUrineCharacter"
+                        android:layout_width="172dp"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/UrineCharacter" />
+                </LinearLayout>
+
+                <CheckBox
+                    android:id="@+id/chkUrineFoleyCatheter"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="0.13"
+                    android:text="@string/foleyCatheter" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/chkNausea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_weight="0.13"
+                    android:text="@string/nausea" />
+
+                <CheckBox
+                    android:id="@+id/chkEmesis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.13"
+                    android:text="@string/emesis" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end" >
+
+                <Button
+                    android:id="@+id/btnDeleteAssessment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/delete_assessment" />
+                
+                <Button
+                    android:id="@+id/btnEditAssessment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/update_assessment" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
