@@ -131,7 +131,7 @@ public class AddAssessmentActivity extends Activity {
             	
             	Temperature temperature = new Temperature();
             	RadioGroup rgpTemperature = (RadioGroup)findViewById(R.id.rgpSkin);
-            	temperature.setWarm(((RadioButton)findViewById(rgpTemperature.getCheckedRadioButtonId())).getText().toString() == "Warm" ? true : false);
+            	temperature.setWarm(((RadioButton)findViewById(rgpTemperature.getCheckedRadioButtonId())).getText().toString().compareTo("Warm") == 0 ? true : false);
             	temperature.setClammy(((CheckBox)findViewById(R.id.chkClammy)).isChecked());
             	temperature.setDiaphoretic(((CheckBox)findViewById(R.id.chkDiaphoretic)).isChecked());
             	cardio.setTemperature(temperature);
