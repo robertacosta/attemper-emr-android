@@ -99,7 +99,7 @@ public class AddAssessmentActivity extends Activity {
             	BreathSounds leftBreathSounds = new BreathSounds();
             	leftBreathSounds.setAnterior(((Spinner)findViewById(R.id.spnLeftAnterior)).getSelectedItem().toString());
             	leftBreathSounds.setPosterior(((Spinner)findViewById(R.id.spnLeftPosterior)).getSelectedItem().toString());
-            	respiratory.setRightBreathSounds(leftBreathSounds);
+            	respiratory.setLeftBreathSounds(leftBreathSounds);
             	
             	Respirations respirations = new Respirations();
             	respirations.setLabored(((CheckBox)findViewById(R.id.chkLabored)).isChecked());
@@ -110,10 +110,8 @@ public class AddAssessmentActivity extends Activity {
             	respiratory.setChestExcursion(((RadioButton)findViewById(chestExcursion.getCheckedRadioButtonId())).getText().toString());
             	
             	Cough cough = new Cough();
-            	RadioGroup rgpCoughYesNo = (RadioGroup)findViewById(R.id.rgpCough);
-            	cough.setPresent(((RadioButton)findViewById(rgpCoughYesNo.getCheckedRadioButtonId())).getText().toString() == "Yes" ? true : false);
-            	RadioGroup rgpCoughProductive = (RadioGroup)findViewById(R.id.rgpCoughProductive);
-            	cough.setProductive(((RadioButton)findViewById(rgpCoughProductive.getCheckedRadioButtonId())).getText().toString() == "Productive" ? true : false);
+            	cough.setPresent(((CheckBox)findViewById(R.id.chkCough)).isChecked());
+            	cough.setProductive(((CheckBox)findViewById(R.id.chkCoughProductive)).isChecked());
             	respiratory.setCough(cough);
             	assessment.setRespiratory(respiratory);
             	
@@ -139,31 +137,26 @@ public class AddAssessmentActivity extends Activity {
             	cardio.setTemperature(temperature);
             	
             	Edema rightArmEdema = new Edema();
-            	RadioGroup rgpRightArmEdema = (RadioGroup)findViewById(R.id.rgpRightArmEdema);
-            	rightArmEdema.setPitting(((RadioButton)findViewById(rgpRightArmEdema.getCheckedRadioButtonId())).getText().toString() == "Pitting" ? true : false);
+            	rightArmEdema.setPitting(((CheckBox)findViewById(R.id.chkRightArmPitting)).isChecked());
             	rightArmEdema.setLevel(tryParse(((Spinner)findViewById(R.id.spnRightArmEdema)).getSelectedItem().toString()));
             	cardio.setRightArm(rightArmEdema);
             	
             	Edema leftArmEdema = new Edema();
-            	RadioGroup rgpLeftArmEdema = (RadioGroup)findViewById(R.id.rgpLeftArmEdema);
-            	leftArmEdema.setPitting(((RadioButton)findViewById(rgpLeftArmEdema.getCheckedRadioButtonId())).getText().toString() == "Pitting" ? true : false);
+            	leftArmEdema.setPitting(((CheckBox)findViewById(R.id.chkLeftArmPitting)).isChecked());
             	leftArmEdema.setLevel(tryParse(((Spinner)findViewById(R.id.spnLeftArmEdema)).getSelectedItem().toString()));
             	cardio.setLeftArm(leftArmEdema);
             	
             	Edema rigthLegEdema = new Edema();
-            	RadioGroup rgpRightLegEdema = (RadioGroup)findViewById(R.id.rgpRightLegEdema);
-            	rigthLegEdema.setPitting(((RadioButton)findViewById(rgpRightLegEdema.getCheckedRadioButtonId())).getText().toString() == "Pitting" ? true : false);
+            	rigthLegEdema.setPitting(((CheckBox)findViewById(R.id.chkRightLegPitting)).isChecked());
             	rigthLegEdema.setLevel(tryParse(((Spinner)findViewById(R.id.spnRightLegEdema)).getSelectedItem().toString()));
             	cardio.setRightLeg(rigthLegEdema);
             	
             	Edema leftLegEdema = new Edema();
-            	RadioGroup rgpLeftLegEdema = (RadioGroup)findViewById(R.id.rgpLeftLegEdema);
-            	leftLegEdema.setPitting(((RadioButton)findViewById(rgpLeftLegEdema.getCheckedRadioButtonId())).getText().toString() == "Pitting" ? true : false);
+            	leftLegEdema.setPitting(((CheckBox)findViewById(R.id.chkLeftLegPitting)).isChecked());
             	leftLegEdema.setLevel(tryParse(((Spinner)findViewById(R.id.spnLeftLegEdema)).getSelectedItem().toString()));
             	cardio.setLeftLeg(leftLegEdema);
             	
-            	RadioGroup rgpJvd = (RadioGroup)findViewById(R.id.rgpJvd);
-            	cardio.setJvd(((RadioButton)findViewById(rgpJvd.getCheckedRadioButtonId())).getText().toString() == "Yes" ? true : false);
+            	cardio.setJvd(((CheckBox)findViewById(R.id.chkJVD)).isChecked());
             	
             	cardio.setRhythm(((EditText)findViewById(R.id.txtRhythm)).getText().toString());
             	assessment.setCardio(cardio);

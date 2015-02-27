@@ -487,6 +487,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.21"
+                    android:checked="true"
                     android:text="@string/symmetrical" />
 
                 <RadioButton
@@ -508,47 +509,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
-                <RadioGroup
-                    android:id="@+id/rgpCough"
+                <CheckBox
+                    android:id="@+id/chkCough"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
+                    android:text="@string/cough" />
 
-                    <RadioButton
-                        android:id="@+id/rdnCoughYes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.21"
-                        android:text="@string/yes" />
-
-                    <RadioButton
-                        android:id="@+id/rdnCoughNo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.88"
-                        android:text="@string/no" />
-                </RadioGroup>
-
-                <RadioGroup
-                    android:id="@+id/rgpCoughProductive"
+                <CheckBox
+                    android:id="@+id/chkCoughProductive"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
-
-                    <RadioButton
-                        android:id="@+id/rdnCoughProductive"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.88"
-                        android:text="@string/productive" />
-
-                    <RadioButton
-                        android:id="@+id/rdnCoughNonProductive"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.88"
-                        android:text="@string/nonProductive" />
-                </RadioGroup>
+                    android:text="@string/productive" />
             </LinearLayout>
 
             <TextView
@@ -692,6 +663,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.21"
+                    android:checked="true"
                     android:text="@string/lessThan2Sec" />
 
                 <RadioButton
@@ -724,6 +696,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.13"
+                        android:checked="true"
                         android:text="@string/warm" />
 
                     <RadioButton
@@ -781,25 +754,12 @@
                         android:layout_weight="0.48"
                         android:entries="@array/Edema" />
 
-                    <RadioGroup
-                        android:id="@+id/rgpRightArmEdema"
+                    <CheckBox
+                        android:id="@+id/chkRightArmPitting"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" >
-
-                        <RadioButton
-                            android:id="@+id/rdnRightArmPitting"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.12"
-                            android:text="@string/pitting" />
-
-                        <RadioButton
-                            android:id="@+id/rdnRightArmNonPitting"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.88"
-                            android:text="@string/nonPitting" />
-                    </RadioGroup>
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.88"
+                        android:text="@string/pitting" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -821,23 +781,11 @@
                         android:layout_height="wrap_content"
                         android:entries="@array/Edema" />
 
-                    <RadioGroup
-                        android:id="@+id/rgpLeftArmEdema"
+                    <CheckBox
+                        android:id="@+id/chkLeftArmPitting"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" >
-
-                        <RadioButton
-                            android:id="@+id/rdnLeftArmPitting"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/pitting" />
-
-                        <RadioButton
-                            android:id="@+id/rdnLeftArmNonPitting"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/nonPitting" />
-                    </RadioGroup>
+                        android:layout_height="wrap_content"
+                        android:text="@string/pitting" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -859,23 +807,11 @@
                         android:layout_height="wrap_content"
                         android:entries="@array/Edema" />
 
-                    <RadioGroup
-                        android:id="@+id/rgpRightLegEdema"
+                    <CheckBox
+                        android:id="@+id/chkRightLegPitting"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" >
-
-                        <RadioButton
-                            android:id="@+id/rdnRightLegPitting"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/pitting" />
-
-                        <RadioButton
-                            android:id="@+id/rdnRightLegNonPitting"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/nonPitting" />
-                    </RadioGroup>
+                        android:layout_height="wrap_content"
+                        android:text="@string/pitting" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -897,25 +833,11 @@
                         android:layout_weight="0.48"
                         android:entries="@array/Edema" />
 
-                    <RadioGroup
-                        android:id="@+id/rgpLeftLegEdema"
+                    <CheckBox
+                        android:id="@+id/chkLeftLegPitting"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" >
-
-                        <RadioButton
-                            android:id="@+id/rdnLeftLegPitting"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.12"
-                            android:text="@string/pitting" />
-
-                        <RadioButton
-                            android:id="@+id/rdnLeftLegNonPitting"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.88"
-                            android:text="@string/nonPitting" />
-                    </RadioGroup>
+                        android:layout_height="wrap_content"
+                        android:text="@string/pitting" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -926,26 +848,12 @@
                 android:text="@string/jvd"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <RadioGroup
-                android:id="@+id/rgpJvd"
+            <CheckBox
+                android:id="@+id/chkJVD"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-
-                <RadioButton
-                    android:id="@+id/rdnJvdYes"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.16"
-                    android:text="@string/yes" />
-
-                <RadioButton
-                    android:id="@+id/rdnJvdNo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.80"
-                    android:text="@string/no" />
-            </RadioGroup>
+                android:layout_height="0dp"
+                android:layout_weight="0.88"
+                android:text="@string/jvd" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -994,7 +902,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.10"
-                    android:text="@string/normal" />
+                    android:text="@string/normal"
+                    android:checked="true" />
 
                 <RadioButton
                     android:id="@+id/rdnBowelSoundHyperactive"
@@ -1040,7 +949,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.06"
-                        android:text="@string/soft" />
+                        android:text="@string/soft"
+                        android:checked="true" />
 
                     <RadioButton
                         android:id="@+id/rdnAbdomenFirm"
@@ -1083,7 +993,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.06"
-                    android:text="@string/normal" />
+                    android:text="@string/normal"
+                    android:checked="true" />
 
                 <RadioButton
                     android:id="@+id/rdnTurgorTenting"
@@ -1125,7 +1036,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.06"
-                    android:text="@string/normal" />
+                    android:text="@string/normal"
+                    android:checked="true" />
 
                 <RadioButton
                     android:id="@+id/rdnSkinPale"
