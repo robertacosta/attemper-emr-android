@@ -59,6 +59,7 @@ public class AssessmentManagement extends Activity {
 						new Link("https://jbossews-projectemr.rhcloud.com/emr/assessment/" + assessment.getId()));
 				
 				Intent intent = new Intent(view.getContext(), AssessmentDetailsActivity.class);
+				intent.putExtra("patientId", patient.getId());
 				intent.putExtra("assessmentResource", new ParcelableAssessment(assessmentResource));
 				startActivity(intent);
 			}
@@ -68,6 +69,7 @@ public class AssessmentManagement extends Activity {
 		btnAddAssessment.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent addAssessmentIntent = new Intent(v.getContext(), AddAssessmentActivity.class);
+				addAssessmentIntent.putExtra("patientId", patient.getId());
 				startActivity(addAssessmentIntent);
 			}
 		});

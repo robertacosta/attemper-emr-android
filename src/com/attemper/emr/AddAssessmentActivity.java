@@ -42,6 +42,7 @@ import com.attemper.emr.assessment.Respirations;
 import com.attemper.emr.assessment.Respiratory;
 import com.attemper.emr.assessment.Temperature;
 import com.attemper.emr.assessment.Urine;
+import com.attemper.emr.authorized.model.AssociateAssessmentModel;
 
 public class AddAssessmentActivity extends Activity {
 
@@ -50,6 +51,8 @@ public class AddAssessmentActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_assessment);
 		
+		final String patientId = getIntent().getStringExtra("patientId");
+
 		final Button btnSubmit = (Button) findViewById(R.id.btnAddAssessment);
 		btnSubmit.setOnClickListener(new View.OnClickListener() {
 			public int tryParse(String number) {
@@ -186,7 +189,11 @@ public class AddAssessmentActivity extends Activity {
             	gastrointestinal.setEmesis(((CheckBox)findViewById(R.id.chkEmesis)).isChecked());
             	assessment.setGastrointestinal(gastrointestinal);
             	
-            	new HttpRequestTask().execute(assessment);
+            	AssociateAssessmentModel assessmentModel = new AssociateAssessmentModel();
+            	assessmentModel.setAssessment(assessment);
+            	assessmentModel.setPatientId(patientId);
+            	
+            	new HttpRequestTask().execute(assessmentModel);
             }
         });
 	}
@@ -210,10 +217,10 @@ public class AddAssessmentActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	private class HttpRequestTask extends AsyncTask<Assessment, Void, Boolean> {
+	private class HttpRequestTask extends AsyncTask<AssociateAssessmentModel, Void, Boolean> {
         @Override
-        protected Boolean doInBackground(Assessment... assessment) {
-        	final String url = "https://jbossews-projectemr.rhcloud.com/emr/assessment";
+        protected Boolean doInBackground(AssociateAssessmentModel... model) {
+        	final String url = "https://jbossews-projectemr.rhcloud.com/emr/authorized/assessment";
         	
         	// Set the username and password for creating a Basic Auth request
         	HttpAuthentication authHeader = new HttpBasicAuthentication("racosta", "something");
@@ -221,7 +228,7 @@ public class AddAssessmentActivity extends Activity {
         	
         	requestHeaders.setContentType(new MediaType("application","json"));
         	requestHeaders.setAuthorization(authHeader);
-        	HttpEntity<Assessment> requestEntity = new HttpEntity<Assessment>(assessment[0], requestHeaders);
+        	HttpEntity<AssociateAssessmentModel> requestEntity = new HttpEntity<AssociateAssessmentModel>(model[0], requestHeaders);
 
         	// Create a new RestTemplate instance
         	RestTemplate restTemplate = new RestTemplate();
