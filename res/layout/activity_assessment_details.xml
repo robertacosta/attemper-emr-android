@@ -902,8 +902,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.10"
-                    android:text="@string/normal"
-                    android:checked="true" />
+                    android:checked="true"
+                    android:text="@string/normal" />
 
                 <RadioButton
                     android:id="@+id/rdnBowelSoundHyperactive"
@@ -949,8 +949,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.06"
-                        android:text="@string/soft"
-                        android:checked="true" />
+                        android:checked="true"
+                        android:text="@string/soft" />
 
                     <RadioButton
                         android:id="@+id/rdnAbdomenFirm"
@@ -993,8 +993,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.06"
-                    android:text="@string/normal"
-                    android:checked="true" />
+                    android:checked="true"
+                    android:text="@string/normal" />
 
                 <RadioButton
                     android:id="@+id/rdnTurgorTenting"
@@ -1036,8 +1036,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.06"
-                    android:text="@string/normal"
-                    android:checked="true" />
+                    android:checked="true"
+                    android:text="@string/normal" />
 
                 <RadioButton
                     android:id="@+id/rdnSkinPale"
@@ -1147,18 +1147,22 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="end" >
+                android:gravity="start" >
 
                 <Button
                     android:id="@+id/btnDeleteAssessment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
                     android:text="@string/delete_assessment" />
-                
+
                 <Button
                     android:id="@+id/btnEditAssessment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
                     android:text="@string/update_assessment" />
             </RelativeLayout>
         </LinearLayout>

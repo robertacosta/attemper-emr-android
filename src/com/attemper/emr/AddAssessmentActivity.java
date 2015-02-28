@@ -90,7 +90,7 @@ public class AddAssessmentActivity extends Activity {
             	MuscleStrength lowerExtremity = new MuscleStrength();
             	lowerExtremity.setRight(((Spinner)findViewById(R.id.spnLERightMuscleStrength)).getSelectedItem().toString());
             	lowerExtremity.setLeft(((Spinner)findViewById(R.id.spnLELeftMuscleStrength)).getSelectedItem().toString());
-            	neurological.setUpperExtremity(lowerExtremity);
+            	neurological.setLowerExtremity(lowerExtremity);
             	assessment.setNeurological(neurological);
             	
             	Respiratory respiratory = new Respiratory();
