@@ -139,5 +139,7 @@
     <string name="foleyCatheter">Foley Catheter</string>
     <string name="update_assessment">Update Assessment</string>
     <string name="delete_assessment">Delete Assessment</string>
+    <string name="continent">Continent</string>
+    <string name="stool">Stool</string>
 
 </resources>

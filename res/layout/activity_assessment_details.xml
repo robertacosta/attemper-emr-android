@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content" >
 
                 <EditText
-                    android:id="@+id/txtDate"
+                    android:id="@+id/txtDate2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -32,7 +32,7 @@
                     android:inputType="date" />
 
                 <EditText
-                    android:id="@+id/txtTime"
+                    android:id="@+id/txtTime2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -58,7 +58,7 @@
                     android:text="@string/levelOfConsciousness" />
 
                 <Spinner
-                    android:id="@+id/spnLOC"
+                    android:id="@+id/spnLOC2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="10dp"
@@ -73,7 +73,7 @@
                     android:text="@string/orientation" />
 
                 <Spinner
-                    android:id="@+id/spnOrientation"
+                    android:id="@+id/spnOrientation2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -118,7 +118,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnRightEyeSize"
+                            android:id="@+id/spnRightEyeSize2"
                             android:layout_width="161dp"
                             android:layout_height="wrap_content"
                             android:entries="@array/PupilSize" />
@@ -136,7 +136,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnRightEyeReaction"
+                            android:id="@+id/spnRightEyeReaction2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:entries="@array/PupilReaction" />
@@ -169,7 +169,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnLeftEyeSize"
+                            android:id="@+id/spnLeftEyeSize2"
                             android:layout_width="300dp"
                             android:layout_height="wrap_content"
                             android:entries="@array/PupilSize" />
@@ -188,7 +188,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnLeftEyeReaction"
+                            android:id="@+id/spnLeftEyeReaction2"
                             android:layout_width="232dp"
                             android:layout_height="wrap_content"
                             android:entries="@array/PupilReaction" />
@@ -233,7 +233,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnUERightMuscleStrength"
+                            android:id="@+id/spnUERightMuscleStrength2"
                             android:layout_width="170dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.24"
@@ -253,7 +253,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnUELeftMuscleStrength"
+                            android:id="@+id/spnUELeftMuscleStrength2"
                             android:layout_width="184dp"
                             android:layout_height="wrap_content"
                             android:entries="@array/MonitorStrength" />
@@ -285,7 +285,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnLERightMuscleStrength"
+                            android:id="@+id/spnLERightMuscleStrength2"
                             android:layout_width="133dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.48"
@@ -305,7 +305,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnLELeftMuscleStrength"
+                            android:id="@+id/spnLELeftMuscleStrength2"
                             android:layout_width="96dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.48"
@@ -358,7 +358,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnRightAnterior"
+                            android:id="@+id/spnRightAnterior2"
                             android:layout_width="165dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.16"
@@ -378,7 +378,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnRightPosterior"
+                            android:id="@+id/spnRightPosterior2"
                             android:layout_width="173dp"
                             android:layout_height="wrap_content"
                             android:entries="@array/BreathSounds" />
@@ -410,7 +410,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnLeftAnterior"
+                            android:id="@+id/spnLeftAnterior2"
                             android:layout_width="133dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.48"
@@ -430,7 +430,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnLeftPosterior"
+                            android:id="@+id/spnLeftPosterior2"
                             android:layout_width="96dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.48"
@@ -451,19 +451,19 @@
                 android:layout_height="wrap_content" >
 
                 <CheckBox
-                    android:id="@+id/chkNoDistress"
+                    android:id="@+id/chkNoDistress2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/noDistress" />
 
                 <CheckBox
-                    android:id="@+id/chkLabored"
+                    android:id="@+id/chkLabored2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/labored" />
 
                 <CheckBox
-                    android:id="@+id/chkShortnessOfBreath"
+                    android:id="@+id/chkShortnessOfBreath2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/shortnessOfBreath" />
@@ -477,21 +477,20 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioGroup
-                android:id="@+id/rgpChestExcursion"
+                android:id="@+id/rgpChestExcursion2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <RadioButton
-                    android:id="@+id/rdnSymmetrical"
+                    android:id="@+id/rdnSymmetrical2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.21"
-                    android:checked="true"
                     android:text="@string/symmetrical" />
 
                 <RadioButton
-                    android:id="@+id/rdnAsymmetrical"
+                    android:id="@+id/rdnAsymmetrical2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.88"
@@ -510,13 +509,13 @@
                 android:layout_height="wrap_content" >
 
                 <CheckBox
-                    android:id="@+id/chkCough"
+                    android:id="@+id/chkCough2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/cough" />
 
                 <CheckBox
-                    android:id="@+id/chkCoughProductive"
+                    android:id="@+id/chkCoughProductive2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/productive" />
@@ -564,7 +563,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnRightRadialPulse"
+                            android:id="@+id/spnRightRadialPulse2"
                             android:layout_width="96dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.48"
@@ -584,7 +583,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnLeftRadialPulse"
+                            android:id="@+id/spnLeftRadialPulse2"
                             android:layout_width="133dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.48"
@@ -616,7 +615,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnRightPedalPulse"
+                            android:id="@+id/spnRightPedalPulse2"
                             android:layout_width="96dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.48"
@@ -636,7 +635,7 @@
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <Spinner
-                            android:id="@+id/spnLeftPedalPulse"
+                            android:id="@+id/spnLeftPedalPulse2"
                             android:layout_width="133dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.48"
@@ -653,21 +652,20 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioGroup
-                android:id="@+id/rgpCapRefill"
+                android:id="@+id/rgpCapRefill2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <RadioButton
-                    android:id="@+id/rdnCapRefillLess"
+                    android:id="@+id/rdnCapRefillLess2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.21"
-                    android:checked="true"
                     android:text="@string/lessThan2Sec" />
 
                 <RadioButton
-                    android:id="@+id/rdnCapRefillGreater"
+                    android:id="@+id/rdnCapRefillGreater2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.88"
@@ -686,21 +684,20 @@
                 android:layout_height="wrap_content" >
 
                 <RadioGroup
-                    android:id="@+id/rgpSkin"
+                    android:id="@+id/rgpSkin2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" >
 
                     <RadioButton
-                        android:id="@+id/rdnWarm"
+                        android:id="@+id/rdnWarm2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.13"
-                        android:checked="true"
                         android:text="@string/warm" />
 
                     <RadioButton
-                        android:id="@+id/rdnCool"
+                        android:id="@+id/rdnCool2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.28"
@@ -708,14 +705,14 @@
                 </RadioGroup>
 
                 <CheckBox
-                    android:id="@+id/chkClammy"
+                    android:id="@+id/chkClammy2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.12"
                     android:text="@string/clammy" />
 
                 <CheckBox
-                    android:id="@+id/chkDiaphoretic"
+                    android:id="@+id/chkDiaphoretic2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.88"
@@ -748,14 +745,14 @@
                         android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <Spinner
-                        android:id="@+id/spnRightArmEdema"
+                        android:id="@+id/spnRightArmEdema2"
                         android:layout_width="133dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.48"
                         android:entries="@array/Edema" />
 
                     <CheckBox
-                        android:id="@+id/chkRightArmPitting"
+                        android:id="@+id/chkRightArmPitting2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.88"
@@ -776,13 +773,13 @@
                         android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <Spinner
-                        android:id="@+id/spnLeftArmEdema"
+                        android:id="@+id/spnLeftArmEdema2"
                         android:layout_width="133dp"
                         android:layout_height="wrap_content"
                         android:entries="@array/Edema" />
 
                     <CheckBox
-                        android:id="@+id/chkLeftArmPitting"
+                        android:id="@+id/chkLeftArmPitting2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/pitting" />
@@ -802,13 +799,13 @@
                         android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <Spinner
-                        android:id="@+id/spnRightLegEdema"
+                        android:id="@+id/spnRightLegEdema2"
                         android:layout_width="133dp"
                         android:layout_height="wrap_content"
                         android:entries="@array/Edema" />
 
                     <CheckBox
-                        android:id="@+id/chkRightLegPitting"
+                        android:id="@+id/chkRightLegPitting2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/pitting" />
@@ -827,14 +824,14 @@
                         android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <Spinner
-                        android:id="@+id/spnLeftLegEdema"
+                        android:id="@+id/spnLeftLegEdema2"
                         android:layout_width="133dp"
                         android:layout_height="0dp"
                         android:layout_weight="0.48"
                         android:entries="@array/Edema" />
 
                     <CheckBox
-                        android:id="@+id/chkLeftLegPitting"
+                        android:id="@+id/chkLeftLegPitting2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/pitting" />
@@ -849,7 +846,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <CheckBox
-                android:id="@+id/chkJVD"
+                android:id="@+id/chkJVD2"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="0.88"
@@ -868,7 +865,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <EditText
-                    android:id="@+id/txtRhythm"
+                    android:id="@+id/txtRhythm2"
                     android:layout_width="183dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.84"
@@ -892,35 +889,34 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioGroup
-                android:id="@+id/rgpBowelSounds"
+                android:id="@+id/rgpBowelSounds2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <RadioButton
-                    android:id="@+id/rdnBowelSoundNormal"
+                    android:id="@+id/rdnBowelSoundNormal2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.10"
-                    android:checked="true"
                     android:text="@string/normal" />
 
                 <RadioButton
-                    android:id="@+id/rdnBowelSoundHyperactive"
+                    android:id="@+id/rdnBowelSoundHyperactive2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.16"
                     android:text="@string/hyperactive" />
 
                 <RadioButton
-                    android:id="@+id/rdnBowelSoundHypoactive"
+                    android:id="@+id/rdnBowelSoundHypoactive2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.16"
                     android:text="@string/hypoactive" />
 
                 <RadioButton
-                    android:id="@+id/rdnBowelSoundAbsent"
+                    android:id="@+id/rdnBowelSoundAbsent2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.80"
@@ -939,28 +935,27 @@
                 android:layout_height="wrap_content" >
 
                 <RadioGroup
-                    android:id="@+id/rgpAbdomen"
+                    android:id="@+id/rgpAbdomen2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" >
 
                     <RadioButton
-                        android:id="@+id/rdnAbdomenSoft"
+                        android:id="@+id/rdnAbdomenSoft2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.06"
-                        android:checked="true"
                         android:text="@string/soft" />
 
                     <RadioButton
-                        android:id="@+id/rdnAbdomenFirm"
+                        android:id="@+id/rdnAbdomenFirm2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.05"
                         android:text="@string/firm" />
 
                     <RadioButton
-                        android:id="@+id/rdnAbdomenHard"
+                        android:id="@+id/rdnAbdomenHard2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.16"
@@ -968,7 +963,7 @@
                 </RadioGroup>
 
                 <CheckBox
-                    android:id="@+id/chkDistended"
+                    android:id="@+id/chkDistended2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.13"
@@ -983,35 +978,34 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioGroup
-                android:id="@+id/rgpTurgor"
+                android:id="@+id/rgpTurgor2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <RadioButton
-                    android:id="@+id/rdnTurgorNormal"
+                    android:id="@+id/rdnTurgorNormal2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.06"
-                    android:checked="true"
                     android:text="@string/normal" />
 
                 <RadioButton
-                    android:id="@+id/rdnTurgorTenting"
+                    android:id="@+id/rdnTurgorTenting2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.05"
                     android:text="@string/tenting" />
 
                 <RadioButton
-                    android:id="@+id/rdnTurgorTaut"
+                    android:id="@+id/rdnTurgorTaut2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.16"
                     android:text="@string/taut" />
 
                 <RadioButton
-                    android:id="@+id/rdnTurgorShiny"
+                    android:id="@+id/rdnTurgorShiny2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.16"
@@ -1026,42 +1020,41 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioGroup
-                android:id="@+id/rgpSkinColor"
+                android:id="@+id/rgpSkinColor2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal" >
 
                 <RadioButton
-                    android:id="@+id/rdnSkinNormal"
+                    android:id="@+id/rdnSkinNormal2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.06"
-                    android:checked="true"
                     android:text="@string/normal" />
 
                 <RadioButton
-                    android:id="@+id/rdnSkinPale"
+                    android:id="@+id/rdnSkinPale2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.05"
                     android:text="@string/pale" />
 
                 <RadioButton
-                    android:id="@+id/rdnSkinFlushed"
+                    android:id="@+id/rdnSkinFlushed2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.16"
                     android:text="@string/flushed" />
 
                 <RadioButton
-                    android:id="@+id/rdnSkinCyanotic"
+                    android:id="@+id/rdnSkinCyanotic2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.16"
                     android:text="@string/cyanotic" />
 
                 <RadioButton
-                    android:id="@+id/rdnSkinJaundiced"
+                    android:id="@+id/rdnSkinJaundiced2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.16"
@@ -1092,7 +1085,7 @@
                         android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <Spinner
-                        android:id="@+id/spnUrineColor"
+                        android:id="@+id/spnUrineColor2"
                         android:layout_width="161dp"
                         android:layout_height="wrap_content"
                         android:entries="@array/UrineColor" />
@@ -1111,14 +1104,14 @@
                         android:textAppearance="?android:attr/textAppearanceSmall" />
 
                     <Spinner
-                        android:id="@+id/spnUrineCharacter"
+                        android:id="@+id/spnUrineCharacter2"
                         android:layout_width="172dp"
                         android:layout_height="wrap_content"
                         android:entries="@array/UrineCharacter" />
                 </LinearLayout>
 
                 <CheckBox
-                    android:id="@+id/chkUrineFoleyCatheter"
+                    android:id="@+id/chkUrineFoleyCatheter2"
                     android:layout_width="0dp"
                     android:layout_height="48dp"
                     android:layout_weight="0.13"
@@ -1129,15 +1122,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" >
 
+                <TextView
+                    android:id="@+id/lblStoolContinent"
+                    android:layout_width="57dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:text="@string/stool" />
+
                 <CheckBox
-                    android:id="@+id/chkNausea"
+                    android:id="@+id/chkStoolContinent2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/continent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <CheckBox
+                    android:id="@+id/chkNausea2"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:layout_weight="0.13"
                     android:text="@string/nausea" />
 
                 <CheckBox
-                    android:id="@+id/chkEmesis"
+                    android:id="@+id/chkEmesis2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.13"

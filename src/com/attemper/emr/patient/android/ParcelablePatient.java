@@ -1,5 +1,8 @@
 package com.attemper.emr.patient.android;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.hateoas.Link;
 
 import android.os.Parcel;
@@ -78,6 +81,8 @@ public class ParcelablePatient implements Parcelable {
 		dest.writeString(patient.getFluShotDate());
 		dest.writeInt(patient.isHasPneumoniaShot() ? 1 : 0);
 		dest.writeString(patient.getPneumoniaShotDate());
+		
+		dest.writeStringList(patient.getAssessments());
 	}
 	
 	// this is used to regenerate your object. All Parcelables must have a CREATOR that implements these two methods
@@ -144,6 +149,10 @@ public class ParcelablePatient implements Parcelable {
     	patient.setFluShotDate(in.readString());
     	patient.setHasPneumoniaShot(in.readInt() == 1);
     	patient.setPneumoniaShotDate(in.readString());
+    	
+    	List<String> aseessments = new ArrayList<String>();
+    	in.readStringList(aseessments);
+    	patient.setAssessments(aseessments);
     	
     	patientResource = new PatientResource(patient, resourceLink);
     }

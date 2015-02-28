@@ -1,5 +1,7 @@
 package com.attemper.emr;
 
+import java.util.List;
+
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.springframework.http.HttpAuthentication;
@@ -53,6 +55,7 @@ public class PatientDetailsActivity extends Activity {
 		final ParcelablePatient parcelablePatient = (ParcelablePatient) getIntent().getParcelableExtra("patientResource");
 		final PatientResource patientResource = parcelablePatient.getPatientResource();
 		final Patient patient = patientResource.getContent();
+		final List<String> assessmentIds = patient.getAssessments();
 		
 		((EditText)findViewById(R.id.txtFirstName)).setText(patient.getFirstName());
 		((EditText)findViewById(R.id.txtMiddleName)).setText(patient.getMiddleName());
@@ -163,6 +166,8 @@ public class PatientDetailsActivity extends Activity {
             	insurance.setPolicyNumber(((EditText)findViewById(R.id.txtInsPolicyNumber)).getText().toString());
             	insurance.setPhoneNumber(((EditText)findViewById(R.id.txtInsPhoneNumber)).getText().toString());
             	patient.setInsurance(insurance);
+            	
+            	patient.setAssessments(assessmentIds); // Don't want to lose the existing assessments
             	
             	new HttpRequestTask(patientResource.getId().getHref()).execute(patient);
             }

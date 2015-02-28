@@ -66,8 +66,8 @@
         <item>Fixed</item>
     </string-array>
     <string-array name="MonitorStrength">
-        <item>+5 - able to move against full resistence</item>
-        <item>+4 - able to move against gravity and some resistence</item>
+        <item>+5 - able to move against full resistance</item>
+        <item>+4 - able to move against gravity and some resistance</item>
         <item>+3 - able to move against gravity, but no resistance</item>
         <item>+2 - weak movement, unable to overcome gravity</item>
         <item>+1 - flicker of muscle movement</item>

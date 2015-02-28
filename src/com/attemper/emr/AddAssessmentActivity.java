@@ -185,6 +185,7 @@ public class AddAssessmentActivity extends Activity {
             	urine.setCharacter(((Spinner)findViewById(R.id.spnUrineCharacter)).getSelectedItem().toString());
             	urine.setFoleyCatheter(((CheckBox)findViewById(R.id.chkUrineFoleyCatheter)).isChecked());
             	gastrointestinal.setUrine(urine);
+            	gastrointestinal.setStoolContinent(((CheckBox)findViewById(R.id.chkStoolContinent)).isChecked());
             	gastrointestinal.setNausea(((CheckBox)findViewById(R.id.chkNausea)).isChecked());
             	gastrointestinal.setEmesis(((CheckBox)findViewById(R.id.chkEmesis)).isChecked());
             	assessment.setGastrointestinal(gastrointestinal);

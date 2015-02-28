@@ -902,8 +902,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.10"
-                    android:text="@string/normal"
-                    android:checked="true" />
+                    android:checked="true"
+                    android:text="@string/normal" />
 
                 <RadioButton
                     android:id="@+id/rdnBowelSoundHyperactive"
@@ -949,8 +949,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.06"
-                        android:text="@string/soft"
-                        android:checked="true" />
+                        android:checked="true"
+                        android:text="@string/soft" />
 
                     <RadioButton
                         android:id="@+id/rdnAbdomenFirm"
@@ -993,8 +993,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.06"
-                    android:text="@string/normal"
-                    android:checked="true" />
+                    android:checked="true"
+                    android:text="@string/normal" />
 
                 <RadioButton
                     android:id="@+id/rdnTurgorTenting"
@@ -1036,8 +1036,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.06"
-                    android:text="@string/normal"
-                    android:checked="true" />
+                    android:checked="true"
+                    android:text="@string/normal" />
 
                 <RadioButton
                     android:id="@+id/rdnSkinPale"
@@ -1123,6 +1123,24 @@
                     android:layout_height="48dp"
                     android:layout_weight="0.13"
                     android:text="@string/foleyCatheter" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/lblStoolContinent"
+                    android:layout_width="57dp"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:text="@string/stool" />
+
+                <CheckBox
+                    android:id="@+id/chkStoolContinent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:text="@string/continent" />
             </LinearLayout>
 
             <LinearLayout

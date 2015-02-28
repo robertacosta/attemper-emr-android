@@ -59,84 +59,85 @@ public class AssessmentDetailsActivity extends Activity {
 		
 		final String patientId = getIntent().getStringExtra("patientId");
 		
-		((EditText)findViewById(R.id.txtDate)).setText(assessment.getDate());
-		((EditText)findViewById(R.id.txtTime)).setText(assessment.getTime());
+		((EditText)findViewById(R.id.txtDate2)).setText(assessment.getDate());
+		((EditText)findViewById(R.id.txtTime2)).setText(assessment.getTime());
 		
-		setSpinnerValue(assessment.getNeurological().getLevelOfConsciousness(), getResources().getStringArray(R.array.LevelOfConsciousness), R.id.spnLOC);
+		setSpinnerValue(assessment.getNeurological().getLevelOfConsciousness(), getResources().getStringArray(R.array.LevelOfConsciousness), R.id.spnLOC2);
 
-		setSpinnerValue(assessment.getNeurological().getOrientation(), getResources().getStringArray(R.array.Orientation), R.id.spnOrientation);
+		setSpinnerValue(assessment.getNeurological().getOrientation(), getResources().getStringArray(R.array.Orientation), R.id.spnOrientation2);
 		
 		String[] pupilSizes = getResources().getStringArray(R.array.PupilSize);
 		String[] pupilReactions = getResources().getStringArray(R.array.PupilReaction);
-		setSpinnerValue(String.valueOf(assessment.getNeurological().getRightPupil().getSize()), pupilSizes, R.id.spnRightEyeSize);
-		setSpinnerValue(assessment.getNeurological().getRightPupil().getReaction(), pupilReactions, R.id.spnRightEyeReaction);
-		setSpinnerValue(String.valueOf(assessment.getNeurological().getLeftPupil().getSize()), pupilSizes, R.id.spnLeftEyeSize);
-		setSpinnerValue(assessment.getNeurological().getLeftPupil().getReaction(), pupilReactions, R.id.spnLeftEyeReaction);
+		setSpinnerValue(String.valueOf(assessment.getNeurological().getRightPupil().getSize()), pupilSizes, R.id.spnRightEyeSize2);
+		setSpinnerValue(assessment.getNeurological().getRightPupil().getReaction(), pupilReactions, R.id.spnRightEyeReaction2);
+		setSpinnerValue(String.valueOf(assessment.getNeurological().getLeftPupil().getSize()), pupilSizes, R.id.spnLeftEyeSize2);
+		setSpinnerValue(assessment.getNeurological().getLeftPupil().getReaction(), pupilReactions, R.id.spnLeftEyeReaction2);
 		
 		String[] muscleStrengths = getResources().getStringArray(R.array.MonitorStrength);
-		setSpinnerValue(assessment.getNeurological().getUpperExtremity().getRight(), muscleStrengths, R.id.spnUERightMuscleStrength);
-		setSpinnerValue(assessment.getNeurological().getUpperExtremity().getLeft(), muscleStrengths, R.id.spnUELeftMuscleStrength);
-		setSpinnerValue(assessment.getNeurological().getLowerExtremity().getRight(), muscleStrengths, R.id.spnLERightMuscleStrength);
-		setSpinnerValue(assessment.getNeurological().getLowerExtremity().getLeft(), muscleStrengths, R.id.spnLELeftMuscleStrength);
+		setSpinnerValue(assessment.getNeurological().getUpperExtremity().getRight(), muscleStrengths, R.id.spnUERightMuscleStrength2);
+		setSpinnerValue(assessment.getNeurological().getUpperExtremity().getLeft(), muscleStrengths, R.id.spnUELeftMuscleStrength2);
+		setSpinnerValue(assessment.getNeurological().getLowerExtremity().getRight(), muscleStrengths, R.id.spnLERightMuscleStrength2);
+		setSpinnerValue(assessment.getNeurological().getLowerExtremity().getLeft(), muscleStrengths, R.id.spnLELeftMuscleStrength2);
 		
 		String[] breathSounds = getResources().getStringArray(R.array.BreathSounds);
-		setSpinnerValue(assessment.getRespiratory().getRightBreathSounds().getAnterior(), breathSounds, R.id.spnRightAnterior);
-		setSpinnerValue(assessment.getRespiratory().getRightBreathSounds().getPosterior(), breathSounds, R.id.spnRightPosterior);
-		setSpinnerValue(assessment.getRespiratory().getLeftBreathSounds().getAnterior(), breathSounds, R.id.spnLeftAnterior);
-		setSpinnerValue(assessment.getRespiratory().getLeftBreathSounds().getPosterior(), breathSounds, R.id.spnLeftPosterior);
+		setSpinnerValue(assessment.getRespiratory().getRightBreathSounds().getAnterior(), breathSounds, R.id.spnRightAnterior2);
+		setSpinnerValue(assessment.getRespiratory().getRightBreathSounds().getPosterior(), breathSounds, R.id.spnRightPosterior2);
+		setSpinnerValue(assessment.getRespiratory().getLeftBreathSounds().getAnterior(), breathSounds, R.id.spnLeftAnterior2);
+		setSpinnerValue(assessment.getRespiratory().getLeftBreathSounds().getPosterior(), breathSounds, R.id.spnLeftPosterior2);
 		
-		((CheckBox)findViewById(R.id.chkLabored)).setChecked(assessment.getRespiratory().getRespirations().isLabored());
-		((CheckBox)findViewById(R.id.chkNoDistress)).setChecked(assessment.getRespiratory().getRespirations().isNoDistress());
-		((CheckBox)findViewById(R.id.chkShortnessOfBreath)).setChecked(assessment.getRespiratory().getRespirations().isShortnessOfBreath());
+		((CheckBox)findViewById(R.id.chkLabored2)).setChecked(assessment.getRespiratory().getRespirations().isLabored());
+		((CheckBox)findViewById(R.id.chkNoDistress2)).setChecked(assessment.getRespiratory().getRespirations().isNoDistress());
+		((CheckBox)findViewById(R.id.chkShortnessOfBreath2)).setChecked(assessment.getRespiratory().getRespirations().isShortnessOfBreath());
 	
-		setRadioValue(assessment.getRespiratory().getChestExcursion(), R.id.rgpChestExcursion);
+		setRadioValue(assessment.getRespiratory().getChestExcursion(), R.id.rgpChestExcursion2);
 		
-		((CheckBox)findViewById(R.id.chkCough)).setChecked(assessment.getRespiratory().getCough().isPresent());
-		((CheckBox)findViewById(R.id.chkCoughProductive)).setChecked(assessment.getRespiratory().getCough().isProductive());
+		((CheckBox)findViewById(R.id.chkCough2)).setChecked(assessment.getRespiratory().getCough().isPresent());
+		((CheckBox)findViewById(R.id.chkCoughProductive2)).setChecked(assessment.getRespiratory().getCough().isProductive());
 		
 		String[] pulses = getResources().getStringArray(R.array.Pulse);
-		setSpinnerValue(assessment.getCardio().getRadialPulse().getRight(), pulses, R.id.spnRightRadialPulse);
-		setSpinnerValue(assessment.getCardio().getRadialPulse().getLeft(), pulses, R.id.spnLeftRadialPulse);
-		setSpinnerValue(assessment.getCardio().getPedalPulse().getRight(), pulses, R.id.spnRightPedalPulse);
-		setSpinnerValue(assessment.getCardio().getPedalPulse().getLeft(), pulses, R.id.spnLeftPedalPulse);
+		setSpinnerValue(assessment.getCardio().getRadialPulse().getRight(), pulses, R.id.spnRightRadialPulse2);
+		setSpinnerValue(assessment.getCardio().getRadialPulse().getLeft(), pulses, R.id.spnLeftRadialPulse2);
+		setSpinnerValue(assessment.getCardio().getPedalPulse().getRight(), pulses, R.id.spnRightPedalPulse2);
+		setSpinnerValue(assessment.getCardio().getPedalPulse().getLeft(), pulses, R.id.spnLeftPedalPulse2);
 		
-		setRadioValue(assessment.getCardio().getCapillaryRefill(), R.id.rgpCapRefill);
+		setRadioValue(assessment.getCardio().getCapillaryRefill(), R.id.rgpCapRefill2);
 		
-		setRadioValue(assessment.getCardio().getTemperature().isWarm() ? "Warm" : "Cool", R.id.rgpSkin);
-		((CheckBox)findViewById(R.id.chkClammy)).setChecked(assessment.getCardio().getTemperature().isClammy());
-		((CheckBox)findViewById(R.id.chkDiaphoretic)).setChecked(assessment.getCardio().getTemperature().isDiaphoretic());
+		setRadioValue(assessment.getCardio().getTemperature().isWarm() ? "Warm" : "Cool", R.id.rgpSkin2);
+		((CheckBox)findViewById(R.id.chkClammy2)).setChecked(assessment.getCardio().getTemperature().isClammy());
+		((CheckBox)findViewById(R.id.chkDiaphoretic2)).setChecked(assessment.getCardio().getTemperature().isDiaphoretic());
 		
-		((CheckBox)findViewById(R.id.chkRightArmPitting)).setChecked(assessment.getCardio().getRightArm().isPitting());
-		((CheckBox)findViewById(R.id.chkLeftArmPitting)).setChecked(assessment.getCardio().getLeftArm().isPitting());
-		((CheckBox)findViewById(R.id.chkRightLegPitting)).setChecked(assessment.getCardio().getRightLeg().isPitting());
-		((CheckBox)findViewById(R.id.chkLeftLegPitting)).setChecked(assessment.getCardio().getLeftLeg().isPitting());
+		((CheckBox)findViewById(R.id.chkRightArmPitting2)).setChecked(assessment.getCardio().getRightArm().isPitting());
+		((CheckBox)findViewById(R.id.chkLeftArmPitting2)).setChecked(assessment.getCardio().getLeftArm().isPitting());
+		((CheckBox)findViewById(R.id.chkRightLegPitting2)).setChecked(assessment.getCardio().getRightLeg().isPitting());
+		((CheckBox)findViewById(R.id.chkLeftLegPitting2)).setChecked(assessment.getCardio().getLeftLeg().isPitting());
 		String[] edemas = getResources().getStringArray(R.array.Edema);
-		setSpinnerValue("+" + assessment.getCardio().getRightArm().getLevel(), edemas, R.id.spnRightArmEdema);
-		setSpinnerValue("+" + assessment.getCardio().getLeftArm().getLevel(), edemas, R.id.spnLeftArmEdema);
-		setSpinnerValue("+" + assessment.getCardio().getRightLeg().getLevel(), edemas, R.id.spnRightLegEdema);
-		setSpinnerValue("+" + assessment.getCardio().getLeftLeg().getLevel(), edemas, R.id.spnLeftLegEdema);
+		setSpinnerValue("+" + assessment.getCardio().getRightArm().getLevel(), edemas, R.id.spnRightArmEdema2);
+		setSpinnerValue("+" + assessment.getCardio().getLeftArm().getLevel(), edemas, R.id.spnLeftArmEdema2);
+		setSpinnerValue("+" + assessment.getCardio().getRightLeg().getLevel(), edemas, R.id.spnRightLegEdema2);
+		setSpinnerValue("+" + assessment.getCardio().getLeftLeg().getLevel(), edemas, R.id.spnLeftLegEdema2);
 	
-		((CheckBox)findViewById(R.id.chkJVD)).setChecked(assessment.getCardio().isJvd());
+		((CheckBox)findViewById(R.id.chkJVD2)).setChecked(assessment.getCardio().isJvd());
 		
-		((EditText)findViewById(R.id.txtRhythm)).setText(assessment.getCardio().getRhythm());
+		((EditText)findViewById(R.id.txtRhythm2)).setText(assessment.getCardio().getRhythm());
 		
-		setRadioValue(assessment.getGastrointestinal().getBowelSounds(), R.id.rgpBowelSounds);
+		setRadioValue(assessment.getGastrointestinal().getBowelSounds(), R.id.rgpBowelSounds2);
 		
-		setRadioValue(assessment.getGastrointestinal().getAbdomen().getFeeling(), R.id.rgpAbdomen);
-		((CheckBox)findViewById(R.id.chkDistended)).setChecked(assessment.getGastrointestinal().getAbdomen().isDistended());
+		setRadioValue(assessment.getGastrointestinal().getAbdomen().getFeeling(), R.id.rgpAbdomen2);
+		((CheckBox)findViewById(R.id.chkDistended2)).setChecked(assessment.getGastrointestinal().getAbdomen().isDistended());
 		
-		setRadioValue(assessment.getGastrointestinal().getTurgor(), R.id.rgpTurgor);
+		setRadioValue(assessment.getGastrointestinal().getTurgor(), R.id.rgpTurgor2);
 		
-		setRadioValue(assessment.getGastrointestinal().getSkin(), R.id.rgpSkinColor);
+		setRadioValue(assessment.getGastrointestinal().getSkin(), R.id.rgpSkinColor2);
 		
 		String[] colors = getResources().getStringArray(R.array.UrineColor);
 		String[] characters = getResources().getStringArray(R.array.UrineCharacter);
-		setSpinnerValue(assessment.getGastrointestinal().getUrine().getColor(), colors, R.id.spnUrineColor);
-		setSpinnerValue(assessment.getGastrointestinal().getUrine().getCharacter(), characters, R.id.spnUrineCharacter);
-		((CheckBox)findViewById(R.id.chkUrineFoleyCatheter)).setChecked(assessment.getGastrointestinal().getUrine().isFoleyCatheter());
+		setSpinnerValue(assessment.getGastrointestinal().getUrine().getColor(), colors, R.id.spnUrineColor2);
+		setSpinnerValue(assessment.getGastrointestinal().getUrine().getCharacter(), characters, R.id.spnUrineCharacter2);
+		((CheckBox)findViewById(R.id.chkUrineFoleyCatheter2)).setChecked(assessment.getGastrointestinal().getUrine().isFoleyCatheter());
 		
-		((CheckBox)findViewById(R.id.chkNausea)).setChecked(assessment.getGastrointestinal().isNausea());
-		((CheckBox)findViewById(R.id.chkEmesis)).setChecked(assessment.getGastrointestinal().isEmesis());
+		((CheckBox)findViewById(R.id.chkStoolContinent2)).setChecked(assessment.getGastrointestinal().isStoolContinent());
+		((CheckBox)findViewById(R.id.chkNausea2)).setChecked(assessment.getGastrointestinal().isNausea());
+		((CheckBox)findViewById(R.id.chkEmesis2)).setChecked(assessment.getGastrointestinal().isEmesis());
 		
 		final Button btnSubmit = (Button) findViewById(R.id.btnEditAssessment);
 		btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -150,128 +151,129 @@ public class AssessmentDetailsActivity extends Activity {
 			
             public void onClick(View v) {
             	Assessment assessment = new Assessment();
-            	assessment.setDate(((EditText)findViewById(R.id.txtDate)).getText().toString());
-            	assessment.setTime(((EditText)findViewById(R.id.txtTime)).getText().toString());
+            	assessment.setDate(((EditText)findViewById(R.id.txtDate2)).getText().toString());
+            	assessment.setTime(((EditText)findViewById(R.id.txtTime2)).getText().toString());
             	
             	Neurological neurological = new Neurological();
-            	neurological.setLevelOfConsciousness(((Spinner)findViewById(R.id.spnLOC)).getSelectedItem().toString());
-            	neurological.setOrientation(((Spinner)findViewById(R.id.spnOrientation)).getSelectedItem().toString());
+            	neurological.setLevelOfConsciousness(((Spinner)findViewById(R.id.spnLOC2)).getSelectedItem().toString());
+            	neurological.setOrientation(((Spinner)findViewById(R.id.spnOrientation2)).getSelectedItem().toString());
             	
             	Pupil rightEye = new Pupil();
-            	rightEye.setSize(tryParse(((Spinner)findViewById(R.id.spnRightEyeSize)).getSelectedItem().toString()));
-            	rightEye.setReaction(((Spinner)findViewById(R.id.spnRightEyeReaction)).getSelectedItem().toString());
+            	rightEye.setSize(tryParse(((Spinner)findViewById(R.id.spnRightEyeSize2)).getSelectedItem().toString()));
+            	rightEye.setReaction(((Spinner)findViewById(R.id.spnRightEyeReaction2)).getSelectedItem().toString());
             	neurological.setRightPupil(rightEye);
             	
             	Pupil leftEye = new Pupil();
-            	leftEye.setSize(tryParse(((Spinner)findViewById(R.id.spnLeftEyeSize)).getSelectedItem().toString()));
-            	leftEye.setReaction(((Spinner)findViewById(R.id.spnLeftEyeReaction)).getSelectedItem().toString());
+            	leftEye.setSize(tryParse(((Spinner)findViewById(R.id.spnLeftEyeSize2)).getSelectedItem().toString()));
+            	leftEye.setReaction(((Spinner)findViewById(R.id.spnLeftEyeReaction2)).getSelectedItem().toString());
             	neurological.setLeftPupil(leftEye);
             	
             	MuscleStrength upperExtremity = new MuscleStrength();
-            	upperExtremity.setRight(((Spinner)findViewById(R.id.spnUERightMuscleStrength)).getSelectedItem().toString());
-            	upperExtremity.setLeft(((Spinner)findViewById(R.id.spnUELeftMuscleStrength)).getSelectedItem().toString());
+            	upperExtremity.setRight(((Spinner)findViewById(R.id.spnUERightMuscleStrength2)).getSelectedItem().toString());
+            	upperExtremity.setLeft(((Spinner)findViewById(R.id.spnUELeftMuscleStrength2)).getSelectedItem().toString());
             	neurological.setUpperExtremity(upperExtremity);
             	
             	MuscleStrength lowerExtremity = new MuscleStrength();
-            	lowerExtremity.setRight(((Spinner)findViewById(R.id.spnLERightMuscleStrength)).getSelectedItem().toString());
-            	lowerExtremity.setLeft(((Spinner)findViewById(R.id.spnLELeftMuscleStrength)).getSelectedItem().toString());
+            	lowerExtremity.setRight(((Spinner)findViewById(R.id.spnLERightMuscleStrength2)).getSelectedItem().toString());
+            	lowerExtremity.setLeft(((Spinner)findViewById(R.id.spnLELeftMuscleStrength2)).getSelectedItem().toString());
             	neurological.setLowerExtremity(lowerExtremity);
             	assessment.setNeurological(neurological);
             	
             	Respiratory respiratory = new Respiratory();
             	BreathSounds rightBreathSounds = new BreathSounds();
-            	rightBreathSounds.setAnterior(((Spinner)findViewById(R.id.spnRightAnterior)).getSelectedItem().toString());
-            	rightBreathSounds.setPosterior(((Spinner)findViewById(R.id.spnRightPosterior)).getSelectedItem().toString());
+            	rightBreathSounds.setAnterior(((Spinner)findViewById(R.id.spnRightAnterior2)).getSelectedItem().toString());
+            	rightBreathSounds.setPosterior(((Spinner)findViewById(R.id.spnRightPosterior2)).getSelectedItem().toString());
             	respiratory.setRightBreathSounds(rightBreathSounds);
             	
             	BreathSounds leftBreathSounds = new BreathSounds();
-            	leftBreathSounds.setAnterior(((Spinner)findViewById(R.id.spnLeftAnterior)).getSelectedItem().toString());
-            	leftBreathSounds.setPosterior(((Spinner)findViewById(R.id.spnLeftPosterior)).getSelectedItem().toString());
+            	leftBreathSounds.setAnterior(((Spinner)findViewById(R.id.spnLeftAnterior2)).getSelectedItem().toString());
+            	leftBreathSounds.setPosterior(((Spinner)findViewById(R.id.spnLeftPosterior2)).getSelectedItem().toString());
             	respiratory.setLeftBreathSounds(leftBreathSounds);
             	
             	Respirations respirations = new Respirations();
-            	respirations.setLabored(((CheckBox)findViewById(R.id.chkLabored)).isChecked());
-            	respirations.setNoDistress(((CheckBox)findViewById(R.id.chkNoDistress)).isChecked());
-            	respirations.setShortnessOfBreath(((CheckBox)findViewById(R.id.chkShortnessOfBreath)).isChecked());
+            	respirations.setLabored(((CheckBox)findViewById(R.id.chkLabored2)).isChecked());
+            	respirations.setNoDistress(((CheckBox)findViewById(R.id.chkNoDistress2)).isChecked());
+            	respirations.setShortnessOfBreath(((CheckBox)findViewById(R.id.chkShortnessOfBreath2)).isChecked());
             	respiratory.setRespirations(respirations);
-            	RadioGroup chestExcursion = (RadioGroup)findViewById(R.id.rgpChestExcursion);
+            	RadioGroup chestExcursion = (RadioGroup)findViewById(R.id.rgpChestExcursion2);
             	respiratory.setChestExcursion(((RadioButton)findViewById(chestExcursion.getCheckedRadioButtonId())).getText().toString());
             	
             	Cough cough = new Cough();
-            	cough.setPresent(((CheckBox)findViewById(R.id.chkCough)).isChecked());
-            	cough.setProductive(((CheckBox)findViewById(R.id.chkCoughProductive)).isChecked());
+            	cough.setPresent(((CheckBox)findViewById(R.id.chkCough2)).isChecked());
+            	cough.setProductive(((CheckBox)findViewById(R.id.chkCoughProductive2)).isChecked());
             	respiratory.setCough(cough);
             	assessment.setRespiratory(respiratory);
             	
             	Cardio cardio = new Cardio();
             	Pulse radialPulse = new Pulse();
-            	radialPulse.setRight(((Spinner)findViewById(R.id.spnRightRadialPulse)).getSelectedItem().toString());
-            	radialPulse.setLeft(((Spinner)findViewById(R.id.spnLeftRadialPulse)).getSelectedItem().toString());
+            	radialPulse.setRight(((Spinner)findViewById(R.id.spnRightRadialPulse2)).getSelectedItem().toString());
+            	radialPulse.setLeft(((Spinner)findViewById(R.id.spnLeftRadialPulse2)).getSelectedItem().toString());
             	cardio.setRadialPulse(radialPulse);
             	
             	Pulse pedalPulse = new Pulse();
-            	pedalPulse.setRight(((Spinner)findViewById(R.id.spnRightPedalPulse)).getSelectedItem().toString());
-            	pedalPulse.setLeft(((Spinner)findViewById(R.id.spnLeftPedalPulse)).getSelectedItem().toString());
+            	pedalPulse.setRight(((Spinner)findViewById(R.id.spnRightPedalPulse2)).getSelectedItem().toString());
+            	pedalPulse.setLeft(((Spinner)findViewById(R.id.spnLeftPedalPulse2)).getSelectedItem().toString());
             	cardio.setPedalPulse(pedalPulse);
             	
-            	RadioGroup rgpCapillaryRefill = (RadioGroup)findViewById(R.id.rgpCapRefill);
+            	RadioGroup rgpCapillaryRefill = (RadioGroup)findViewById(R.id.rgpCapRefill2);
             	cardio.setCapillaryRefill(((RadioButton)findViewById(rgpCapillaryRefill.getCheckedRadioButtonId())).getText().toString());
             	
             	Temperature temperature = new Temperature();
-            	RadioGroup rgpTemperature = (RadioGroup)findViewById(R.id.rgpSkin);
+            	RadioGroup rgpTemperature = (RadioGroup)findViewById(R.id.rgpSkin2);
             	temperature.setWarm(((RadioButton)findViewById(rgpTemperature.getCheckedRadioButtonId())).getText().toString().compareTo("Warm") == 0 ? true : false);
-            	temperature.setClammy(((CheckBox)findViewById(R.id.chkClammy)).isChecked());
-            	temperature.setDiaphoretic(((CheckBox)findViewById(R.id.chkDiaphoretic)).isChecked());
+            	temperature.setClammy(((CheckBox)findViewById(R.id.chkClammy2)).isChecked());
+            	temperature.setDiaphoretic(((CheckBox)findViewById(R.id.chkDiaphoretic2)).isChecked());
             	cardio.setTemperature(temperature);
             	
             	Edema rightArmEdema = new Edema();
-            	rightArmEdema.setPitting(((CheckBox)findViewById(R.id.chkRightArmPitting)).isChecked());
-            	rightArmEdema.setLevel(tryParse(((Spinner)findViewById(R.id.spnRightArmEdema)).getSelectedItem().toString()));
+            	rightArmEdema.setPitting(((CheckBox)findViewById(R.id.chkRightArmPitting2)).isChecked());
+            	rightArmEdema.setLevel(tryParse(((Spinner)findViewById(R.id.spnRightArmEdema2)).getSelectedItem().toString()));
             	cardio.setRightArm(rightArmEdema);
             	
             	Edema leftArmEdema = new Edema();
-            	leftArmEdema.setPitting(((CheckBox)findViewById(R.id.chkLeftArmPitting)).isChecked());
-            	leftArmEdema.setLevel(tryParse(((Spinner)findViewById(R.id.spnLeftArmEdema)).getSelectedItem().toString()));
+            	leftArmEdema.setPitting(((CheckBox)findViewById(R.id.chkLeftArmPitting2)).isChecked());
+            	leftArmEdema.setLevel(tryParse(((Spinner)findViewById(R.id.spnLeftArmEdema2)).getSelectedItem().toString()));
             	cardio.setLeftArm(leftArmEdema);
             	
             	Edema rigthLegEdema = new Edema();
-            	rigthLegEdema.setPitting(((CheckBox)findViewById(R.id.chkRightLegPitting)).isChecked());
-            	rigthLegEdema.setLevel(tryParse(((Spinner)findViewById(R.id.spnRightLegEdema)).getSelectedItem().toString()));
+            	rigthLegEdema.setPitting(((CheckBox)findViewById(R.id.chkRightLegPitting2)).isChecked());
+            	rigthLegEdema.setLevel(tryParse(((Spinner)findViewById(R.id.spnRightLegEdema2)).getSelectedItem().toString()));
             	cardio.setRightLeg(rigthLegEdema);
             	
             	Edema leftLegEdema = new Edema();
-            	leftLegEdema.setPitting(((CheckBox)findViewById(R.id.chkLeftLegPitting)).isChecked());
-            	leftLegEdema.setLevel(tryParse(((Spinner)findViewById(R.id.spnLeftLegEdema)).getSelectedItem().toString()));
+            	leftLegEdema.setPitting(((CheckBox)findViewById(R.id.chkLeftLegPitting2)).isChecked());
+            	leftLegEdema.setLevel(tryParse(((Spinner)findViewById(R.id.spnLeftLegEdema2)).getSelectedItem().toString()));
             	cardio.setLeftLeg(leftLegEdema);
             	
-            	cardio.setJvd(((CheckBox)findViewById(R.id.chkJVD)).isChecked());
+            	cardio.setJvd(((CheckBox)findViewById(R.id.chkJVD2)).isChecked());
             	
-            	cardio.setRhythm(((EditText)findViewById(R.id.txtRhythm)).getText().toString());
+            	cardio.setRhythm(((EditText)findViewById(R.id.txtRhythm2)).getText().toString());
             	assessment.setCardio(cardio);
             	
             	Gastrointestinal gastrointestinal = new Gastrointestinal();
-            	RadioGroup rgpBowelSounds = (RadioGroup)findViewById(R.id.rgpBowelSounds);
+            	RadioGroup rgpBowelSounds = (RadioGroup)findViewById(R.id.rgpBowelSounds2);
             	gastrointestinal.setBowelSounds(((RadioButton)findViewById(rgpBowelSounds.getCheckedRadioButtonId())).getText().toString());
             	
             	Abdomen abdomen = new Abdomen();
-            	RadioGroup rgpAbdomen = (RadioGroup)findViewById(R.id.rgpAbdomen);
+            	RadioGroup rgpAbdomen = (RadioGroup)findViewById(R.id.rgpAbdomen2);
             	abdomen.setFeeling(((RadioButton)findViewById(rgpAbdomen.getCheckedRadioButtonId())).getText().toString());
-            	abdomen.setDistended(((CheckBox)findViewById(R.id.chkDistended)).isChecked());
+            	abdomen.setDistended(((CheckBox)findViewById(R.id.chkDistended2)).isChecked());
             	gastrointestinal.setAbdomen(abdomen);
             	
-            	RadioGroup rgpTurgor = (RadioGroup)findViewById(R.id.rgpTurgor);
+            	RadioGroup rgpTurgor = (RadioGroup)findViewById(R.id.rgpTurgor2);
             	gastrointestinal.setTurgor(((RadioButton)findViewById(rgpTurgor.getCheckedRadioButtonId())).getText().toString());
             	
-            	RadioGroup rgpSkinColor = (RadioGroup)findViewById(R.id.rgpSkinColor);
+            	RadioGroup rgpSkinColor = (RadioGroup)findViewById(R.id.rgpSkinColor2);
             	gastrointestinal.setSkin(((RadioButton)findViewById(rgpSkinColor.getCheckedRadioButtonId())).getText().toString());
             	
             	Urine urine = new Urine();
-            	urine.setColor(((Spinner)findViewById(R.id.spnUrineColor)).getSelectedItem().toString());
-            	urine.setCharacter(((Spinner)findViewById(R.id.spnUrineCharacter)).getSelectedItem().toString());
-            	urine.setFoleyCatheter(((CheckBox)findViewById(R.id.chkUrineFoleyCatheter)).isChecked());
+            	urine.setColor(((Spinner)findViewById(R.id.spnUrineColor2)).getSelectedItem().toString());
+            	urine.setCharacter(((Spinner)findViewById(R.id.spnUrineCharacter2)).getSelectedItem().toString());
+            	urine.setFoleyCatheter(((CheckBox)findViewById(R.id.chkUrineFoleyCatheter2)).isChecked());
             	gastrointestinal.setUrine(urine);
-            	gastrointestinal.setNausea(((CheckBox)findViewById(R.id.chkNausea)).isChecked());
-            	gastrointestinal.setEmesis(((CheckBox)findViewById(R.id.chkEmesis)).isChecked());
+            	gastrointestinal.setStoolContinent(((CheckBox)findViewById(R.id.chkStoolContinent2)).isChecked());
+            	gastrointestinal.setNausea(((CheckBox)findViewById(R.id.chkNausea2)).isChecked());
+            	gastrointestinal.setEmesis(((CheckBox)findViewById(R.id.chkEmesis2)).isChecked());
             	assessment.setGastrointestinal(gastrointestinal);
             	
             	new HttpRequestTask(assessmentResource.getId().getHref()).execute(assessment);
@@ -290,14 +292,21 @@ public class AssessmentDetailsActivity extends Activity {
 		});
 	}
 
-	private void setRadioValue(String chestExcursion, int radioGroupId) {
-		RadioGroup radioGroup = ((RadioGroup)findViewById(R.id.rgpChestExcursion));
+	private void setRadioValue(String toSetValue, int radioGroupId) {
+		RadioGroup radioGroup = (RadioGroup)findViewById(radioGroupId);
+		boolean checkedOne = false;
 		for(int i = 0; i < radioGroup.getChildCount(); i++) {
 			RadioButton radioButton = ((RadioButton)radioGroup.getChildAt(i));
-			if(radioButton.getText().toString().compareTo(chestExcursion) == 0) {
-				radioButton.setSelected(true);
+			if(radioButton.getText().toString().compareTo(toSetValue) == 0) {
+				radioButton.setChecked(true);
+				checkedOne = true;
 				break;
 			}
+		}
+		// If we didn't find a matching string (such as +0),
+		// set to the first item in the group
+		if(!checkedOne) {
+			((RadioButton)radioGroup.getChildAt(0)).setChecked(true);
 		}
 	}
 	
