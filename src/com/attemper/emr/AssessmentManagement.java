@@ -25,8 +25,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.attemper.emr.adapters.AssessmentListArrayAdapter;
@@ -39,6 +39,8 @@ import com.attemper.emr.patient.hateoas.PatientResource;
 
 public class AssessmentManagement extends Activity {
 
+	Patient patient;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -46,7 +48,7 @@ public class AssessmentManagement extends Activity {
 		
 		final ParcelablePatient parcelablePatient = (ParcelablePatient) getIntent().getParcelableExtra("patientResource");
 		final PatientResource patientResource = parcelablePatient.getPatientResource();
-		final Patient patient = patientResource.getContent();
+		patient = patientResource.getContent();
 		
 		setTitle(String.format("%s %s Assessments", patient.getFirstName(), patient.getLastName()));
 		
@@ -73,7 +75,11 @@ public class AssessmentManagement extends Activity {
 				startActivity(addAssessmentIntent);
 			}
 		});
-		
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
 		new AssessmentsHttpRequestTask(this).execute(patient.getId());
 	}
 

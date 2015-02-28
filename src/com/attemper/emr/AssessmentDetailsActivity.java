@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 import android.app.Activity;
@@ -45,6 +46,7 @@ import com.attemper.emr.assessment.Urine;
 import com.attemper.emr.assessment.android.ParcelableAssessment;
 import com.attemper.emr.assessment.hateoas.AssessmentResource;
 import com.attemper.emr.authorized.model.AssociateAssessmentModel;
+import com.attemper.emr.patient.Patient;
 
 public class AssessmentDetailsActivity extends Activity {
 
@@ -415,14 +417,16 @@ public class AssessmentDetailsActivity extends Activity {
 
         	try {
         	    // Make the HTTP GET request to the Basic Auth protected URL
-        	    ResponseEntity<Assessment> response = restTemplate.exchange(url, HttpMethod.DELETE, requestEntity, Assessment.class);
-        	    if(response.getStatusCode() == HttpStatus.NO_CONTENT) {
+        	    ResponseEntity<Patient> response = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Patient.class);
+        	    if(response.getStatusCode() == HttpStatus.OK) {
         	    	return true;
         	    }
         	} catch (HttpClientErrorException e) {
         	    Log.e("AssessmentDetailsActivity", e.getLocalizedMessage(), e);
         	    // Handle 401 Unauthorized response
         	} catch (SecurityException e) {
+        		Log.e("AssessmentDetailsActivity", e.getLocalizedMessage(), e);
+        	} catch (ResourceAccessException e) {
         		Log.e("AssessmentDetailsActivity", e.getLocalizedMessage(), e);
         	}
 
