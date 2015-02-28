@@ -271,10 +271,10 @@ public class PatientDetailsActivity extends Activity {
         	    	return true;
         	    }
         	} catch (HttpClientErrorException e) {
-        	    Log.e("AddPatientActivity", e.getLocalizedMessage(), e);
+        	    Log.e("PatientDetailsActivity", e.getLocalizedMessage(), e);
         	    // Handle 401 Unauthorized response
         	} catch (SecurityException e) {
-        		Log.e("AddPatientActivity", e.getLocalizedMessage(), e);
+        		Log.e("PatientDetailsActivity", e.getLocalizedMessage(), e);
         	}
 
             return false;
