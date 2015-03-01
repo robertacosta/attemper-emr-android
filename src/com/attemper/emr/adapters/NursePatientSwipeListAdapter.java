@@ -31,6 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.attemper.emr.LoginActivity;
+import com.attemper.emr.MainActivity;
 import com.attemper.emr.R;
 import com.attemper.emr.acl.model.Principle;
 import com.attemper.emr.authorized.model.AddPatientModel;
@@ -163,6 +164,13 @@ public class NursePatientSwipeListAdapter extends ArraySwipeAdapter<Patient> {
 	        	toast.show();
 	        	values.remove(patient);
 	        	notifyDataSetChanged();
+	        	
+	        	// If there are no more patients after we remove an item, refresh the MainActivity
+	        	if(values.size() < 1) {
+	        		Intent intent = new Intent(context, MainActivity.class);
+	    			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	    	        context.startActivity(intent);
+	        	}
         	} else {
         		Toast toast = Toast.makeText(context, "An error occurred", Toast.LENGTH_LONG);
 	        	toast.show();

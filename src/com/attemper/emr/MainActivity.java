@@ -30,10 +30,13 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.attemper.emr.adapters.NursePatientSwipeListAdapter;
 import com.attemper.emr.patient.Patient;
@@ -186,6 +189,15 @@ public class MainActivity extends Activity implements
 				}
 			});
 			
+			final Button searchButton = (Button) rootView.findViewById(R.id.btnSearchForPatients);
+			searchButton.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View view) {
+					Intent intent = new Intent(view.getContext(), SearchActivity.class);
+					startActivity(intent);
+				}
+			});
+
 			return rootView;
 		}
 
@@ -248,10 +260,17 @@ public class MainActivity extends Activity implements
 	        @Override
 	        protected void onPostExecute(List<Patient> results) {
 	        	if(results != null && getView() != null) {
-		        	ListView lv = (ListView) getView().findViewById(R.id.lstPatients);
-		        	NursePatientSwipeListAdapter adapter = new NursePatientSwipeListAdapter(context, results);
-		        	lv.setAdapter(adapter);
-		        	adapter.setMode(Attributes.Mode.Single);
+	        		if(results.size() > 0) {
+			        	ListView lv = (ListView) getView().findViewById(R.id.lstPatients);
+			        	NursePatientSwipeListAdapter adapter = new NursePatientSwipeListAdapter(context, results);
+			        	lv.setAdapter(adapter);
+			        	adapter.setMode(Attributes.Mode.Single);
+	        		} else {
+	        			TextView textView = (TextView) getView().findViewById(R.id.txtNoPatients);
+	        			Button button = (Button) getView().findViewById(R.id.btnSearchForPatients);
+	        			textView.setVisibility(View.VISIBLE);
+	        			button.setVisibility(View.VISIBLE);
+	        		}
 	        	}
 	        }
 	    }
