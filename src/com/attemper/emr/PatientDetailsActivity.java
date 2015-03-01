@@ -19,6 +19,7 @@ import org.springframework.web.client.RestTemplate;
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.telephony.PhoneNumberFormattingTextWatcher;
@@ -42,6 +43,9 @@ import com.attemper.emr.patient.hateoas.PatientResource;
 
 public class PatientDetailsActivity extends Activity {
 
+	private String username;
+	private String password;
+	
 	DateTimeFormatter formatter = DateTimeFormat.forPattern("MM/dd/yyyy");
 	PhoneNumberFormattingTextWatcher mPhoneWatcher = new PhoneNumberFormattingTextWatcher();
 	
@@ -49,6 +53,10 @@ public class PatientDetailsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_patient_details);
+		
+		SharedPreferences settings = getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+	    username = settings.getString("username", "");
+	    password = settings.getString("password", "");
 		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
@@ -256,7 +264,7 @@ public class PatientDetailsActivity extends Activity {
         	final String url = patientHref;
         	
         	// Set the username and password for creating a Basic Auth request
-        	HttpAuthentication authHeader = new HttpBasicAuthentication("racosta", "something");
+        	HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
         	HttpHeaders requestHeaders = new HttpHeaders();
         	
         	requestHeaders.setContentType(new MediaType("application","json"));

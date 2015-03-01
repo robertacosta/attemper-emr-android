@@ -18,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.attemper.emr.LoginActivity;
 import com.attemper.emr.R;
 import com.attemper.emr.acl.model.Principle;
 import com.attemper.emr.authorized.model.AddPatientModel;
@@ -38,9 +40,18 @@ public class NursePatientSwipeListAdapter extends ArraySwipeAdapter<Patient> {
 	
 	private final Context context;
 	private final List<Patient> values;
-
+	private final String username;
+	private final String password;
+	private final long userID;
+	
 	public NursePatientSwipeListAdapter(Context context, List<Patient> values) {
 	    super(context, R.layout.list_item_nurse_swipe, values);
+	    
+	    SharedPreferences settings = context.getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+	    this.username = settings.getString("username", "");
+	    this.password = settings.getString("password", "");
+	    this.userID = settings.getLong("userid", 0L);
+	    
 	    this.context = context;
 	    this.values = values;
 	}
@@ -75,7 +86,7 @@ public class NursePatientSwipeListAdapter extends ArraySwipeAdapter<Patient> {
 			public void onClick(View v) {
 				AddPatientModel model = new AddPatientModel();
             	model.setPatientId("https://jbossews-projectemr.rhcloud.com/emr/patient/" + patient.getId());
-            	model.setUserId(3l); // TODO: Replace with actual ID
+            	model.setUserId(userID);
             	new RemovePatientHttpRequestTask(patient).execute(model);
 			}
         });
@@ -108,7 +119,7 @@ public class NursePatientSwipeListAdapter extends ArraySwipeAdapter<Patient> {
         	final String url = "https://jbossews-projectemr.rhcloud.com/emr/authorized/patients";
         	
         	// Set the username and password for creating a Basic Auth request
-        	HttpAuthentication authHeader = new HttpBasicAuthentication("racosta", "something");
+        	HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
         	HttpHeaders requestHeaders = new HttpHeaders();
         	
         	requestHeaders.setContentType(new MediaType("application","json"));

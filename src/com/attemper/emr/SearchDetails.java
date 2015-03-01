@@ -13,6 +13,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,11 +31,20 @@ import com.attemper.emr.patient.android.ParcelablePatient;
 import com.attemper.emr.patient.hateoas.PatientResource;
 
 public class SearchDetails extends Activity {
-
+	
+	private String username;
+	private String password;
+	private long userID;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search_details);
+		
+		SharedPreferences settings = getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+	    username = settings.getString("username", "");
+	    password = settings.getString("password", "");
+	    userID = settings.getLong("userid", 0L);
 		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
@@ -53,7 +63,7 @@ public class SearchDetails extends Activity {
             public void onClick(View v) {
             	AddPatientModel model = new AddPatientModel();
             	model.setPatientId(patientResource.getId().getHref());
-            	model.setUserId(3l); // TODO: Replace with actual ID
+            	model.setUserId(userID);
             	new HttpRequestTask().execute(model);
             }
         });
@@ -84,7 +94,7 @@ public class SearchDetails extends Activity {
         	final String url = "https://jbossews-projectemr.rhcloud.com/emr/authorized/patients";
         	
         	// Set the username and password for creating a Basic Auth request
-        	HttpAuthentication authHeader = new HttpBasicAuthentication("racosta", "something");
+        	HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
         	HttpHeaders requestHeaders = new HttpHeaders();
         	
         	requestHeaders.setContentType(new MediaType("application","json"));

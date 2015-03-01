@@ -1,13 +1,29 @@
 package com.attemper.emr;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.http.HttpAuthentication;
+import org.springframework.http.HttpBasicAuthentication;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
-import android.content.ContentResolver;
+import android.content.Context;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -26,34 +42,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.http.HttpAuthentication;
-import org.springframework.http.HttpBasicAuthentication;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
-
-import com.attemper.emr.patient.Patient;
+import com.attemper.emr.acl.model.Principle;
 
 /**
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
-	/**
-	 * A dummy authentication store containing known user names and passwords.
-	 * TODO: remove after connecting to a real authentication system.
-	 */
-	private static final String[] DUMMY_CREDENTIALS = new String[] {
-			"foo@example.com:hello", "bar@example.com:world" };
 	/**
 	 * Keep track of the login task to ensure we can cancel it if requested.
 	 */
@@ -64,6 +59,8 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 	private EditText mPasswordView;
 	private View mProgressView;
 	private View mLoginFormView;
+	
+	public static final String PREFS_NAME = "HeartbeatPrefs";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -147,7 +144,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 			// Show a progress spinner, and kick off a background task to
 			// perform the user login attempt.
 			showProgress(true);
-			mAuthTask = new UserLoginTask(username, password);
+			mAuthTask = new UserLoginTask(username, password, getApplicationContext());
 			mAuthTask.execute((Void) null);
 		}
 	}
@@ -255,74 +252,65 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 	 * Represents an asynchronous login/registration task used to authenticate
 	 * the user.
 	 */
-	public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+	public class UserLoginTask extends AsyncTask<Void, Void, Principle> {
 
-		private final String mUsername;
-		private final String mPassword;
+		private final String username;
+		private final String password;
+		private final Context context;
 
-		UserLoginTask(String username, String password) {
-			mUsername = username;
-			mPassword = password;
+		UserLoginTask(String username, String password, Context context) {
+			this.username = username;
+			this.password = password;
+			this.context = context;
 		}
 
 		@Override
-		protected Boolean doInBackground(Void... params) {
+		protected Principle doInBackground(Void... params) {
 			// TODO: attempt authentication against a network service.
 			
-//			final String url = "https://jbossews-projectemr.rhcloud.com/emr/patient";
-//        	
-//			HttpHeaders requestHeaders = new HttpHeaders();
-//        	requestHeaders.setContentType(new MediaType("application","json"));
-//        	HttpEntity<Patient> requestEntity = new HttpEntity<Patient>(patient[0], requestHeaders);
-//
-//        	// Create a new RestTemplate instance
-//        	RestTemplate restTemplate = new RestTemplate();
-//
-//        	// Add the String message converter
-//        	restTemplate.getMessageConverters().add(new StringHttpMessageConverter());
-//
-//        	try {
-//
-//        		
-//        	    // Make the HTTP GET request to the Basic Auth protected URL
-//        	    ResponseEntity<Patient> response = restTemplate.exchange(url, HttpMethod.POST, requestEntity, Patient.class);
-//        	    if(response.getStatusCode() == HttpStatus.CREATED) {
-//        	    	return true;
-//        	    }
-//        	} catch (HttpClientErrorException e) {
-//        	    Log.e("MainActivity", e.getLocalizedMessage(), e);
-//        	    // Handle 401 Unauthorized response
-//        	} catch (SecurityException e) {
-//        		Log.e("MainActivity", e.getLocalizedMessage(), e);
-//        	}
+			final String url = "https://jbossews-projectemr.rhcloud.com/emr/authorized/verify?username={username}";
+        	
+			// Set the username and password for creating a Basic Auth request
+        	HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
+        	HttpHeaders requestHeaders = new HttpHeaders();
+        	
+        	requestHeaders.setContentType(new MediaType("application","hal+json"));
+        	requestHeaders.setAuthorization(authHeader);
+        	HttpEntity<String> request = new HttpEntity<String>(requestHeaders);
+        	
+        	try {
+        	    // Make the HTTP GET request to the Basic Auth protected URL
+        		RestTemplate restTemplate = new RestTemplate();
+            	ResponseEntity<Principle> response = restTemplate.exchange(url, HttpMethod.GET, request, Principle.class, username);
+        	    if(response.getStatusCode() == HttpStatus.OK) {
+        	    	return response.getBody();
+        	    }
+        	} catch (HttpClientErrorException e) {
+        	    Log.e("LoginActivity", e.getLocalizedMessage(), e);
+        	    // Handle 401 Unauthorized response
+        	} catch (SecurityException e) {
+        		Log.e("LoginActivity", e.getLocalizedMessage(), e);
+        	}
 			
-
-			try {
-				// Simulate network access.
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				return false;
-			}
-
-			for (String credential : DUMMY_CREDENTIALS) {
-				String[] pieces = credential.split(":");
-				if (pieces[0].equals(mUsername)) {
-					// Account exists, return true if the password matches.
-					return pieces[1].equals(mPassword);
-				}
-			}
-
-			// TODO: register the new account here.
-			return true;
+			return null;
 		}
 
 		@Override
-		protected void onPostExecute(final Boolean success) {
+		protected void onPostExecute(final Principle principle) {
 			mAuthTask = null;
 			showProgress(false);
 
-			if (success) {
-				finish();
+			if (principle != null) {
+				SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+				SharedPreferences.Editor editor = settings.edit();
+				editor.putString("username", username);
+				editor.putString("password", password);
+				editor.putLong("userid", principle.getId());
+				editor.commit();
+				
+				Intent intent = new Intent(context, MainActivity.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		        startActivity(intent);
 			} else {
 				mPasswordView
 						.setError(getString(R.string.error_incorrect_password));

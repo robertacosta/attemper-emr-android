@@ -14,6 +14,7 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -50,10 +51,17 @@ import com.attemper.emr.patient.Patient;
 
 public class AssessmentDetailsActivity extends Activity {
 
+	private String username;
+	private String password;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_assessment_details);
+		
+		SharedPreferences settings = getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+	    username = settings.getString("username", "");
+	    password = settings.getString("password", "");
 		
 		final ParcelableAssessment parcelableAssessment = (ParcelableAssessment) getIntent().getParcelableExtra("assessmentResource");
 		final AssessmentResource assessmentResource = parcelableAssessment.getAssessmentResource();
@@ -354,7 +362,7 @@ public class AssessmentDetailsActivity extends Activity {
         	final String url = assessmentHref;
         	
         	// Set the username and password for creating a Basic Auth request
-        	HttpAuthentication authHeader = new HttpBasicAuthentication("racosta", "something");
+        	HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
         	HttpHeaders requestHeaders = new HttpHeaders();
         	
         	requestHeaders.setContentType(new MediaType("application","json"));
@@ -402,7 +410,7 @@ public class AssessmentDetailsActivity extends Activity {
         	final String url = "https://jbossews-projectemr.rhcloud.com/emr/authorized/assessment";
         	
         	// Set the username and password for creating a Basic Auth request
-        	HttpAuthentication authHeader = new HttpBasicAuthentication("racosta", "something");
+        	HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
         	HttpHeaders requestHeaders = new HttpHeaders();
         	
         	requestHeaders.setContentType(new MediaType("application","json"));

@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 
 import android.app.Activity;
 import android.app.DialogFragment;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.telephony.PhoneNumberFormattingTextWatcher;
@@ -38,7 +39,10 @@ import com.attemper.emr.patient.PhoneNumber;
 
 public class AddPatientActivity extends Activity 
 	implements OnDateSelectedListener {
-
+	
+	private String username;
+	private String password;
+	
 	DateTimeFormatter formatter = DateTimeFormat.forPattern("MM/dd/yyyy");
 	PhoneNumberFormattingTextWatcher mPhoneWatcher = new PhoneNumberFormattingTextWatcher();
 	
@@ -46,6 +50,10 @@ public class AddPatientActivity extends Activity
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_patient);
+		
+		SharedPreferences settings = getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+	    username = settings.getString("username", "");
+	    password = settings.getString("password", "");
 		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
@@ -180,7 +188,7 @@ public class AddPatientActivity extends Activity
         	final String url = "https://jbossews-projectemr.rhcloud.com/emr/patient";
         	
         	// Set the username and password for creating a Basic Auth request
-        	HttpAuthentication authHeader = new HttpBasicAuthentication("racosta", "something");
+        	HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
         	HttpHeaders requestHeaders = new HttpHeaders();
         	
         	requestHeaders.setContentType(new MediaType("application","json"));

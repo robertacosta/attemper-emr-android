@@ -21,6 +21,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -42,7 +43,11 @@ import com.daimajia.swipe.util.Attributes;
 
 public class MainActivity extends Activity implements
 		NavigationDrawerFragment.NavigationDrawerCallbacks {
-
+	
+	private static String username;
+	private static String password;
+	private static long userID;
+	
 	/**
 	 * Fragment managing the behaviors, interactions and presentation of the
 	 * navigation drawer.
@@ -59,6 +64,11 @@ public class MainActivity extends Activity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		SharedPreferences settings = getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+	    username = settings.getString("username", "");
+	    password = settings.getString("password", "");
+	    userID = settings.getLong("userid", 0L);
 
 		mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager()
 				.findFragmentById(R.id.navigation_drawer);
@@ -189,10 +199,10 @@ public class MainActivity extends Activity implements
 		@Override
 		public void onResume() {
 			super.onResume();
-			new PatientHttpRequestTask(this.getActivity()).execute(3l); // TODO: Replace with actual ID
+			new PatientHttpRequestTask(this.getActivity()).execute();
 		}
 		
-		private class PatientHttpRequestTask extends AsyncTask<Long, Void, List<Patient>> {
+		private class PatientHttpRequestTask extends AsyncTask<Void, Void, List<Patient>> {
 			
 			private Context context;
 
@@ -201,11 +211,11 @@ public class MainActivity extends Activity implements
 			}
 			
 	        @Override
-	        protected List<Patient> doInBackground(Long... params) {
+	        protected List<Patient> doInBackground(Void... params) {
 	        	String url = "https://jbossews-projectemr.rhcloud.com/emr/authorized/patients?userid={userId}";
 	        	
 	        	// Set the username and password for creating a Basic Auth request
-	        	HttpAuthentication authHeader = new HttpBasicAuthentication("racosta", "something");
+	        	HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
 	        	HttpHeaders requestHeaders = new HttpHeaders();
 	        	
 	        	requestHeaders.setContentType(new MediaType("application","hal+json"));
@@ -216,7 +226,7 @@ public class MainActivity extends Activity implements
 	        	    // Make the HTTP GET request to the Basic Auth protected URL
 	        		RestTemplate restTemplate = new RestTemplate();
 	        		ParameterizedTypeReference<List<Patient>> typeRef = new ParameterizedTypeReference<List<Patient>>() {};
-	            	ResponseEntity<List<Patient>> response = restTemplate.exchange(url, HttpMethod.GET, request, typeRef, params[0]);
+	            	ResponseEntity<List<Patient>> response = restTemplate.exchange(url, HttpMethod.GET, request, typeRef, userID);
 	        	    if(response.getStatusCode() == HttpStatus.OK) {
 	        	    	return response.getBody();
 	        	    }

@@ -13,6 +13,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,11 +33,18 @@ import com.attemper.emr.patient.hateoas.PatientResource;
 import com.attemper.emr.patient.hateoas.PatientResources;
 
 public class SearchActivity extends Activity {
-
+	
+	private String username;
+	private String password;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
+		
+		SharedPreferences settings = getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+	    username = settings.getString("username", "");
+	    password = settings.getString("password", "");
 		
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		
@@ -100,7 +108,7 @@ public class SearchActivity extends Activity {
         	}
         	
         	// Set the username and password for creating a Basic Auth request
-        	HttpAuthentication authHeader = new HttpBasicAuthentication("racosta", "something");
+        	HttpAuthentication authHeader = new HttpBasicAuthentication(username, password);
         	HttpHeaders requestHeaders = new HttpHeaders();
         	
         	requestHeaders.setContentType(new MediaType("application","hal+json"));
