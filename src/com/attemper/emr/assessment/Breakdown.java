@@ -8,7 +8,15 @@ public class Breakdown implements Parcelable {
 	private boolean drainage;
 	private boolean redness;
 	private boolean dressing;
-	
+	private String stage;
+
+	public String getStage() {
+		return stage;
+	}
+	public void setStage(String stage) {
+		this.stage = stage;
+	}
+
 	public String getSite() {
 		return site;
 	}
@@ -51,6 +59,7 @@ public class Breakdown implements Parcelable {
     	setDrainage(in.readInt() == 1);
     	setRedness(in.readInt() == 1);
     	setDressing(in.readInt() == 1);
+    	setStage(in.readString());
     }
     
     @Override
@@ -59,6 +68,7 @@ public class Breakdown implements Parcelable {
     	dest.writeInt(drainage ? 1 : 0);
     	dest.writeInt(redness ? 1 : 0);
     	dest.writeInt(dressing ? 1 : 0);
+    	dest.writeString(stage);
     }
 
 	@Override
