@@ -1140,7 +1140,8 @@
                     android:id="@+id/chkStoolContinent"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="@string/continent" />
+                    android:text="@string/continent"
+                    android:checked="true" />
             </LinearLayout>
 
             <LinearLayout

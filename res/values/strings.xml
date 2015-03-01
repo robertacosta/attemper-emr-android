@@ -53,14 +53,14 @@
     <string name="patient_list">Patient List</string>
     <string name="title_activity_patient_details">Patient Details</string>
     <string name="button_update_patient">Update Patient</string>
-    <string name="title_activity_assessment_management">AssessmentManagement</string>
+    <string name="title_activity_assessment_management">Assessment Management</string>
     <string name="assessments">Assessments</string>
     <string name="add_assessment_button">Add Assessment</string>
     <string name="assessment_date">Assessment Date</string>
     <string name="assessment_time">Assessment Time</string>
     <string name="action_assessments">Assessments</string>
-    <string name="title_activity_add_assessment">AddAssessmentActivity</string>
-    <string name="title_activity_assessment_details">AssessmentDetailsActivity</string>
+    <string name="title_activity_add_assessment">Add New Assessment</string>
+    <string name="title_activity_assessment_details">Assessment Details</string>
     <string name="neurological">Neurological</string>
     <string name="date">Date</string>
     <string name="time">Time</string>
