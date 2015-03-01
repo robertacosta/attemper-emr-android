@@ -3,6 +3,7 @@ package com.attemper.emr;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -95,19 +96,34 @@ public class NavigationDrawerFragment extends Fragment {
 			Bundle savedInstanceState) {
 		mDrawerListView = (ListView) inflater.inflate(
 				R.layout.fragment_navigation_drawer, container, false);
-		mDrawerListView
-				.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-					@Override
-					public void onItemClick(AdapterView<?> parent, View view,
-							int position, long id) {
-						selectItem(position);
-					}
-				});
-		mDrawerListView.setAdapter(new ArrayAdapter<String>(getActionBar()
-				.getThemedContext(),
+		mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				String selectedOption = (String)parent.getItemAtPosition(position);
+				if(selectedOption.compareTo(getString(R.string.logout_title)) == 0) {
+					// Logout the user, kill off the shared preferences and send them to the login page
+					SharedPreferences settings = view.getContext().getSharedPreferences(LoginActivity.PREFS_NAME, 0);
+					SharedPreferences.Editor editor = settings.edit();
+					editor.putString("username", "");
+					editor.putString("password", "");
+					editor.putLong("userid", 0L);
+					editor.commit();
+					Intent intent = new Intent(view.getContext(), LoginActivity.class);
+	    			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	    	        startActivity(intent);
+				}
+			}
+		});
+		mDrawerListView.setAdapter(
+			new ArrayAdapter<String>(
+				getActionBar().getThemedContext(),
 				android.R.layout.simple_list_item_activated_1,
-				android.R.id.text1, new String[] {
-						getString(R.string.logout_title), }));
+				android.R.id.text1, 
+				new String[] {
+					getString(R.string.logout_title), 
+				}
+			)
+		);
 		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 		return mDrawerListView;
 	}
