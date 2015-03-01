@@ -31,14 +31,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-import com.attemper.emr.adapters.NursePatientListArrayAdapter;
+import com.attemper.emr.adapters.NursePatientSwipeListAdapter;
 import com.attemper.emr.patient.Patient;
 import com.attemper.emr.patient.android.ParcelablePatient;
 import com.attemper.emr.patient.hateoas.PatientResource;
+import com.daimajia.swipe.util.Attributes;
 
 public class MainActivity extends Activity implements
 		NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -234,16 +234,11 @@ public class MainActivity extends Activity implements
 	        protected void onPostExecute(List<Patient> results) {
 	        	if(results != null && getView() != null) {
 		        	ListView lv = (ListView) getView().findViewById(R.id.lstPatients);
-		        	Patient[] array = results.toArray(new Patient[results.size()]);
-		        	NursePatientListArrayAdapter adapter = new NursePatientListArrayAdapter(context, array);
-		        	if(lv.getHeaderViewsCount() < 1) {
-			        	View header = (View) LayoutInflater.from(context).inflate(R.layout.list_item_patient, null);
-			            lv.addHeaderView(header);
-		        	}
-		            lv.setAdapter(adapter);
+		        	NursePatientSwipeListAdapter adapter = new NursePatientSwipeListAdapter(context, results);
+		        	lv.setAdapter(adapter);
+		        	adapter.setMode(Attributes.Mode.Single);
 	        	}
 	        }
 	    }
 	}
-
 }
