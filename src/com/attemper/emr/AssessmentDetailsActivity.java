@@ -14,6 +14,8 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -286,7 +288,7 @@ public class AssessmentDetailsActivity extends Activity {
             	gastrointestinal.setEmesis(((CheckBox)findViewById(R.id.chkEmesis2)).isChecked());
             	assessment.setGastrointestinal(gastrointestinal);
             	
-            	new HttpRequestTask(assessmentResource.getId().getHref()).execute(assessment);
+            	new HttpRequestTask(assessmentResource.getId().getHref(), getApplicationContext()).execute(assessment);
             }
         });
 		
@@ -297,7 +299,7 @@ public class AssessmentDetailsActivity extends Activity {
             	assessmentModel.setAssessment(assessment);
             	assessmentModel.setPatientId(patientId);
             	
-            	new HttpDeleteRequestTask().execute(assessmentModel);
+            	new HttpDeleteRequestTask(getApplicationContext()).execute(assessmentModel);
 			}
 		});
 	}
@@ -352,9 +354,11 @@ public class AssessmentDetailsActivity extends Activity {
 	private class HttpRequestTask extends AsyncTask<Assessment, Void, Boolean> {
 		
 		private String assessmentHref;
+		private Context context;
 		
-		public HttpRequestTask(String assessmentHref) {
+		public HttpRequestTask(String assessmentHref, Context context) {
 			this.assessmentHref = assessmentHref;
+			this.context = context;
 		}
 		
         @Override
@@ -384,6 +388,11 @@ public class AssessmentDetailsActivity extends Activity {
         	} catch (HttpClientErrorException e) {
         	    Log.e("AssessmentDetailsActivity", e.getLocalizedMessage(), e);
         	    // Handle 401 Unauthorized response
+        	    if(e.getStatusCode() == HttpStatus.UNAUTHORIZED) {
+	        	    Intent intent = new Intent(context, LoginActivity.class);
+	    			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	    	        startActivity(intent);
+        	    }
         	} catch (SecurityException e) {
         		Log.e("AssessmentDetailsActivity", e.getLocalizedMessage(), e);
         	}
@@ -405,6 +414,13 @@ public class AssessmentDetailsActivity extends Activity {
     }
 	
 	private class HttpDeleteRequestTask extends AsyncTask<AssociateAssessmentModel, Void, Boolean> {
+		
+		private Context context;
+		
+		public HttpDeleteRequestTask(Context context) {
+			this.context = context;
+		}
+		
         @Override
         protected Boolean doInBackground(AssociateAssessmentModel... model) {
         	final String url = "https://jbossews-projectemr.rhcloud.com/emr/authorized/assessment";
@@ -432,6 +448,11 @@ public class AssessmentDetailsActivity extends Activity {
         	} catch (HttpClientErrorException e) {
         	    Log.e("AssessmentDetailsActivity", e.getLocalizedMessage(), e);
         	    // Handle 401 Unauthorized response
+        	    if(e.getStatusCode() == HttpStatus.UNAUTHORIZED) {
+	        	    Intent intent = new Intent(context, LoginActivity.class);
+	    			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	    	        startActivity(intent);
+        	    }
         	} catch (SecurityException e) {
         		Log.e("AssessmentDetailsActivity", e.getLocalizedMessage(), e);
         	} catch (ResourceAccessException e) {

@@ -13,6 +13,8 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -64,7 +66,7 @@ public class SearchDetails extends Activity {
             	AddPatientModel model = new AddPatientModel();
             	model.setPatientId(patientResource.getId().getHref());
             	model.setUserId(userID);
-            	new HttpRequestTask().execute(model);
+            	new HttpRequestTask(getApplicationContext()).execute(model);
             }
         });
 	}
@@ -89,6 +91,13 @@ public class SearchDetails extends Activity {
 	}
 	
 	private class HttpRequestTask extends AsyncTask<AddPatientModel, Void, Boolean> {
+		
+		private Context context;
+		
+		public HttpRequestTask(Context context) {
+			this.context = context;
+		}
+		
         @Override
         protected Boolean doInBackground(AddPatientModel... model) {
         	final String url = "https://jbossews-projectemr.rhcloud.com/emr/authorized/patients";
@@ -116,6 +125,11 @@ public class SearchDetails extends Activity {
         	} catch (HttpClientErrorException e) {
         	    Log.e("SearchDetails", e.getLocalizedMessage(), e);
         	    // Handle 401 Unauthorized response
+        	    if(e.getStatusCode() == HttpStatus.UNAUTHORIZED) {
+	        	    Intent intent = new Intent(context, LoginActivity.class);
+	    			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	    	        startActivity(intent);
+        	    }
         	} catch (SecurityException e) {
         		Log.e("SearchDetails", e.getLocalizedMessage(), e);
         	}

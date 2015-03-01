@@ -18,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 
 import android.app.Activity;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -177,7 +178,7 @@ public class PatientDetailsActivity extends Activity {
             	
             	patient.setAssessments(assessmentIds); // Don't want to lose the existing assessments
             	
-            	new HttpRequestTask(patientResource.getId().getHref()).execute(patient);
+            	new HttpRequestTask(patientResource.getId().getHref(), getApplicationContext()).execute(patient);
             }
         });
 		
@@ -254,9 +255,11 @@ public class PatientDetailsActivity extends Activity {
 	private class HttpRequestTask extends AsyncTask<Patient, Void, Boolean> {
 		
 		private String patientHref;
+		private Context context;
 		
-		public HttpRequestTask(String patientHref) {
+		public HttpRequestTask(String patientHref, Context context) {
 			this.patientHref = patientHref;
+			this.context = context;
 		}
 		
         @Override
@@ -286,6 +289,11 @@ public class PatientDetailsActivity extends Activity {
         	} catch (HttpClientErrorException e) {
         	    Log.e("PatientDetailsActivity", e.getLocalizedMessage(), e);
         	    // Handle 401 Unauthorized response
+        	    if(e.getStatusCode() == HttpStatus.UNAUTHORIZED) {
+	        	    Intent intent = new Intent(context, LoginActivity.class);
+	    			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	    	        startActivity(intent);
+        	    }
         	} catch (SecurityException e) {
         		Log.e("PatientDetailsActivity", e.getLocalizedMessage(), e);
         	}

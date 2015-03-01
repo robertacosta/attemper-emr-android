@@ -233,6 +233,11 @@ public class MainActivity extends Activity implements
 	        	} catch (HttpClientErrorException e) {
 	        	    Log.e("MainActivity", e.getLocalizedMessage(), e);
 	        	    // Handle 401 Unauthorized response
+	        	    if(e.getStatusCode() == HttpStatus.UNAUTHORIZED) {
+		        	    Intent intent = new Intent(context, LoginActivity.class);
+		    			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		    	        startActivity(intent);
+	        	    }
 	        	} catch (SecurityException e) {
 	        		Log.e("MainActivity", e.getLocalizedMessage(), e);
 	        	}

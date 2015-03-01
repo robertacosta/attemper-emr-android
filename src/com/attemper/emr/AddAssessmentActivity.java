@@ -13,6 +13,8 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -202,7 +204,7 @@ public class AddAssessmentActivity extends Activity {
             	assessmentModel.setAssessment(assessment);
             	assessmentModel.setPatientId(patientId);
             	
-            	new HttpRequestTask().execute(assessmentModel);
+            	new HttpRequestTask(getApplicationContext()).execute(assessmentModel);
             }
         });
 	}
@@ -228,6 +230,13 @@ public class AddAssessmentActivity extends Activity {
 	}
 	
 	private class HttpRequestTask extends AsyncTask<AssociateAssessmentModel, Void, Boolean> {
+		
+		private Context context;
+		
+		public HttpRequestTask(Context context) {
+			this.context = context;
+		}
+		
         @Override
         protected Boolean doInBackground(AssociateAssessmentModel... model) {
         	final String url = "https://jbossews-projectemr.rhcloud.com/emr/authorized/assessment";
@@ -255,6 +264,11 @@ public class AddAssessmentActivity extends Activity {
         	} catch (HttpClientErrorException e) {
         	    Log.e("AddAssessmentActivity", e.getLocalizedMessage(), e);
         	    // Handle 401 Unauthorized response
+        	    if(e.getStatusCode() == HttpStatus.UNAUTHORIZED) {
+	        	    Intent intent = new Intent(context, LoginActivity.class);
+	    			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	    	        startActivity(intent);
+        	    }
         	} catch (SecurityException e) {
         		Log.e("AddAssessmentActivity", e.getLocalizedMessage(), e);
         	}

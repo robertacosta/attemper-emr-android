@@ -16,6 +16,8 @@ import org.springframework.web.client.RestTemplate;
 
 import android.app.Activity;
 import android.app.DialogFragment;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -112,7 +114,7 @@ public class AddPatientActivity extends Activity
             	insurance.setPhoneNumber(((EditText)findViewById(R.id.txtInsPhoneNumber)).getText().toString());
             	patient.setInsurance(insurance);
             	
-            	new HttpRequestTask().execute(patient);
+            	new HttpRequestTask(getApplicationContext()).execute(patient);
             }
         });
 		
@@ -183,6 +185,13 @@ public class AddPatientActivity extends Activity
 	}
 	
 	private class HttpRequestTask extends AsyncTask<Patient, Void, Boolean> {
+		
+		private Context context;
+		
+		public HttpRequestTask(Context context) {
+			this.context = context;
+		}
+		
         @Override
         protected Boolean doInBackground(Patient... patient) {
         	final String url = "https://jbossews-projectemr.rhcloud.com/emr/patient";
@@ -210,6 +219,11 @@ public class AddPatientActivity extends Activity
         	} catch (HttpClientErrorException e) {
         	    Log.e("AddPatientActivity", e.getLocalizedMessage(), e);
         	    // Handle 401 Unauthorized response
+        	    if(e.getStatusCode() == HttpStatus.UNAUTHORIZED) {
+	        	    Intent intent = new Intent(context, LoginActivity.class);
+	    			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	    	        startActivity(intent);
+        	    }
         	} catch (SecurityException e) {
         		Log.e("AddPatientActivity", e.getLocalizedMessage(), e);
         	}

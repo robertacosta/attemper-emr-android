@@ -18,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -141,6 +142,11 @@ public class NursePatientSwipeListAdapter extends ArraySwipeAdapter<Patient> {
         	} catch (HttpClientErrorException e) {
         	    Log.e("NursePatientSwipeListAdapter", e.getLocalizedMessage(), e);
         	    // Handle 401 Unauthorized response
+        	    if(e.getStatusCode() == HttpStatus.UNAUTHORIZED) {
+        	    	Intent intent = new Intent(context, LoginActivity.class);
+        			intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        	        context.startActivity(intent);
+        	    }
         	} catch (SecurityException e) {
         		Log.e("NursePatientSwipeListAdapter", e.getLocalizedMessage(), e);
         	} catch (ResourceAccessException e) {
