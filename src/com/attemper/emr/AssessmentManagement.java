@@ -44,7 +44,6 @@ public class AssessmentManagement extends Activity {
 	
 	private String username;
 	private String password;
-	private long userID;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +53,6 @@ public class AssessmentManagement extends Activity {
 		SharedPreferences settings = getSharedPreferences(LoginActivity.PREFS_NAME, 0);
 	    username = settings.getString("username", "");
 	    password = settings.getString("password", "");
-	    userID = settings.getLong("userid", 0L);
 		
 		final ParcelablePatient parcelablePatient = (ParcelablePatient) getIntent().getParcelableExtra("patientResource");
 		final PatientResource patientResource = parcelablePatient.getPatientResource();

@@ -57,6 +57,8 @@ public class AddAssessmentActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_assessment);
 		
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+
 		SharedPreferences settings = getSharedPreferences(LoginActivity.PREFS_NAME, 0);
 	    username = settings.getString("username", "");
 	    password = settings.getString("password", "");
@@ -223,6 +225,10 @@ public class AddAssessmentActivity extends Activity {
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_cancel) {
+			finish();
+			return true;
+		}
+		if(id == android.R.id.home) {
 			finish();
 			return true;
 		}
