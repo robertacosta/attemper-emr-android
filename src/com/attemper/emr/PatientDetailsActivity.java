@@ -34,6 +34,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.attemper.emr.DatePickerFragment.OnDateSelectedListener;
 import com.attemper.emr.patient.Address;
 import com.attemper.emr.patient.EmergencyContact;
 import com.attemper.emr.patient.Insurance;
@@ -42,7 +43,8 @@ import com.attemper.emr.patient.PhoneNumber;
 import com.attemper.emr.patient.android.ParcelablePatient;
 import com.attemper.emr.patient.hateoas.PatientResource;
 
-public class PatientDetailsActivity extends Activity {
+public class PatientDetailsActivity extends Activity
+	implements OnDateSelectedListener {
 
 	private String username;
 	private String password;
@@ -312,6 +314,10 @@ public class PatientDetailsActivity extends Activity {
 	        	toast.show();
         	}
         }
-
     }
+
+	@Override
+	public void onDateSelected(int viewId, String date) {
+		((EditText)findViewById(viewId)).setText(date);
+	}
 }

@@ -14,6 +14,7 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -31,6 +32,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.attemper.emr.DatePickerFragment.OnDateSelectedListener;
+import com.attemper.emr.TimePickerFragment.OnTimeSelectedListener;
 import com.attemper.emr.assessment.Abdomen;
 import com.attemper.emr.assessment.Assessment;
 import com.attemper.emr.assessment.BreathSounds;
@@ -51,7 +54,8 @@ import com.attemper.emr.assessment.hateoas.AssessmentResource;
 import com.attemper.emr.authorized.model.AssociateAssessmentModel;
 import com.attemper.emr.patient.Patient;
 
-public class AssessmentDetailsActivity extends Activity {
+public class AssessmentDetailsActivity extends Activity
+	implements OnDateSelectedListener, OnTimeSelectedListener {
 
 	private String username;
 	private String password;
@@ -304,6 +308,30 @@ public class AssessmentDetailsActivity extends Activity {
             	new HttpDeleteRequestTask(getApplicationContext()).execute(assessmentModel);
 			}
 		});
+		
+		EditText dateField = (EditText)findViewById(R.id.txtDate2);
+		dateField.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+			
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+				if(hasFocus) {
+					DialogFragment newFragment = new DatePickerFragment(R.id.txtDate2);
+				    newFragment.show(getFragmentManager(), "datePicker");
+				}
+			}
+		});
+		
+		EditText timeField = (EditText)findViewById(R.id.txtTime2);
+		timeField.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+			
+			@Override
+			public void onFocusChange(View v, boolean hasFocus) {
+				if(hasFocus) {
+					DialogFragment newFragment = new TimePickerFragment(R.id.txtTime2);
+				    newFragment.show(getFragmentManager(), "timePicker");
+				}
+			}
+		});
 	}
 
 	private void setRadioValue(String toSetValue, int radioGroupId) {
@@ -480,4 +508,14 @@ public class AssessmentDetailsActivity extends Activity {
         	}
         }
     }
+	
+	@Override
+	public void onTimeSelected(int viewId, String date) {
+		onDateSelected(viewId, date);
+	}
+
+	@Override
+	public void onDateSelected(int viewId, String date) {
+		((EditText)findViewById(viewId)).setText(date);
+	}
 }
