@@ -1155,7 +1155,56 @@
                     android:text="@string/emesis" />
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/lblSkinSection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="30dp"
+                android:text="@string/skin"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/lblIncisions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/incisions"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <ListView
+                android:id="@+id/lstIncisions2"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content" >
+            </ListView>
+
+            <Button
+                android:id="@+id/btnAddIncision2"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/addIncision" />
+
+            <TextView
+                android:id="@+id/lblBreakdowns"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/breakdowns"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <ListView
+                android:id="@+id/lstBreakdowns2"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content" >
+            </ListView>
+            
+            <Button
+                android:id="@+id/btnAddBreakdown2"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/addBreakdown" />
+
             <RelativeLayout
+                android:paddingTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="start" >

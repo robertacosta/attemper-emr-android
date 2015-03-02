@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.attemper.emr.SkinIncisionDialogFragment" >
+
+    <EditText
+        android:id="@+id/txtSite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/site" >
+
+        <requestFocus />
+    </EditText>
+
+    <CheckBox
+        android:id="@+id/chkWellApprox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wellApprox" />
+
+    <CheckBox
+        android:id="@+id/chkWoundOpen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/woundOpen" />
+
+    <CheckBox
+        android:id="@+id/chkRedness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/redness" />
+
+    <CheckBox
+        android:id="@+id/chkDrainageIncision"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/drainage" />
+
+    <CheckBox
+        android:id="@+id/chkSwelling"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/swelling" />
+
+    <CheckBox
+        android:id="@+id/chkDressingIntact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dressingIntact" />
+
+    <CheckBox
+        android:id="@+id/chkSteriStripped"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/steriStripped" />
+
+    <CheckBox
+        android:id="@+id/chkStaples"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/staples" />
+
+</LinearLayout>

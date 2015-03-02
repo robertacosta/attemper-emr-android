@@ -149,10 +149,9 @@ public class ParcelableAssessment implements Parcelable {
 		dest.writeString(urine.getCharacter());
 		dest.writeInt(urine.isFoleyCatheter() ? 1 : 0);
 		
-		// Skin -- TODO: Add skin
-//		Skin skin = assessment.getSkin();
-//		dest.writeTypedList(skin.getIncisions());
-//		dest.writeTypedList(skin.getBreakdowns());
+		Skin skin = assessment.getSkin();
+		dest.writeTypedList(skin.getIncisions());
+		dest.writeTypedList(skin.getBreakdowns());
 	}
 	
 	// this is used to regenerate your object. All Parcelables must have a CREATOR that implements these two methods
@@ -292,16 +291,15 @@ public class ParcelableAssessment implements Parcelable {
     	gastrointestinal.setUrine(urine);
     	assessment.setGastrointestinal(gastrointestinal);
     	
-    	// TODO: Add skin
-//    	Skin skin = new Skin();
-//    	List<Incision> incisions = new ArrayList<Incision>();
-//    	in.readTypedList(incisions, Incision.CREATOR);
-//    	skin.setIncisions(incisions);
-//    	
-//    	List<Breakdown> breakdowns = new ArrayList<Breakdown>();
-//    	in.readTypedList(breakdowns, Breakdown.CREATOR);
-//    	skin.setBreakdowns(breakdowns);
-//    	assessment.setSkin(skin);
+    	Skin skin = new Skin();
+    	List<Incision> incisions = new ArrayList<Incision>();
+    	in.readTypedList(incisions, Incision.CREATOR);
+    	skin.setIncisions(incisions);
+    	
+    	List<Breakdown> breakdowns = new ArrayList<Breakdown>();
+    	in.readTypedList(breakdowns, Breakdown.CREATOR);
+    	skin.setBreakdowns(breakdowns);
+    	assessment.setSkin(skin);
     	
     	assessmentResource = new AssessmentResource(assessment, resourceLink);
     }

@@ -14,6 +14,24 @@ public class Incision implements Parcelable {
 	private boolean steriStripped;
 	private boolean staplesSutures;
 	
+	public Incision() {
+	}
+	
+	public Incision(String site, boolean wellApproximated, boolean woundOpen,
+			boolean redness, boolean drainage, boolean swelling,
+			boolean dressingIntact, boolean steriStripped,
+			boolean staplesSutures) {
+		this.site = site;
+		this.wellApproximated = wellApproximated;
+		this.woundOpen = woundOpen;
+		this.redness = redness;
+		this.drainage = drainage;
+		this.swelling = swelling;
+		this.dressingIntact = dressingIntact;
+		this.steriStripped = steriStripped;
+		this.staplesSutures = staplesSutures;
+	}
+
 	public String getSite() {
 		return site;
 	}

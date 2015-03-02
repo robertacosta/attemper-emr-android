@@ -1,5 +1,8 @@
 package com.attemper.emr;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.http.HttpAuthentication;
 import org.springframework.http.HttpBasicAuthentication;
 import org.springframework.http.HttpEntity;
@@ -27,35 +30,46 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.attemper.emr.DatePickerFragment.OnDateSelectedListener;
+import com.attemper.emr.SkinBreakdownDialogFragment.SkinBreakdownDialogListener;
+import com.attemper.emr.SkinIncisionDialogFragment.SkinIncisionDialogListener;
 import com.attemper.emr.TimePickerFragment.OnTimeSelectedListener;
+import com.attemper.emr.adapters.BreakdownListAdapter;
+import com.attemper.emr.adapters.IncisionListAdapter;
 import com.attemper.emr.assessment.Abdomen;
 import com.attemper.emr.assessment.Assessment;
+import com.attemper.emr.assessment.Breakdown;
 import com.attemper.emr.assessment.BreathSounds;
 import com.attemper.emr.assessment.Cardio;
 import com.attemper.emr.assessment.Cough;
 import com.attemper.emr.assessment.Edema;
 import com.attemper.emr.assessment.Gastrointestinal;
+import com.attemper.emr.assessment.Incision;
 import com.attemper.emr.assessment.MuscleStrength;
 import com.attemper.emr.assessment.Neurological;
 import com.attemper.emr.assessment.Pulse;
 import com.attemper.emr.assessment.Pupil;
 import com.attemper.emr.assessment.Respirations;
 import com.attemper.emr.assessment.Respiratory;
+import com.attemper.emr.assessment.Skin;
 import com.attemper.emr.assessment.Temperature;
 import com.attemper.emr.assessment.Urine;
 import com.attemper.emr.assessment.android.ParcelableAssessment;
 import com.attemper.emr.assessment.hateoas.AssessmentResource;
 import com.attemper.emr.authorized.model.AssociateAssessmentModel;
 import com.attemper.emr.patient.Patient;
+import com.attemper.emr.view.helper.ListHelper;
+import com.daimajia.swipe.util.Attributes;
 
 public class AssessmentDetailsActivity extends Activity
-	implements OnDateSelectedListener, OnTimeSelectedListener {
+	implements OnDateSelectedListener, OnTimeSelectedListener,
+		SkinIncisionDialogListener, SkinBreakdownDialogListener {
 
 	private String username;
 	private String password;
@@ -156,6 +170,18 @@ public class AssessmentDetailsActivity extends Activity
 		((CheckBox)findViewById(R.id.chkStoolContinent2)).setChecked(assessment.getGastrointestinal().isStoolContinent());
 		((CheckBox)findViewById(R.id.chkNausea2)).setChecked(assessment.getGastrointestinal().isNausea());
 		((CheckBox)findViewById(R.id.chkEmesis2)).setChecked(assessment.getGastrointestinal().isEmesis());
+		
+		ListView incisionList = (ListView)findViewById(R.id.lstIncisions2);
+    	IncisionListAdapter incisionAdapter = new IncisionListAdapter(this, assessment.getSkin().getIncisions());
+    	incisionList.setAdapter(incisionAdapter);
+    	incisionAdapter.setMode(Attributes.Mode.Single);
+    	ListHelper.setListViewHeightBasedOnItems(incisionList);
+    	
+    	ListView breakdownList = (ListView)findViewById(R.id.lstBreakdowns2);
+    	BreakdownListAdapter breakdownAdapter = new BreakdownListAdapter(this, assessment.getSkin().getBreakdowns());
+    	breakdownList.setAdapter(breakdownAdapter);
+    	breakdownAdapter.setMode(Attributes.Mode.Single);
+    	ListHelper.setListViewHeightBasedOnItems(breakdownList);
 		
 		final Button btnSubmit = (Button) findViewById(R.id.btnEditAssessment);
 		btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -294,6 +320,26 @@ public class AssessmentDetailsActivity extends Activity
             	gastrointestinal.setEmesis(((CheckBox)findViewById(R.id.chkEmesis2)).isChecked());
             	assessment.setGastrointestinal(gastrointestinal);
             	
+            	Skin skin = new Skin();
+            	List<Incision> incisions = new ArrayList<Incision>();
+            	ListView incisionList = (ListView)findViewById(R.id.lstIncisions2);
+            	IncisionListAdapter incisionAdapter = (IncisionListAdapter)incisionList.getAdapter();
+            	int incisionCount = incisionAdapter.getCount();
+            	for(int i = 0; i < incisionCount; i++) {
+            		incisions.add((Incision) incisionAdapter.getItem(i));
+            	}
+            	skin.setIncisions(incisions);
+            	
+            	List<Breakdown> breakdowns = new ArrayList<Breakdown>();
+            	ListView breakdownList = (ListView)findViewById(R.id.lstBreakdowns2);
+        		BreakdownListAdapter breakdownAdapter = (BreakdownListAdapter)breakdownList.getAdapter();
+        		int breakdownCount = breakdownAdapter.getCount();
+            	for(int i = 0; i < breakdownCount; i++) {
+            		breakdowns.add((Breakdown) breakdownAdapter.getItem(i));
+            	}
+            	skin.setBreakdowns(breakdowns);
+            	assessment.setSkin(skin);
+            	
             	new HttpRequestTask(assessmentResource.getId().getHref(), getApplicationContext()).execute(assessment);
             }
         });
@@ -330,6 +376,24 @@ public class AssessmentDetailsActivity extends Activity
 					DialogFragment newFragment = new TimePickerFragment(R.id.txtTime2);
 				    newFragment.show(getFragmentManager(), "timePicker");
 				}
+			}
+		});
+		
+		Button btnAddIncision = (Button)findViewById(R.id.btnAddIncision2);
+		btnAddIncision.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				 DialogFragment newFragment = new SkinIncisionDialogFragment();
+				 newFragment.show(getFragmentManager(), "incisions");
+			}
+		});
+		
+		Button btnAddBreakdown = (Button)findViewById(R.id.btnAddBreakdown2);
+		btnAddBreakdown.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				 DialogFragment newFragment = new SkinBreakdownDialogFragment();
+				 newFragment.show(getFragmentManager(), "breakdowns");
 			}
 		});
 	}
@@ -517,5 +581,21 @@ public class AssessmentDetailsActivity extends Activity
 	@Override
 	public void onDateSelected(int viewId, String date) {
 		((EditText)findViewById(viewId)).setText(date);
+	}
+	
+	@Override
+	public void onSkinIncisionDialogPositiveClick(DialogFragment dialog, Incision incision) {
+		ListView incisionList = (ListView)findViewById(R.id.lstIncisions2);
+		IncisionListAdapter incisionAdapter = (IncisionListAdapter)incisionList.getAdapter();
+		incisionAdapter.add(incision);
+		ListHelper.setListViewHeightBasedOnItems(incisionList);
+	}
+	
+	@Override
+	public void onSkinBreakdownDialogPositiveClick(DialogFragment dialog, Breakdown breakdown) {		
+		ListView breakdownList = (ListView)findViewById(R.id.lstBreakdowns2);
+		BreakdownListAdapter breakdownAdapter = (BreakdownListAdapter)breakdownList.getAdapter();
+		breakdownAdapter.add(breakdown);
+		ListHelper.setListViewHeightBasedOnItems(breakdownList);
 	}
 }
