@@ -149,10 +149,9 @@ public class ParcelableAssessment implements Parcelable {
 		dest.writeString(urine.getCharacter());
 		dest.writeInt(urine.isFoleyCatheter() ? 1 : 0);
 		
-		// Skin -- TODO: Add skin
-//		Skin skin = assessment.getSkin();
-//		dest.writeTypedList(skin.getIncisions());
-//		dest.writeTypedList(skin.getBreakdowns());
+		Skin skin = assessment.getSkin();
+		dest.writeTypedList(skin.getIncisions());
+		dest.writeTypedList(skin.getBreakdowns());
 	}
 	
 	// this is used to regenerate your object. All Parcelables must have a CREATOR that implements these two methods
