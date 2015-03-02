@@ -7,6 +7,11 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
+
+import com.attemper.emr.assessment.Breakdown;
 
 public class SkinBreakdownDialogFragment extends DialogFragment {
 	
@@ -14,7 +19,7 @@ public class SkinBreakdownDialogFragment extends DialogFragment {
      * implement this interface in order to receive event callbacks.
      * Each method passes the DialogFragment in case the host needs to query it. */
     public interface SkinBreakdownDialogListener {
-        public void onDialogPositiveClick(DialogFragment dialog);
+        public void onSkinBreakdownDialogPositiveClick(DialogFragment dialog, Breakdown breakdown);
     }
 	
     // Use this instance of the interface to deliver action events
@@ -25,16 +30,31 @@ public class SkinBreakdownDialogFragment extends DialogFragment {
 	    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 	    // Get the layout inflater
 	    LayoutInflater inflater = getActivity().getLayoutInflater();
+	    
+	    View view = inflater.inflate(R.layout.fragment_skin_breakdown, null);
+	    final EditText site = (EditText) view.findViewById(R.id.txtSiteBreakdown);
+	    final CheckBox drainage = (CheckBox) view.findViewById(R.id.chkDrainage);
+	    final CheckBox redness = (CheckBox) view.findViewById(R.id.chkRednessBreakdown);
+	    final CheckBox dressing = (CheckBox) view.findViewById(R.id.chkDressing);
+	    final EditText stage = (EditText) view.findViewById(R.id.txtStage);
 
 	    // Inflate and set the layout for the dialog
 	    // Pass null as the parent view because its going in the dialog layout
-	    builder.setView(inflater.inflate(R.layout.fragment_skin_breakdown, null))
+	    builder.setView(view)
 	    // Add action buttons
 	           .setPositiveButton(R.string.add, new DialogInterface.OnClickListener() {
 	               @Override
 	               public void onClick(DialogInterface dialog, int id) {
+	            	   final Breakdown breakdown = new Breakdown(
+            			   site.getText().toString(),
+            			   drainage.isChecked(),
+            			   redness.isChecked(),
+            			   dressing.isChecked(),
+            			   stage.getText().toString()
+        			   );
+	            	   
 	            	   // Send the positive button event back to the host activity
-                       mListener.onDialogPositiveClick(SkinBreakdownDialogFragment.this);
+                       mListener.onSkinBreakdownDialogPositiveClick(SkinBreakdownDialogFragment.this, breakdown);
 	               }
 	           })
 	           .setNegativeButton(R.string.cancel_title, new DialogInterface.OnClickListener() {

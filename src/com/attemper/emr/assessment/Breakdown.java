@@ -9,14 +9,23 @@ public class Breakdown implements Parcelable {
 	private boolean redness;
 	private boolean dressing;
 	private String stage;
-
+	
+	public Breakdown() {
+	}
+	public Breakdown(String site, boolean drainage, boolean redness,
+			boolean dressing, String stage) {
+		this.site = site;
+		this.drainage = drainage;
+		this.redness = redness;
+		this.dressing = dressing;
+		this.stage = stage;
+	}
 	public String getStage() {
 		return stage;
 	}
 	public void setStage(String stage) {
 		this.stage = stage;
 	}
-
 	public String getSite() {
 		return site;
 	}

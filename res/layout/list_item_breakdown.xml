@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.daimajia.swipe.SwipeLayout xmlns:swipe="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipe"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    swipe:leftEdgeSwipeOffset="0dp"
+    swipe:rightEdgeSwipeOffset="0dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#FF5534"
+        android:gravity="center"
+        android:tag="Bottom3"
+        android:weightSum="10" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="Remove breakdown"
+            android:textColor="#fff"
+            android:textSize="17sp" />
+
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_weight="4"
+            android:background="#ffffff"
+            android:text="Yes, Remove"
+            android:textColor="#FF5534" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/item_selector"
+        android:padding="10dp" >
+
+        <TextView
+            android:id="@+id/txtBreakdownSite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/site" />
+
+        <CheckBox
+            android:id="@+id/chkDrainage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/drainage"
+            android:visibility="gone" />
+
+        <CheckBox
+            android:id="@+id/chkDressing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dressing"
+            android:visibility="gone" />
+
+        <CheckBox
+            android:id="@+id/chkRednessBreakdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/redness"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txtBreakdownStage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</com.daimajia.swipe.SwipeLayout>

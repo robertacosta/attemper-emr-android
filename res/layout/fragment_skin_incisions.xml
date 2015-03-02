@@ -35,6 +35,12 @@
         android:text="@string/redness" />
 
     <CheckBox
+        android:id="@+id/chkDrainageIncision"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/drainage" />
+
+    <CheckBox
         android:id="@+id/chkSwelling"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

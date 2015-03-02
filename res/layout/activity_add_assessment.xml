@@ -1140,8 +1140,8 @@
                     android:id="@+id/chkStoolContinent"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
-                    android:text="@string/continent"
-                    android:checked="true" />
+                    android:checked="true"
+                    android:text="@string/continent" />
             </LinearLayout>
 
             <LinearLayout
@@ -1162,6 +1162,55 @@
                     android:layout_weight="0.13"
                     android:text="@string/emesis" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/lblSkinSection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="30dp"
+                android:text="@string/skin"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <TextView
+                android:id="@+id/lblIncisions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/incisions"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <ListView
+                android:id="@+id/lstIncisions"
+                android:layout_width="400dp"
+                android:layout_height="wrap_content" >
+            </ListView>
+
+            <Button
+                android:id="@+id/btnAddIncision"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/addIncision" />
+
+            <TextView
+                android:id="@+id/lblBreakdowns"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/breakdowns"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+            
+             <ListView
+                 android:id="@+id/lstBreakdowns"
+                 android:layout_width="400dp"
+                 android:layout_height="wrap_content" >
+
+            </ListView>
+
+            <Button
+                android:id="@+id/btnAddBreakdown"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/addBreakdown" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

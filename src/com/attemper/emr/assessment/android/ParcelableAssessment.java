@@ -292,16 +292,15 @@ public class ParcelableAssessment implements Parcelable {
     	gastrointestinal.setUrine(urine);
     	assessment.setGastrointestinal(gastrointestinal);
     	
-    	// TODO: Add skin
-//    	Skin skin = new Skin();
-//    	List<Incision> incisions = new ArrayList<Incision>();
-//    	in.readTypedList(incisions, Incision.CREATOR);
-//    	skin.setIncisions(incisions);
-//    	
-//    	List<Breakdown> breakdowns = new ArrayList<Breakdown>();
-//    	in.readTypedList(breakdowns, Breakdown.CREATOR);
-//    	skin.setBreakdowns(breakdowns);
-//    	assessment.setSkin(skin);
+    	Skin skin = new Skin();
+    	List<Incision> incisions = new ArrayList<Incision>();
+    	in.readTypedList(incisions, Incision.CREATOR);
+    	skin.setIncisions(incisions);
+    	
+    	List<Breakdown> breakdowns = new ArrayList<Breakdown>();
+    	in.readTypedList(breakdowns, Breakdown.CREATOR);
+    	skin.setBreakdowns(breakdowns);
+    	assessment.setSkin(skin);
     	
     	assessmentResource = new AssessmentResource(assessment, resourceLink);
     }
