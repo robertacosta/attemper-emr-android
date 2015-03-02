@@ -27,6 +27,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -35,6 +36,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 
 import com.attemper.emr.DatePickerFragment.OnDateSelectedListener;
 import com.attemper.emr.SkinBreakdownDialogFragment.SkinBreakdownDialogListener;
@@ -177,11 +179,31 @@ public class AssessmentDetailsActivity extends Activity
     	incisionAdapter.setMode(Attributes.Mode.Single);
     	ListHelper.setListViewHeightBasedOnItems(incisionList);
     	
+    	incisionList.setOnItemClickListener(new OnItemClickListener(){
+			@Override
+			public void onItemClick(AdapterView<?>adapter,View view, int position, long id){
+				Incision incison = (Incision)adapter.getItemAtPosition(position);
+				
+				DialogFragment newFragment = new SkinIncisionDialogFragment(incison);
+				newFragment.show(getFragmentManager(), "incisions");
+			}
+		});
+    	
     	ListView breakdownList = (ListView)findViewById(R.id.lstBreakdowns2);
     	BreakdownListAdapter breakdownAdapter = new BreakdownListAdapter(this, assessment.getSkin().getBreakdowns());
     	breakdownList.setAdapter(breakdownAdapter);
     	breakdownAdapter.setMode(Attributes.Mode.Single);
     	ListHelper.setListViewHeightBasedOnItems(breakdownList);
+    	
+    	breakdownList.setOnItemClickListener(new OnItemClickListener(){
+			@Override
+			public void onItemClick(AdapterView<?>adapter,View view, int position, long id){
+				Breakdown breakdown = (Breakdown)adapter.getItemAtPosition(position);
+				
+				DialogFragment newFragment = new SkinBreakdownDialogFragment(breakdown);
+				newFragment.show(getFragmentManager(), "breakdowns");
+			}
+		});
 		
 		final Button btnSubmit = (Button) findViewById(R.id.btnEditAssessment);
 		btnSubmit.setOnClickListener(new View.OnClickListener() {

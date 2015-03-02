@@ -320,7 +320,7 @@ public class AddAssessmentActivity extends Activity
 				Breakdown breakdown = (Breakdown)adapter.getItemAtPosition(position);
 				
 				DialogFragment newFragment = new SkinBreakdownDialogFragment(breakdown);
-				newFragment.show(getFragmentManager(), "incisions");
+				newFragment.show(getFragmentManager(), "breakdowns");
 			}
 		});
 	}
