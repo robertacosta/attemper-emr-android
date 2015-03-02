@@ -60,6 +60,7 @@ import com.attemper.emr.assessment.Skin;
 import com.attemper.emr.assessment.Temperature;
 import com.attemper.emr.assessment.Urine;
 import com.attemper.emr.authorized.model.AssociateAssessmentModel;
+import com.attemper.emr.view.helper.ListHelper;
 import com.daimajia.swipe.util.Attributes;
 
 public class AddAssessmentActivity extends Activity
@@ -402,6 +403,7 @@ public class AddAssessmentActivity extends Activity
 		ListView incisionList = (ListView)findViewById(R.id.lstIncisions);
 		IncisionListAdapter incisionAdapter = (IncisionListAdapter)incisionList.getAdapter();
 		incisionAdapter.add(incision);
+		ListHelper.setListViewHeightBasedOnItems(incisionList);
 	}
 	
 	@Override
@@ -409,5 +411,6 @@ public class AddAssessmentActivity extends Activity
 		ListView breakdownList = (ListView)findViewById(R.id.lstBreakdowns);
 		BreakdownListAdapter breakdownAdapter = (BreakdownListAdapter)breakdownList.getAdapter();
 		breakdownAdapter.add(breakdown);
+		ListHelper.setListViewHeightBasedOnItems(breakdownList);
 	}
 }

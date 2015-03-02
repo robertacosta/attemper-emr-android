@@ -64,6 +64,7 @@ import com.attemper.emr.assessment.android.ParcelableAssessment;
 import com.attemper.emr.assessment.hateoas.AssessmentResource;
 import com.attemper.emr.authorized.model.AssociateAssessmentModel;
 import com.attemper.emr.patient.Patient;
+import com.attemper.emr.view.helper.ListHelper;
 import com.daimajia.swipe.util.Attributes;
 
 public class AssessmentDetailsActivity extends Activity
@@ -174,11 +175,13 @@ public class AssessmentDetailsActivity extends Activity
     	IncisionListAdapter incisionAdapter = new IncisionListAdapter(this, assessment.getSkin().getIncisions());
     	incisionList.setAdapter(incisionAdapter);
     	incisionAdapter.setMode(Attributes.Mode.Single);
+    	ListHelper.setListViewHeightBasedOnItems(incisionList);
     	
     	ListView breakdownList = (ListView)findViewById(R.id.lstBreakdowns2);
     	BreakdownListAdapter breakdownAdapter = new BreakdownListAdapter(this, assessment.getSkin().getBreakdowns());
     	breakdownList.setAdapter(breakdownAdapter);
     	breakdownAdapter.setMode(Attributes.Mode.Single);
+    	ListHelper.setListViewHeightBasedOnItems(breakdownList);
 		
 		final Button btnSubmit = (Button) findViewById(R.id.btnEditAssessment);
 		btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -585,6 +588,7 @@ public class AssessmentDetailsActivity extends Activity
 		ListView incisionList = (ListView)findViewById(R.id.lstIncisions2);
 		IncisionListAdapter incisionAdapter = (IncisionListAdapter)incisionList.getAdapter();
 		incisionAdapter.add(incision);
+		ListHelper.setListViewHeightBasedOnItems(incisionList);
 	}
 	
 	@Override
@@ -592,5 +596,6 @@ public class AssessmentDetailsActivity extends Activity
 		ListView breakdownList = (ListView)findViewById(R.id.lstBreakdowns2);
 		BreakdownListAdapter breakdownAdapter = (BreakdownListAdapter)breakdownList.getAdapter();
 		breakdownAdapter.add(breakdown);
+		ListHelper.setListViewHeightBasedOnItems(breakdownList);
 	}
 }
