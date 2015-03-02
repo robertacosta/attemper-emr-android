@@ -15,6 +15,17 @@ import com.attemper.emr.assessment.Incision;
 
 public class SkinIncisionDialogFragment extends DialogFragment {
 	
+	Incision incision;
+	
+	public SkinIncisionDialogFragment() {
+		super();
+	}
+	
+	public SkinIncisionDialogFragment(Incision incision) {
+		super();
+		this.incision = incision;
+	}
+	
 	/* The activity that creates an instance of this dialog fragment must
      * implement this interface in order to receive event callbacks.
      * Each method passes the DialogFragment in case the host needs to query it. */
@@ -41,6 +52,18 @@ public class SkinIncisionDialogFragment extends DialogFragment {
 	    final CheckBox dressing = (CheckBox) view.findViewById(R.id.chkDressingIntact);
 	    final CheckBox steri = (CheckBox) view.findViewById(R.id.chkSteriStripped);
 	    final CheckBox staples = (CheckBox) view.findViewById(R.id.chkStaples);
+	    
+	    if(incision != null) {
+	    	site.setText(incision.getSite());
+	    	wellApprox.setChecked(incision.isWellApproximated());
+	    	woundOpen.setChecked(incision.isWoundOpen());
+	    	redness.setChecked(incision.isRedness());
+	    	drainage.setChecked(incision.isDrainage());
+	    	swelling.setChecked(incision.isSwelling());
+	    	dressing.setChecked(incision.isDressingIntact());
+	    	steri.setChecked(incision.isSteriStripped());
+	    	staples.setChecked(incision.isStaplesSutures());
+	    }
 	    
 	    // Inflate and set the layout for the dialog
 	    // Pass null as the parent view because its going in the dialog layout

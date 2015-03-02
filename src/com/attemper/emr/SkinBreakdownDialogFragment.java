@@ -15,6 +15,17 @@ import com.attemper.emr.assessment.Breakdown;
 
 public class SkinBreakdownDialogFragment extends DialogFragment {
 	
+	Breakdown breakdown;
+	
+	public SkinBreakdownDialogFragment() {
+		super();
+	}
+	
+	public SkinBreakdownDialogFragment(Breakdown breakdown) {
+		super();
+		this.breakdown = breakdown;
+	} 
+	
 	/* The activity that creates an instance of this dialog fragment must
      * implement this interface in order to receive event callbacks.
      * Each method passes the DialogFragment in case the host needs to query it. */
@@ -37,6 +48,14 @@ public class SkinBreakdownDialogFragment extends DialogFragment {
 	    final CheckBox redness = (CheckBox) view.findViewById(R.id.chkRednessBreakdown);
 	    final CheckBox dressing = (CheckBox) view.findViewById(R.id.chkDressing);
 	    final EditText stage = (EditText) view.findViewById(R.id.txtStage);
+	    
+	    if(breakdown != null) {
+	    	site.setText(breakdown.getSite());
+	    	drainage.setChecked(breakdown.isDrainage());
+	    	redness.setChecked(breakdown.isRedness());
+	    	dressing.setChecked(breakdown.isDressing());
+	    	stage.setText(breakdown.getStage());
+	    }
 
 	    // Inflate and set the layout for the dialog
 	    // Pass null as the parent view because its going in the dialog layout

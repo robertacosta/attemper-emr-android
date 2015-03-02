@@ -26,6 +26,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -296,11 +298,31 @@ public class AddAssessmentActivity extends Activity
     	incisionList.setAdapter(incisionAdapter);
     	incisionAdapter.setMode(Attributes.Mode.Single);
     	
+    	incisionList.setOnItemClickListener(new OnItemClickListener(){
+			@Override
+			public void onItemClick(AdapterView<?>adapter,View view, int position, long id){
+				Incision incison = (Incision)adapter.getItemAtPosition(position);
+				
+				DialogFragment newFragment = new SkinIncisionDialogFragment(incison);
+				newFragment.show(getFragmentManager(), "incisions");
+			}
+		});
+    	
     	ListView breakdownList = (ListView)findViewById(R.id.lstBreakdowns);
 		List<Breakdown> breakdowns = new ArrayList<Breakdown>();
     	BreakdownListAdapter breakdownAdapter = new BreakdownListAdapter(this, breakdowns);
     	breakdownList.setAdapter(breakdownAdapter);
     	breakdownAdapter.setMode(Attributes.Mode.Single);
+    	
+    	breakdownList.setOnItemClickListener(new OnItemClickListener(){
+			@Override
+			public void onItemClick(AdapterView<?>adapter,View view, int position, long id){
+				Breakdown breakdown = (Breakdown)adapter.getItemAtPosition(position);
+				
+				DialogFragment newFragment = new SkinBreakdownDialogFragment(breakdown);
+				newFragment.show(getFragmentManager(), "incisions");
+			}
+		});
 	}
 
 	@Override
