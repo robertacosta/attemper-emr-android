@@ -51,6 +51,7 @@ public class SkinBreakdownDialogFragment extends DialogFragment {
 	    final CheckBox redness = (CheckBox) view.findViewById(R.id.chkRednessBreakdown);
 	    final CheckBox dressing = (CheckBox) view.findViewById(R.id.chkDressing);
 	    final EditText stage = (EditText) view.findViewById(R.id.txtStage);
+	    int addButtonText = R.string.add;
 	    
 	    if(breakdown != null) {
 	    	site.setText(breakdown.getSite());
@@ -58,13 +59,14 @@ public class SkinBreakdownDialogFragment extends DialogFragment {
 	    	redness.setChecked(breakdown.isRedness());
 	    	dressing.setChecked(breakdown.isDressing());
 	    	stage.setText(breakdown.getStage());
+	    	addButtonText = R.string.save;
 	    }
 
 	    // Inflate and set the layout for the dialog
 	    // Pass null as the parent view because its going in the dialog layout
 	    builder.setView(view)
 	    // Add action buttons
-	           .setPositiveButton(R.string.add, new DialogInterface.OnClickListener() {
+	           .setPositiveButton(addButtonText, new DialogInterface.OnClickListener() {
 	               @Override
 	               public void onClick(DialogInterface dialog, int id) {
 	            	   final Breakdown breakdown = new Breakdown(

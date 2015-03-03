@@ -55,6 +55,7 @@ public class SkinIncisionDialogFragment extends DialogFragment {
 	    final CheckBox dressing = (CheckBox) view.findViewById(R.id.chkDressingIntact);
 	    final CheckBox steri = (CheckBox) view.findViewById(R.id.chkSteriStripped);
 	    final CheckBox staples = (CheckBox) view.findViewById(R.id.chkStaples);
+	    int addButtonText = R.string.add;
 	    
 	    if(incision != null) {
 	    	site.setText(incision.getSite());
@@ -66,13 +67,14 @@ public class SkinIncisionDialogFragment extends DialogFragment {
 	    	dressing.setChecked(incision.isDressingIntact());
 	    	steri.setChecked(incision.isSteriStripped());
 	    	staples.setChecked(incision.isStaplesSutures());
+	    	addButtonText = R.string.save;
 	    }
 	    
 	    // Inflate and set the layout for the dialog
 	    // Pass null as the parent view because its going in the dialog layout
 	    builder.setView(view)
 	    // Add action buttons
-	           .setPositiveButton(R.string.add, new DialogInterface.OnClickListener() {
+	           .setPositiveButton(addButtonText, new DialogInterface.OnClickListener() {
 	               @Override
 	               public void onClick(DialogInterface dialog, int id) {
 		        	   final Incision incision = new Incision(
