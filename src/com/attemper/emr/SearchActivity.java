@@ -62,11 +62,13 @@ public class SearchActivity extends Activity {
 		listview.setOnItemClickListener(new OnItemClickListener(){
 			@Override
 			public void onItemClick(AdapterView<?>adapter,View view, int position, long id){
-				PatientResource patientResource = (PatientResource)adapter.getItemAtPosition(position);
-				
-				Intent intent = new Intent(view.getContext(), SearchDetails.class);
-				intent.putExtra("patientResource", new ParcelablePatient(patientResource));
-				startActivity(intent);
+				if(position > 0) {
+					PatientResource patientResource = (PatientResource)adapter.getItemAtPosition(position);
+					
+					Intent intent = new Intent(view.getContext(), SearchDetails.class);
+					intent.putExtra("patientResource", new ParcelablePatient(patientResource));
+					startActivity(intent);
+				}
 			}
 		});
 	}

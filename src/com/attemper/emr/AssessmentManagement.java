@@ -64,14 +64,16 @@ public class AssessmentManagement extends Activity {
 		listview.setOnItemClickListener(new OnItemClickListener(){
 			@Override
 			public void onItemClick(AdapterView<?>adapter,View view, int position, long id){
-				Assessment assessment = (Assessment)adapter.getItemAtPosition(position);
-				AssessmentResource assessmentResource = new AssessmentResource(assessment, 
-						new Link("https://jbossews-projectemr.rhcloud.com/emr/assessment/" + assessment.getId()));
-				
-				Intent intent = new Intent(view.getContext(), AssessmentDetailsActivity.class);
-				intent.putExtra("patientId", patient.getId());
-				intent.putExtra("assessmentResource", new ParcelableAssessment(assessmentResource));
-				startActivity(intent);
+				if(position > 0) {
+					Assessment assessment = (Assessment)adapter.getItemAtPosition(position);
+					AssessmentResource assessmentResource = new AssessmentResource(assessment, 
+							new Link("https://jbossews-projectemr.rhcloud.com/emr/assessment/" + assessment.getId()));
+					
+					Intent intent = new Intent(view.getContext(), AssessmentDetailsActivity.class);
+					intent.putExtra("patientId", patient.getId());
+					intent.putExtra("assessmentResource", new ParcelableAssessment(assessmentResource));
+					startActivity(intent);
+				}
 			}
 		});
 		
