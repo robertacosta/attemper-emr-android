@@ -16,21 +16,24 @@ import com.attemper.emr.assessment.Incision;
 public class SkinIncisionDialogFragment extends DialogFragment {
 	
 	Incision incision;
+	final int position;
 	
 	public SkinIncisionDialogFragment() {
 		super();
+		this.position = -1;
 	}
 	
-	public SkinIncisionDialogFragment(Incision incision) {
+	public SkinIncisionDialogFragment(Incision incision, int position) {
 		super();
 		this.incision = incision;
+		this.position = position;
 	}
 	
 	/* The activity that creates an instance of this dialog fragment must
      * implement this interface in order to receive event callbacks.
      * Each method passes the DialogFragment in case the host needs to query it. */
     public interface SkinIncisionDialogListener {
-        public void onSkinIncisionDialogPositiveClick(DialogFragment dialog, Incision incision);
+        public void onSkinIncisionDialogPositiveClick(DialogFragment dialog, Incision incision, int position);
     }
 	
     // Use this instance of the interface to deliver action events
@@ -85,7 +88,7 @@ public class SkinIncisionDialogFragment extends DialogFragment {
 	        		    );
 	            	   
 	            	   // Send the positive button event back to the host activity
-                       mListener.onSkinIncisionDialogPositiveClick(SkinIncisionDialogFragment.this, incision);
+                       mListener.onSkinIncisionDialogPositiveClick(SkinIncisionDialogFragment.this, incision, position);
 	               }
 	           })
 	           .setNegativeButton(R.string.cancel_title, new DialogInterface.OnClickListener() {

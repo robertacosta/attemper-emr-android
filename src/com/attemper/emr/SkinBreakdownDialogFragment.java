@@ -16,21 +16,24 @@ import com.attemper.emr.assessment.Breakdown;
 public class SkinBreakdownDialogFragment extends DialogFragment {
 	
 	Breakdown breakdown;
+	final int position;
 	
 	public SkinBreakdownDialogFragment() {
 		super();
+		this.position = -1;
 	}
 	
-	public SkinBreakdownDialogFragment(Breakdown breakdown) {
+	public SkinBreakdownDialogFragment(Breakdown breakdown, int position) {
 		super();
 		this.breakdown = breakdown;
+		this.position = position;
 	} 
 	
 	/* The activity that creates an instance of this dialog fragment must
      * implement this interface in order to receive event callbacks.
      * Each method passes the DialogFragment in case the host needs to query it. */
     public interface SkinBreakdownDialogListener {
-        public void onSkinBreakdownDialogPositiveClick(DialogFragment dialog, Breakdown breakdown);
+        public void onSkinBreakdownDialogPositiveClick(DialogFragment dialog, Breakdown breakdown, int position);
     }
 	
     // Use this instance of the interface to deliver action events
@@ -73,7 +76,7 @@ public class SkinBreakdownDialogFragment extends DialogFragment {
         			   );
 	            	   
 	            	   // Send the positive button event back to the host activity
-                       mListener.onSkinBreakdownDialogPositiveClick(SkinBreakdownDialogFragment.this, breakdown);
+                       mListener.onSkinBreakdownDialogPositiveClick(SkinBreakdownDialogFragment.this, breakdown, position);
 	               }
 	           })
 	           .setNegativeButton(R.string.cancel_title, new DialogInterface.OnClickListener() {

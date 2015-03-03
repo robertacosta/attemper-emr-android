@@ -184,7 +184,7 @@ public class AssessmentDetailsActivity extends Activity
 			public void onItemClick(AdapterView<?>adapter,View view, int position, long id){
 				Incision incison = (Incision)adapter.getItemAtPosition(position);
 				
-				DialogFragment newFragment = new SkinIncisionDialogFragment(incison);
+				DialogFragment newFragment = new SkinIncisionDialogFragment(incison, position);
 				newFragment.show(getFragmentManager(), "incisions");
 			}
 		});
@@ -200,7 +200,7 @@ public class AssessmentDetailsActivity extends Activity
 			public void onItemClick(AdapterView<?>adapter,View view, int position, long id){
 				Breakdown breakdown = (Breakdown)adapter.getItemAtPosition(position);
 				
-				DialogFragment newFragment = new SkinBreakdownDialogFragment(breakdown);
+				DialogFragment newFragment = new SkinBreakdownDialogFragment(breakdown, position);
 				newFragment.show(getFragmentManager(), "breakdowns");
 			}
 		});
@@ -606,18 +606,30 @@ public class AssessmentDetailsActivity extends Activity
 	}
 	
 	@Override
-	public void onSkinIncisionDialogPositiveClick(DialogFragment dialog, Incision incision) {
+	public void onSkinIncisionDialogPositiveClick(DialogFragment dialog, Incision incision, int position) {
 		ListView incisionList = (ListView)findViewById(R.id.lstIncisions2);
 		IncisionListAdapter incisionAdapter = (IncisionListAdapter)incisionList.getAdapter();
-		incisionAdapter.add(incision);
+		if(position > -1) {
+			Incision toRemove = (Incision) incisionAdapter.getItem(position);
+			incisionAdapter.remove(toRemove);
+			incisionAdapter.add(incision);
+		} else {
+			incisionAdapter.add(incision);
+		}
 		ListHelper.setListViewHeightBasedOnItems(incisionList);
 	}
 	
 	@Override
-	public void onSkinBreakdownDialogPositiveClick(DialogFragment dialog, Breakdown breakdown) {		
+	public void onSkinBreakdownDialogPositiveClick(DialogFragment dialog, Breakdown breakdown, int position) {		
 		ListView breakdownList = (ListView)findViewById(R.id.lstBreakdowns2);
 		BreakdownListAdapter breakdownAdapter = (BreakdownListAdapter)breakdownList.getAdapter();
-		breakdownAdapter.add(breakdown);
+		if(position > -1) {
+			Breakdown toRemove = (Breakdown) breakdownAdapter.getItem(position);
+			breakdownAdapter.remove(toRemove);
+			breakdownAdapter.add(breakdown);
+		} else {
+			breakdownAdapter.add(breakdown);
+		}
 		ListHelper.setListViewHeightBasedOnItems(breakdownList);
 	}
 }

@@ -26,7 +26,7 @@
         <Button
             android:id="@+id/delete"
             android:layout_width="0dp"
-            android:layout_height="20dp"
+            android:layout_height="40dp"
             android:layout_weight="4"
             android:background="#ffffff"
             android:text="Yes, Remove"
