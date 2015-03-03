@@ -15,11 +15,25 @@ import com.attemper.emr.assessment.Breakdown;
 
 public class SkinBreakdownDialogFragment extends DialogFragment {
 	
+	Breakdown breakdown;
+	final int position;
+	
+	public SkinBreakdownDialogFragment() {
+		super();
+		this.position = -1;
+	}
+	
+	public SkinBreakdownDialogFragment(Breakdown breakdown, int position) {
+		super();
+		this.breakdown = breakdown;
+		this.position = position;
+	} 
+	
 	/* The activity that creates an instance of this dialog fragment must
      * implement this interface in order to receive event callbacks.
      * Each method passes the DialogFragment in case the host needs to query it. */
     public interface SkinBreakdownDialogListener {
-        public void onSkinBreakdownDialogPositiveClick(DialogFragment dialog, Breakdown breakdown);
+        public void onSkinBreakdownDialogPositiveClick(DialogFragment dialog, Breakdown breakdown, int position);
     }
 	
     // Use this instance of the interface to deliver action events
@@ -37,12 +51,22 @@ public class SkinBreakdownDialogFragment extends DialogFragment {
 	    final CheckBox redness = (CheckBox) view.findViewById(R.id.chkRednessBreakdown);
 	    final CheckBox dressing = (CheckBox) view.findViewById(R.id.chkDressing);
 	    final EditText stage = (EditText) view.findViewById(R.id.txtStage);
+	    int addButtonText = R.string.add;
+	    
+	    if(breakdown != null) {
+	    	site.setText(breakdown.getSite());
+	    	drainage.setChecked(breakdown.isDrainage());
+	    	redness.setChecked(breakdown.isRedness());
+	    	dressing.setChecked(breakdown.isDressing());
+	    	stage.setText(breakdown.getStage());
+	    	addButtonText = R.string.save;
+	    }
 
 	    // Inflate and set the layout for the dialog
 	    // Pass null as the parent view because its going in the dialog layout
 	    builder.setView(view)
 	    // Add action buttons
-	           .setPositiveButton(R.string.add, new DialogInterface.OnClickListener() {
+	           .setPositiveButton(addButtonText, new DialogInterface.OnClickListener() {
 	               @Override
 	               public void onClick(DialogInterface dialog, int id) {
 	            	   final Breakdown breakdown = new Breakdown(
@@ -54,7 +78,7 @@ public class SkinBreakdownDialogFragment extends DialogFragment {
         			   );
 	            	   
 	            	   // Send the positive button event back to the host activity
-                       mListener.onSkinBreakdownDialogPositiveClick(SkinBreakdownDialogFragment.this, breakdown);
+                       mListener.onSkinBreakdownDialogPositiveClick(SkinBreakdownDialogFragment.this, breakdown, position);
 	               }
 	           })
 	           .setNegativeButton(R.string.cancel_title, new DialogInterface.OnClickListener() {
