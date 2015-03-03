@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.attemper.emr.PatientDetailsActivity" >
     <item android:id="@+id/action_assessment" android:title="@string/action_assessments" android:icon="@drawable/ic_fa_stethoscope" android:showAsAction="always"></item>
-    <item android:id="@id/action_cancel" android:title="Cancel"></item>
     
 
 </menu>

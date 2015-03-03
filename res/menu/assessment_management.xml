@@ -1,6 +1,5 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.attemper.emr.AssessmentManagement" >
-    <item android:id="@+id/action_return_home" android:title="Return Home"></item>
 
 </menu>

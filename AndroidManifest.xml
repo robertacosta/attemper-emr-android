@@ -15,56 +15,61 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
-            <intent-filter>
-               <!--  <action android:name="android.intent.action.MAIN" /> -->
-
-                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            </intent-filter>
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateVisible" >
             <intent-filter>
-                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".AddPatientActivity"
             android:label="@string/title_activity_add_patient"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".SearchActivity"
             android:label="@string/title_activity_search"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".SearchDetails"
             android:label="@string/title_activity_search_details"
-            android:parentActivityName=".SearchActivity" >
+            android:parentActivityName=".SearchActivity"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".PatientDetailsActivity"
             android:label="@string/title_activity_patient_details"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".AssessmentManagement"
-            android:label="@string/title_activity_assessment_management" 
-             android:parentActivityName=".MainActivity" >
+            android:label="@string/title_activity_assessment_management"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".AddAssessmentActivity"
-            android:label="@string/title_activity_add_assessment" 
-             android:parentActivityName=".AssessmentManagement" >
+            android:label="@string/title_activity_add_assessment"
+            android:parentActivityName=".AssessmentManagement"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".AssessmentDetailsActivity"
             android:label="@string/title_activity_assessment_details"
-            android:parentActivityName=".AssessmentManagement" >
+            android:parentActivityName=".AssessmentManagement"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

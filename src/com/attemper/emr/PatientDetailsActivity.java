@@ -240,10 +240,6 @@ public class PatientDetailsActivity extends Activity
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
-		if (id == R.id.action_cancel) {
-			finish();
-			return true;
-		}
 		if (id == R.id.action_assessment) {
 			final ParcelablePatient parcelablePatient = (ParcelablePatient) getIntent().getParcelableExtra("patientResource");
 			Intent intent = new Intent(getApplicationContext(), AssessmentManagement.class);
