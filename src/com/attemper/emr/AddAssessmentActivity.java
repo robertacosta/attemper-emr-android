@@ -3,6 +3,8 @@ package com.attemper.emr;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.joda.time.LocalDate;
+import org.joda.time.LocalTime;
 import org.springframework.http.HttpAuthentication;
 import org.springframework.http.HttpBasicAuthentication;
 import org.springframework.http.HttpEntity;
@@ -323,6 +325,9 @@ public class AddAssessmentActivity extends Activity
 				newFragment.show(getFragmentManager(), "breakdowns");
 			}
 		});
+
+    	((EditText)findViewById(R.id.txtDate)).setText(new LocalDate().toString(DatePickerFragment.getFormatter()));
+		((EditText)findViewById(R.id.txtTime)).setText(new LocalTime().toString(TimePickerFragment.getFormatter()));
 	}
 
 	@Override

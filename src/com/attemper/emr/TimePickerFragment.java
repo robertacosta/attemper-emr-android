@@ -36,7 +36,7 @@ public class TimePickerFragment extends DialogFragment
         }
     }
 	
-	DateTimeFormatter formatter = DateTimeFormat.forPattern("H:m");
+	private static DateTimeFormatter formatter = DateTimeFormat.forPattern("H:m");
 	int viewId;
 	
 	public TimePickerFragment(int viewId) {
@@ -60,5 +60,9 @@ public class TimePickerFragment extends DialogFragment
 		// TODO Auto-generated method stub
 		LocalTime time = new LocalTime(hourOfDay, minute);
 		mCallback.onTimeSelected(this.viewId, time.toString(formatter));
+	}
+	
+	public static DateTimeFormatter getFormatter() {
+		return formatter;
 	}
 }

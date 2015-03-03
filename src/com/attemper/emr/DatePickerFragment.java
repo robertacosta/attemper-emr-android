@@ -36,7 +36,7 @@ public class DatePickerFragment extends DialogFragment
         }
     }
 	
-	DateTimeFormatter formatter = DateTimeFormat.forPattern("MM/dd/yyyy");
+	private static DateTimeFormatter formatter = DateTimeFormat.forPattern("MM/dd/yyyy");
 	int viewId;
 	
 	public DatePickerFragment(int viewId) {
@@ -59,5 +59,9 @@ public class DatePickerFragment extends DialogFragment
 	public void onDateSet(DatePicker view, int year, int month, int day) {
 		LocalDate date = new LocalDate(year, month + 1, day);
 		mCallback.onDateSelected(this.viewId, date.toString(formatter));
+	}
+
+	public static DateTimeFormatter getFormatter() {
+		return formatter;
 	}
 }
