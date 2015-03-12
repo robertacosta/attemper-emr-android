@@ -71,6 +71,10 @@
             android:parentActivityName=".AssessmentManagement"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".ChangePassword"
+            android:label="@string/title_activity_change_password" >
+        </activity>
     </application>
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->

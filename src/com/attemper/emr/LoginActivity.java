@@ -3,6 +3,11 @@ package com.attemper.emr;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.http.HttpAuthentication;
 import org.springframework.http.HttpBasicAuthentication;
 import org.springframework.http.HttpEntity;
@@ -61,6 +66,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 	private View mLoginFormView;
 	
 	public static final String PREFS_NAME = "HeartbeatPrefs";
+	private static DateTimeFormatter formatter = DateTimeFormat.forPattern("MM/dd/yyyy");
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -266,8 +272,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
 		@Override
 		protected Principle doInBackground(Void... params) {
-			// TODO: attempt authentication against a network service.
-			
 			final String url = "https://jbossews-projectemr.rhcloud.com/emr/authorized/verify?username={username}";
         	
 			// Set the username and password for creating a Basic Auth request
@@ -308,9 +312,16 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 				editor.putLong("userid", principle.getId());
 				editor.commit();
 				
-				Intent intent = new Intent(context, MainActivity.class);
-				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		        startActivity(intent);
+				DateTime lastPasswordChangeDate = formatter.parseDateTime(principle.getLastPasswordChange());
+				int numDays = Days.daysBetween(lastPasswordChangeDate.toLocalDate(), LocalDate.now()).getDays();
+				if(numDays >= 90) {
+					Intent intent = new Intent(context, ChangePassword.class);
+			        startActivity(intent);
+				} else {
+					Intent intent = new Intent(context, MainActivity.class);
+					intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			        startActivity(intent);
+				}
 			} else {
 				mPasswordView
 						.setError(getString(R.string.error_incorrect_password));

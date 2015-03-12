@@ -152,10 +152,14 @@
     <string name="drainage">Drainage</string>
     <string name="dressing">Dressing</string>
     <string name="stage">Stage</string>
-	<string name="add">Add</string>
-	<string name="save">Save</string>
-	<string name="incisions">Incisions</string>
-	<string name="addIncision">Add Incision</string>
-	<string name="addBreakdown">Add Breakdown</string>
-	<string name="breakdowns">Breakdowns</string>
+    <string name="add">Add</string>
+    <string name="save">Save</string>
+    <string name="incisions">Incisions</string>
+    <string name="addIncision">Add Incision</string>
+    <string name="addBreakdown">Add Breakdown</string>
+    <string name="breakdowns">Breakdowns</string>
+    <string name="title_activity_change_password">Change Password</string>
+    <string name="prompt_confirm_password">Confirm Password</string>
+    <string name="change_password">Change Password</string>
+
 </resources>
