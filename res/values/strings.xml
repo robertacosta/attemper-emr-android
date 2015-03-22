@@ -161,5 +161,7 @@
     <string name="title_activity_change_password">Change Password</string>
     <string name="prompt_confirm_password">Confirm Password</string>
     <string name="change_password">Change Password</string>
+    <string name="pulse">Pulse</string>
+    <string name="pedalPulse">Pedal Pulse</string>
 
 </resources>

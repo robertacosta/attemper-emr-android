@@ -534,7 +534,7 @@
                 android:id="@+id/lblPulse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/pupils"
+                android:text="@string/pulse"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <LinearLayout
@@ -602,7 +602,7 @@
                         android:id="@+id/lblPedalPulse"
                         android:layout_width="265dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/radialPulse" />
+                        android:text="@string/pedalPulse" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
